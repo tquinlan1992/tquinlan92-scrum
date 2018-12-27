@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test snapshot of Loading component should render the app when loading is false 1`] = `
+<div>
+  <Connect(AppBar) />
+  <Routes
+    withComponents={true}
+  />
+</div>
+`;
+
+exports[`test snapshot of Loading component should render the loading screen when loading is true 1`] = `
+<div>
+  <div>
+    <Routes
+      withComponents={false}
+    />
+    <h1>
+       Loading 
+    </h1>
+    <WithStyles(CircularProgress)
+      size={50}
+    />
+  </div>
+</div>
+`;

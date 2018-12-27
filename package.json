@@ -1,0 +1,80 @@
+{
+  "name": "developer-hub-ui",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts react-scripts-ts test --env=jsdom",
+    "test-watch": "node ./node_modules/.bin/react-scripts-ts --inspect test --env=jsdom --runInBand",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@material-ui/core": "^3.5.1",
+    "@material-ui/icons": "^3.0.1",
+    "@types/enzyme": "^3.1.15",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
+    "@types/history": "^4.7.2",
+    "@types/jest": "^23.3.9",
+    "@types/node": "^10.12.9",
+    "@types/pouchdb-browser": "^6.1.2",
+    "@types/pouchdb-find": "^6.3.3",
+    "@types/react": "^16.7.6",
+    "@types/react-beautiful-dnd": "^7.1.2",
+    "@types/react-dom": "^16.0.9",
+    "@types/react-redux": "^6.0.11",
+    "@types/react-router": "^4.4.3",
+    "@types/react-router-dom": "^4.3.1",
+    "@types/react-router-redux": "^5.0.17",
+    "@types/redux-logger": "^3.0.6",
+    "@types/superagent": "^3.8.5",
+    "@types/url-join": "^0.8.2",
+    "@types/uuid": "^3.4.4",
+    "tquinlan92-typescript-redux-utils": "^1.0.3",
+    "tslint-microsoft-contrib": "^6.0.0",
+    "typescript": "^3.1.6"
+  },
+  "dependencies": {
+    "ajv": "^6.6.2",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "history": "^4.7.2",
+    "jest": "^23.6.0",
+    "pouchdb-browser": "^7.0.0",
+    "pouchdb-find": "^7.0.0",
+    "react": "^16.6.3",
+    "react-beautiful-dnd": "^10.0.3",
+    "react-dom": "^16.6.3",
+    "react-redux": "^6.0.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-router-redux": "^4.0.8",
+    "react-scripts-ts": "^4.0.8",
+    "redux-devtools-extension": "^2.13.7",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "superagent": "^4.0.0",
+    "url-join": "^4.0.0",
+    "uuid": "^3.3.2"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@headless/(.*)$": "<rootDir>/src/headless/$1",
+      "^@components/(.*)$": "<rootDir>/src/components/$1",
+      "^@database/(.*)$": "<rootDir>/src/headless/database/$1",
+      "^@utils/(.*)$": "<rootDir>/src/utils/$1"
+    },
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

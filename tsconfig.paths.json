@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@headless/*": ["src/headless/*"],
+            "@components/*": ["src/components/*"],
+            "@database/*": ["src/headless/database/*"],
+            "@utils/*": ["src/utils/*"]
+        },
+    }
+}

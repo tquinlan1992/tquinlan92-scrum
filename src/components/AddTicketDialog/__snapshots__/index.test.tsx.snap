@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`describe when the AddTicketDialog Component is given open as false AddTicketDialog should show the addTicketDialog open property as false 1`] = `
+<WithStyles(Dialog)
+  fullWidth={true}
+  onExit={[Function]}
+  open={false}
+  title="Dialog With Actions"
+>
+  <WithStyles(DialogTitle)
+    id="form-dialog-title"
+  >
+    Create a Ticket
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogContent)>
+    <form
+      autoComplete="off"
+    >
+      <WithStyles(FormControl)>
+        <TextField
+          autoFocus={true}
+          fullWidth={true}
+          id="name"
+          label="Title"
+          margin="dense"
+          onChange={[Function]}
+          required={true}
+          select={false}
+          type="text"
+          value="title"
+        />
+      </WithStyles(FormControl)>
+      <WithStyles(FormControl)>
+        <TextField
+          fullWidth={true}
+          id="multiline-flexible"
+          label="Description"
+          margin="dense"
+          multiline={true}
+          onChange={[Function]}
+          required={false}
+          select={false}
+          value="description"
+        />
+      </WithStyles(FormControl)>
+      <WithStyles(FormControl)>
+        <WithStyles(InputLabel)
+          htmlFor="age-simple"
+        >
+          Story Point
+        </WithStyles(InputLabel)>
+        <WithStyles(Select)
+          inputProps={
+            Object {
+              "id": "age-simple",
+              "name": "age",
+            }
+          }
+          onChange={[Function]}
+          value={5}
+        >
+          <WithStyles(MenuItem)
+            value=""
+          >
+            <em>
+              None
+            </em>
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={0.1}
+          >
+            0.1
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={1}
+          >
+            1
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={2}
+          >
+            2
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={3}
+          >
+            3
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={5}
+          >
+            5
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={8}
+          >
+            8
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={13}
+          >
+            13
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={21}
+          >
+            21
+          </WithStyles(MenuItem)>
+        </WithStyles(Select)>
+      </WithStyles(FormControl)>
+    </form>
+  </WithStyles(DialogContent)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      color="primary"
+      onClick={[Function]}
+    >
+      Cancel
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      color="primary"
+      onClick={[Function]}
+    >
+      Create
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;
+
+exports[`describe when the AddTicketDialog Component is given open as true AddTicketDialog should show the addTicketDialog open property as true 1`] = `
+<WithStyles(Dialog)
+  fullWidth={true}
+  onExit={[Function]}
+  open={true}
+  title="Dialog With Actions"
+>
+  <WithStyles(DialogTitle)
+    id="form-dialog-title"
+  >
+    Create a Ticket
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogContent)>
+    <form
+      autoComplete="off"
+    >
+      <WithStyles(FormControl)>
+        <TextField
+          autoFocus={true}
+          fullWidth={true}
+          id="name"
+          label="Title"
+          margin="dense"
+          onChange={[Function]}
+          required={true}
+          select={false}
+          type="text"
+          value="title"
+        />
+      </WithStyles(FormControl)>
+      <WithStyles(FormControl)>
+        <TextField
+          fullWidth={true}
+          id="multiline-flexible"
+          label="Description"
+          margin="dense"
+          multiline={true}
+          onChange={[Function]}
+          required={false}
+          select={false}
+          value="description"
+        />
+      </WithStyles(FormControl)>
+      <WithStyles(FormControl)>
+        <WithStyles(InputLabel)
+          htmlFor="age-simple"
+        >
+          Story Point
+        </WithStyles(InputLabel)>
+        <WithStyles(Select)
+          inputProps={
+            Object {
+              "id": "age-simple",
+              "name": "age",
+            }
+          }
+          onChange={[Function]}
+          value={5}
+        >
+          <WithStyles(MenuItem)
+            value=""
+          >
+            <em>
+              None
+            </em>
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={0.1}
+          >
+            0.1
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={1}
+          >
+            1
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={2}
+          >
+            2
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={3}
+          >
+            3
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={5}
+          >
+            5
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={8}
+          >
+            8
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={13}
+          >
+            13
+          </WithStyles(MenuItem)>
+          <WithStyles(MenuItem)
+            value={21}
+          >
+            21
+          </WithStyles(MenuItem)>
+        </WithStyles(Select)>
+      </WithStyles(FormControl)>
+    </form>
+  </WithStyles(DialogContent)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      color="primary"
+      onClick={[Function]}
+    >
+      Cancel
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      color="primary"
+      onClick={[Function]}
+    >
+      Create
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;
