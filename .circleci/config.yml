@@ -24,9 +24,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package-lock.json" }}
-      - persist_to_workspace:
-          root: ~/repo
-          paths: 
   test:
     <<: *defaults  
     steps:
