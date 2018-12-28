@@ -28,6 +28,7 @@ exports[`describe when the AddTicketDialog Component is given open as false AddT
           select={false}
           type="text"
           value="title"
+          variant="standard"
         />
       </WithStyles(FormControl)>
       <WithStyles(FormControl)>
@@ -41,15 +42,16 @@ exports[`describe when the AddTicketDialog Component is given open as false AddT
           required={false}
           select={false}
           value="description"
+          variant="standard"
         />
       </WithStyles(FormControl)>
       <WithStyles(FormControl)>
-        <WithStyles(InputLabel)
+        <WithStyles(WithFormControlContext(InputLabel))
           htmlFor="age-simple"
         >
           Story Point
-        </WithStyles(InputLabel)>
-        <WithStyles(Select)
+        </WithStyles(WithFormControlContext(InputLabel))>
+        <WithStyles(WithFormControlContext(Select))
           inputProps={
             Object {
               "id": "age-simple",
@@ -106,7 +108,7 @@ exports[`describe when the AddTicketDialog Component is given open as false AddT
           >
             21
           </WithStyles(MenuItem)>
-        </WithStyles(Select)>
+        </WithStyles(WithFormControlContext(Select))>
       </WithStyles(FormControl)>
     </form>
   </WithStyles(DialogContent)>
@@ -155,6 +157,7 @@ exports[`describe when the AddTicketDialog Component is given open as true AddTi
           select={false}
           type="text"
           value="title"
+          variant="standard"
         />
       </WithStyles(FormControl)>
       <WithStyles(FormControl)>
@@ -168,15 +171,16 @@ exports[`describe when the AddTicketDialog Component is given open as true AddTi
           required={false}
           select={false}
           value="description"
+          variant="standard"
         />
       </WithStyles(FormControl)>
       <WithStyles(FormControl)>
-        <WithStyles(InputLabel)
+        <WithStyles(WithFormControlContext(InputLabel))
           htmlFor="age-simple"
         >
           Story Point
-        </WithStyles(InputLabel)>
-        <WithStyles(Select)
+        </WithStyles(WithFormControlContext(InputLabel))>
+        <WithStyles(WithFormControlContext(Select))
           inputProps={
             Object {
               "id": "age-simple",
@@ -233,7 +237,7 @@ exports[`describe when the AddTicketDialog Component is given open as true AddTi
           >
             21
           </WithStyles(MenuItem)>
-        </WithStyles(Select)>
+        </WithStyles(WithFormControlContext(Select))>
       </WithStyles(FormControl)>
     </form>
   </WithStyles(DialogContent)>

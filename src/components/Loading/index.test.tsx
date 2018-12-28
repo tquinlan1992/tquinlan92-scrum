@@ -1,6 +1,6 @@
 import { Loading } from './';
 import { shallow } from 'enzyme';
-import { getAnyJestFn } from '@components/utils/testUtils';
+import { getAnyJestFn } from '../utils/testUtils';
 import * as React from 'react';
 
 describe('test snapshot of Loading component', () => {
