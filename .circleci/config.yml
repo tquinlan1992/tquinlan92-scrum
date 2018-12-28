@@ -10,29 +10,30 @@ defaults: &defaults
     - image: circleci/node:8.9.1
 
 jobs:
-  test:
-    <<: *defaults  
-    steps:
+  build: 
+    <<: *defaults 
+    steps: 
       - checkout
-
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package-lock.json" }}
           - v1-dependencies-
-
+      - run: sudo npm i -g npm
       - run: npm ci
-      - run:
-          name: Run tests
-          command: npm test
-
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package-lock.json" }}
-
       - persist_to_workspace:
           root: ~/repo
-          paths: .
+          paths: 
+  test:
+    <<: *defaults  
+    steps:
+      - checkout
+      - run:
+          name: Run tests
+          command: npm test
 
 workflows:
   version: 2
