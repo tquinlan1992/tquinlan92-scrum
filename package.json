@@ -10,6 +10,7 @@
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "test-watch": "node ./node_modules/.bin/react-scripts-ts --inspect test --env=jsdom --runInBand",
+    "test-e2e": "testcafe chrome:headless ./src/e2eTest/index.ts -r xunit:/tmp/test-results/res.xml",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
@@ -34,6 +35,8 @@
     "@types/url-join": "^0.8.2",
     "@types/uuid": "^3.4.4",
     "redux-mock-store": "^1.5.3",
+    "testcafe": "^0.23.3",
+    "testcafe-reporter-xunit": "^2.1.0",
     "tquinlan92-typescript-redux-utils": "^1.0.3",
     "tslint-microsoft-contrib": "^6.0.0",
     "typescript": "^3.1.6"

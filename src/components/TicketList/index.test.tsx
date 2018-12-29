@@ -21,7 +21,7 @@ import { shallow, configure } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 import { TicketList } from './';
 import { getAnyJestFn } from '../utils/testUtils';
-import * as _ from 'lodash';
+import { forEach, get } from 'lodash';
 
 configure({ adapter: new Adapter() });
 
@@ -72,7 +72,7 @@ describe('describe when the TicketList Component is given', () => {
 
 describe('when a user', () => {
     beforeEach(() => {
-        _.forEach(mockActions, mockAction => {
+        forEach(mockActions, mockAction => {
             mockAction.mockClear();
         });
     });
