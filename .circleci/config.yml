@@ -21,7 +21,11 @@ jobs:
       - run: sudo npm i -g npm
       - run: npm ci
       - run: npm run build
-      - run: npm test
+      - run: 
+          name: Jest Tests
+          command: npm test
+          environment:
+            JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
       - run: sudo npm i -g pouchdb-server
       - run: (pouchdb-server --in-memory --port 5984 &) && (cd build && python -m SimpleHTTPServer 3000 >> /dev/null 2>&1 &) &&  (npm run test-e2e-report)
       - store_test_results:
