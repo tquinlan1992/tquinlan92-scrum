@@ -8,7 +8,7 @@
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
+    "test": "react-scripts-ts test --env=jsdom --reporters=jest-junit",
     "test-watch": "node ./node_modules/.bin/react-scripts-ts --inspect test --env=jsdom --runInBand",
     "test-e2e": "testcafe chrome:headless ./src/e2eTest/index.ts",
     "test-e2e-report": "testcafe chrome:headless ./src/e2eTest/index.ts -r xunit:/tmp/test-results/res.xml",
@@ -76,10 +76,6 @@
     },
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ],
-    "reporters": [
-      "default",
-      "jest-junit"
     ]
   },
   "browserslist": [
