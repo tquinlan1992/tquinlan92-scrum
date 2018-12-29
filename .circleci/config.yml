@@ -25,9 +25,7 @@ jobs:
           name: Jest Tests
           command: npm test
           environment:
-            JEST_JUNIT_OUTPUT: "/tmp/jest/test-results/js-test-results.xml"
-      - store_test_results:
-          path: /tmp/jest/test-results
+            JEST_JUNIT_OUTPUT: "/tmp/test-results/js-test-results.xml"
       - run: sudo npm i -g pouchdb-server
       - run: (pouchdb-server --in-memory --port 5984 &) && (cd build && python -m SimpleHTTPServer 3000 >> /dev/null 2>&1 &) &&  (npm run test-e2e-report)
       - store_test_results:
