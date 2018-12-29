@@ -22,7 +22,8 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm test
-      - run: cd build && python -m SimpleHTTPServer 3000 & cd ../ && npm run test-e2e-report
+      - run: cd build && python -m SimpleHTTPServer 3000
+      - run: npm run test-e2e-report
       - store_test_results:
           path: /tmp/test-results
       - save_cache:
