@@ -16,15 +16,15 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package-lock.json" }}
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
       - run: sudo npm i -g npm
       - run: npm ci
       - run: npm test
       - save_cache:
-          paths:
-            - node_modules
           key: v1-dependencies-{{ checksum "package-lock.json" }}
+          paths:
+                  - /root/.npm
 
 workflows:
   version: 2
