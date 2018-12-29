@@ -1,10 +1,10 @@
 import { ThunkAction } from "redux-thunk";
-import { AppStateCore } from "@headless/store";
+import { AppState } from "@headless/store";
 import { actions as ticketListActions, SprintTicket, BacklogTicket, ClosedTicket } from "../";
 import { AnyAction } from "redux";
 import { getRemoteDB } from "@headless/database/pouch";
 
-export default function fetchTickets(): ThunkAction<void, AppStateCore, void, AnyAction> {
+export default function fetchTickets(): ThunkAction<void, AppState, void, AnyAction> {
     return async function (dispatch) {
         try {
             const db = await getRemoteDB();

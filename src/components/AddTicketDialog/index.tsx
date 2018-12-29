@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, InputLabel, Select, MenuItem, FormControl } from "@material-ui/core";
 import { connect } from 'react-redux';
-import { AppStateCore } from "@headless/store";
+import { AppState } from "@headless/store";
 import { isNumber } from 'lodash';
 import { actions } from './redux';
 
@@ -17,9 +17,9 @@ interface StateProps {
     title: string;
 }
 
-const mapStateToProps = ({ core }: AppStateCore, ownProps: AddTicketDialogOwnProps) => {
+const mapStateToProps = ({ addTicket }: AppState, ownProps: AddTicketDialogOwnProps) => {
     return {
-        ...core.addTicket,
+        ...addTicket,
         ...ownProps
     };
 };

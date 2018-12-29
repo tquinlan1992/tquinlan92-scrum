@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { AppStateCore } from "@headless/store";
+import { AppState } from "@headless/store";
 import { Table, Button, TableHead, TableRow, TableBody, TableCell, TextField } from "@material-ui/core";
 import AddTicketDialog from '../AddTicketDialog';
 import { actions as ticketListActions, ClosedTicket, BacklogTicket, SprintTicket } from './redux';
@@ -26,11 +26,11 @@ interface TicketTableParams {
     onRemoveFromSprint?: (id: string) => void;
 }
 
-const mapStateToProps = ({ core }: AppStateCore, ownProps: any): TicketListProps => {
-    const { showAddTicketDialog, showCloseSprintDialog } = core.ticketList;
+const mapStateToProps = ({ ticketList }: AppState, ownProps: any): TicketListProps => {
+    const { showAddTicketDialog, showCloseSprintDialog } = ticketList;
     return {
         showAddTicketDialog,
-        ...pick(core.ticketList, 'backlogTickets', 'sprintTickets', 'closedTickets'),
+        ...pick(ticketList, 'backlogTickets', 'sprintTickets', 'closedTickets'),
         showCloseSprintDialog
     };
 };

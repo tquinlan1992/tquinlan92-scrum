@@ -5,12 +5,12 @@ import { routerReducer, RouterState } from "react-router-redux";
 import { TicketListState } from '@components/TicketList/redux';
 import addTicket, { AddTicketState } from '@components/AddTicketDialog/redux';
 import loading, { LoadingState } from '@components/Loading/redux';
-import { AppStateCore, AppState } from '../store';
+import { AppState } from '../store';
 import ticketList from '../../components/TicketList/redux';
 import { ThunkAction } from "redux-thunk";
 import closeSprintDialog, { State as CloseSprintDialogState } from '@components/CloseSprintDialog/redux';
 
-const coreReducer = combineReducers<AppState>({
+const appReducer = combineReducers<AppState>({
     routing: routerReducer,
     addTicket,
     ticketList,
@@ -18,15 +18,11 @@ const coreReducer = combineReducers<AppState>({
     closeSprintDialog
 });
 
-const reducer = combineReducers<AppStateCore>({
-    core: coreReducer
-});
-
 declare module 'redux' {
     export type GenericStoreEnhancer = any;
 }
 
-export type AppThunkAction = ThunkAction<void, AppStateCore, void, AnyAction>;
+export type AppThunkAction = ThunkAction<void, AppState, void, AnyAction>;
 
 export interface Doc {
     edit: string;
@@ -50,10 +46,6 @@ export interface AppState {
     closeSprintDialog: CloseSprintDialogState;
 }
 
-export interface AppStateCore {
-    core: AppState;
-}
-
-const reduxStore: Store<AppStateCore, AnyAction> = createStore<AppStateCore, AnyAction, void, void>(reducer, {}, composeWithDevTools<any, {}>(applyMiddleware(...middleware)));
+const reduxStore: Store<AppState, AnyAction> = createStore<AppState, AnyAction, void, void>(appReducer, {}, composeWithDevTools<any, {}>(applyMiddleware(...middleware)));
 
 export default reduxStore;

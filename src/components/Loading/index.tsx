@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { AppStateCore } from "@headless/store";
+import { AppState } from "@headless/store";
 import { Switch, Route, Redirect } from 'react-router';
 import TicketList from '../TicketList';
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
@@ -47,9 +47,9 @@ export class Loading extends React.Component<StateProps & ComponentActions> {
     }
 }
 
-const mapStateToProps = ({ core }: AppStateCore) => {
+const mapStateToProps = ({ loading }: AppState) => {
     return {
-        loading: core.loading.value
+        loading: loading.value
     };
 };
 

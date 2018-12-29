@@ -7,7 +7,7 @@ function closeSprintTickets(sprintName: string): AppThunkAction {
         try {
             const db = await getRemoteDB();
             const state = getState();
-            const closedSprintTickets = state.core.ticketList.sprintTickets.filter(sprintTicket => {
+            const closedSprintTickets = state.ticketList.sprintTickets.filter(sprintTicket => {
                 return sprintTicket.closed;
             });
             const ids = closedSprintTickets.map(ticket => {
@@ -26,7 +26,7 @@ export default function closeSprint(): AppThunkAction {
     return async function (dispatch, getState) {
         try {
             const state = getState();
-            const sprintName = state.core.closeSprintDialog.sprintName;
+            const sprintName = state.closeSprintDialog.sprintName;
             await dispatch(closeSprintTickets(sprintName));
             await dispatch(fetchTickets());
         } catch (e) {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, FormControl } from "@material-ui/core";
 import { connect } from 'react-redux';
-import { AppStateCore } from "@headless/store";
+import { AppState } from "@headless/store";
 import { actions as closeSprintDialogActions } from './redux';
 
 interface OwnProps {
@@ -14,9 +14,9 @@ interface StateProps {
     sprintName: string;
 }
 
-const mapStateToProps = ({ core }: AppStateCore, ownProps: OwnProps) => {
+const mapStateToProps = ({ closeSprintDialog }: AppState, ownProps: OwnProps) => {
     return {
-        ...core.closeSprintDialog,
+        ...closeSprintDialog,
         ...ownProps
     };
 };

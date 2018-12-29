@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { AppStateCore } from "@headless/store";
+import { AppState } from "@headless/store";
 import { actions as stateActions } from './redux';
 import { AppBar as MaterialUiAppBar, Toolbar, Button } from '@material-ui/core';
 
@@ -27,9 +27,9 @@ export class AppBar extends React.Component<StateProps & ComponentActions> {
     }
 }
 
-const mapStateToProps = ({ core }: AppStateCore) => {
+const mapStateToProps = ({ loading }: AppState) => {
     return {
-        loading: core.loading.value
+        loading: loading.value
     };
 };
 
