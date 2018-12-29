@@ -22,7 +22,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm test
-      - run: sudo npm i -g pouchdb-server
+      - run: sudo npm i -g pouchdb-server pouchdb-adapter-leveldb
       - run: (pouchdb-server --port 5984 &) && (cd build && python -m SimpleHTTPServer 3000 >> /dev/null 2>&1 &) &&  (npm run test-e2e-report)
       - store_test_results:
           path: /tmp/test-results
