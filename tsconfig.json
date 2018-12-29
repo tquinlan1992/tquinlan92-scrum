@@ -22,6 +22,9 @@
             "es7",
             "dom",
             "es2017"
+        ],
+        "types": [
+            "testcafe"
         ]
     },
     "exclude": [
