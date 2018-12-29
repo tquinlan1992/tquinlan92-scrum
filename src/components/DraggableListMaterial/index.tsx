@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { List, ListItem, ListItemText } from '@material-ui/core';
+import { List, ListItem, ListItemText, Typography } from '@material-ui/core';
 import { sortBy } from 'lodash';
 
 // fake data generator
@@ -34,6 +34,7 @@ interface ListItem {
 interface Props {
   listItems: ListItem[];
   updateItems: (newItems: ListItem[]) => void;
+  title: string;
 }
 
 class DraggableList extends React.Component<Props, {items: any[];}> {
@@ -64,6 +65,10 @@ class DraggableList extends React.Component<Props, {items: any[];}> {
   render() {
     const orderedListItems = sortBy(this.props.listItems, 'priority');
     return (
+      <React.Fragment>
+      <Typography variant="h6" gutterBottom>
+          {this.props.title} 
+      </Typography>   
       <DragDropContext onDragEnd={this.onDragEnd(orderedListItems)}>
         <Droppable droppableId="droppable">
           {(provided, snapshot) => (
@@ -89,6 +94,7 @@ class DraggableList extends React.Component<Props, {items: any[];}> {
           )}
         </Droppable>
       </DragDropContext>
+      </React.Fragment>
     );
   }
 }
