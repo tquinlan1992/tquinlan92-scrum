@@ -10,7 +10,7 @@ const initialState = {
 
 const { actions: simpleActions, reducer } = makeSimpleReducer<State>('AddTicketDialog', initialState);
 
-export const actions = {
+export const sampleActions = {
     ...simpleActions,
     ...sampleThunkActions
 };

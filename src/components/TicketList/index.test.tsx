@@ -1,21 +1,3 @@
-jest.mock('./redux', () => {
-    return {
-        actions: {}
-    };
-});
-
-jest.mock('@components/AddTicketDialog/redux', () => {
-    return {
-        actions: {}
-    };
-});
-
-jest.mock('@components/CloseSprintDialog/redux', () => {
-    return {
-        actions: {}
-    };
-});
-
 import * as React from 'react';
 import { shallow, configure } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
@@ -76,31 +58,6 @@ describe('when a user', () => {
             mockAction.mockClear();
         });
     });
-    describe('clicks add ticket', () => {
-        it('setShowAddTicketDialog should be called with true', () => {
-            const props = {
-                showAddTicketDialog: false,
-                showCloseSprintDialog: false,
-                fetchTickets: mockActions.fetchTickets as any,
-                addTicket: mockActions.addTicket as any,
-                closeTicket: mockActions.addTicket as any,
-                addTicketToSprint: mockActions.addTicket as any,
-                setTicketListState: mockActions.setTicketListState as any,
-                openAddTicketDialog: mockActions.openAddTicketDialog,
-                onRemoveFromSprint: mockActions.onRemoveFromSprint,
-                closeSprint: mockActions.closeSprint,
-                openCloseSprintDialog: mockActions.openCloseSprintDialog,
-                updatePriorities: mockActions.updatePriorities,
-                backlogTickets: [{ title: 'backlogTicketTitle', description: 'backlogDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
-                sprintTickets: [{ title: 'sprintTicketTitle', description: 'sprintDescription', storyPoint: 3, _id: 'id1', deleted: false} as any],
-                closedTickets: [{ title: 'closedTicketTitle', description: 'closedDescription', storyPoint: 3, _id: 'id1', deleted: false} as any]
-            };
-            const result = shallow(<TicketList {...props} />);
-            const elementToClick = result.find({title: "Add Ticket"});
-            elementToClick.simulate('click');
-            expect(mockActions.openAddTicketDialog).toHaveBeenCalledTimes(1);
-        });
- });
     describe('requests to close addTicket', () => {
         it('setShowAddTicketDialog should be called with false', () => {
             const props = {

@@ -54,35 +54,7 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
        Close Sprint 
     </WithStyles(Button)>
   </WithStyles(Paper)>
-  <WithStyles(Paper)
-    style={
-      Object {
-        "margin": "5px auto",
-      }
-    }
-  >
-    <DraggableList
-      listItems={
-        Array [
-          Object {
-            "_id": "id1",
-            "deleted": false,
-            "description": "backlogDescription",
-            "storyPoint": 3,
-            "title": "backlogTicketTitle",
-          },
-        ]
-      }
-      title="Backlog"
-      updateItems={[Function]}
-    />
-    <WithStyles(Button)
-      onClick={[Function]}
-      title="Add Ticket"
-    >
-       Add Ticket 
-    </WithStyles(Button)>
-  </WithStyles(Paper)>
+  <Connect(BacklogListComponent) />
   <Connect(AddTicketDialog)
     onRequestClose={[Function]}
     onSubmit={[Function]}
@@ -150,35 +122,7 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
        Close Sprint 
     </WithStyles(Button)>
   </WithStyles(Paper)>
-  <WithStyles(Paper)
-    style={
-      Object {
-        "margin": "5px auto",
-      }
-    }
-  >
-    <DraggableList
-      listItems={
-        Array [
-          Object {
-            "_id": "id1",
-            "deleted": false,
-            "description": "backlogDescription",
-            "storyPoint": 3,
-            "title": "backlogTicketTitle",
-          },
-        ]
-      }
-      title="Backlog"
-      updateItems={[Function]}
-    />
-    <WithStyles(Button)
-      onClick={[Function]}
-      title="Add Ticket"
-    >
-       Add Ticket 
-    </WithStyles(Button)>
-  </WithStyles(Paper)>
+  <Connect(BacklogListComponent) />
   <Connect(AddTicketDialog)
     onRequestClose={[Function]}
     onSubmit={[Function]}
