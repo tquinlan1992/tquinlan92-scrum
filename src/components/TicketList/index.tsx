@@ -6,7 +6,7 @@ import AddTicketDialog from '../AddTicketDialog';
 import { actions as ticketListActions, ClosedTicket, BacklogTicket, SprintTicket } from './redux';
 import { pick } from 'lodash';
 import CloseSprintDialog from '../CloseSprintDialog';
-import DraggableList from '../DraggableListMaterial';
+import DraggableList from '../DraggableList';
 import { TicketTable } from '@components/Table';
 
 interface TicketListProps {
