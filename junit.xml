@@ -1,0 +1,30 @@
+<testsuites name="jest tests" tests="10" failures="0" time="5.928">
+  <testsuite name="test snapshot of Loading component" errors="0" failures="0" skipped="0" timestamp="2019-01-22T01:53:32" time="4.828" tests="2">
+    <testcase classname="test snapshot of Loading component should render the loading screen when loading is true" name="test snapshot of Loading component should render the loading screen when loading is true" time="0.01">
+    </testcase>
+    <testcase classname="test snapshot of Loading component should render the app when loading is false" name="test snapshot of Loading component should render the app when loading is false" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="describe when the TicketList Component is given" errors="0" failures="0" skipped="0" timestamp="2019-01-22T01:53:36" time="0.278" tests="4">
+    <testcase classname="describe when the TicketList Component is given showAddTicketDialog as true TicketList should show the addTicketDialog open as true" name="describe when the TicketList Component is given showAddTicketDialog as true TicketList should show the addTicketDialog open as true" time="0.005">
+    </testcase>
+    <testcase classname="describe when the TicketList Component is given showAddTicketDialog as false TicketList should show the addTicketDialog open as false" name="describe when the TicketList Component is given showAddTicketDialog as false TicketList should show the addTicketDialog open as false" time="0.001">
+    </testcase>
+    <testcase classname="when a user clicks add ticket setShowAddTicketDialog should be called with true" name="when a user clicks add ticket setShowAddTicketDialog should be called with true" time="0.003">
+    </testcase>
+    <testcase classname="when a user requests to close addTicket setShowAddTicketDialog should be called with false" name="when a user requests to close addTicket setShowAddTicketDialog should be called with false" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="describe when the AddTicketDialog Component is given" errors="0" failures="0" skipped="0" timestamp="2019-01-22T01:53:37" time="0.237" tests="3">
+    <testcase classname="describe when the AddTicketDialog Component is given open as true AddTicketDialog should show the addTicketDialog open property as true" name="describe when the AddTicketDialog Component is given open as true AddTicketDialog should show the addTicketDialog open property as true" time="0.005">
+    </testcase>
+    <testcase classname="describe when the AddTicketDialog Component is given open as false AddTicketDialog should show the addTicketDialog open property as false" name="describe when the AddTicketDialog Component is given open as false AddTicketDialog should show the addTicketDialog open property as false" time="0.002">
+    </testcase>
+    <testcase classname="when a user requests to close addTicket setShowAddTicketDialog should be called with false" name="when a user requests to close addTicket setShowAddTicketDialog should be called with false" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2019-01-22T01:53:37" time="0.122" tests="1">
+    <testcase classname=" should dispatch action" name=" should dispatch action" time="0.002">
+    </testcase>
+  </testsuite>
+</testsuites>

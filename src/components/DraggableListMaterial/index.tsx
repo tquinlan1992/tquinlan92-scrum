@@ -3,14 +3,6 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { List, ListItem, ListItemText, Typography } from '@material-ui/core';
 import { sortBy } from 'lodash';
 
-// fake data generator
-// const getItems = (count: number) =>
-//   Array.from({ length: count }, (v, k) => k).map(k => ({
-//     id: `item-${k}`,
-//     content: `item ${k}`,
-//   }));
-
-// a little function to help us with reordering the result
 const reorder = (list: any[], startIndex: number, endIndex: number) => {
   let result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
