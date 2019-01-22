@@ -3,13 +3,13 @@ import { setupPouch } from "@database/pouch";
 import * as request from 'superagent';
 import * as urljoin from 'url-join';
 import { actions as loadingActions } from '@components/Loading/redux'; 
-import fetchTickets from '@components/TicketList/redux/thunkActions/fetchTickets';
+import { fetchTickets } from '@components/TicketList/redux/thunkActions/fetchTickets';
 
 interface APIConfig {
     cloudant: string;
 }
 
-export default function loadApp(): AppThunkAction {
+export function loadApp(): AppThunkAction {
     return async function (dispatch) {
         try {
             const res = await request.get('/static/api.json');

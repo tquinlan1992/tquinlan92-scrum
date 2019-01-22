@@ -1,14 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from "@headless/store";
-import { actions as stateActions } from './redux';
 import { AppBar as MaterialUiAppBar, Toolbar, Button } from '@material-ui/core';
+import { ticketListActions } from '@components/TicketList/redux';
 
 interface StateProps {
-}
-
-interface ComponentActions {
-    openAddTicketDialog: typeof stateActions.openAddTicketDialog;
 }
 
 export class AppBar extends React.Component<StateProps & ComponentActions> {
@@ -33,6 +29,10 @@ const mapStateToProps = ({ loading }: AppState) => {
     };
 };
 
-const mapDispatchToProps = stateActions;
+const mapDispatchToProps = {
+    openAddTicketDialog: ticketListActions.openAddTicketDialog
+};
 
-export default connect<StateProps, ComponentActions>(mapStateToProps, mapDispatchToProps)(AppBar);
+type ComponentActions = typeof mapDispatchToProps;
+
+export const AppBarConnected = connect<StateProps, ComponentActions>(mapStateToProps, mapDispatchToProps)(AppBar);

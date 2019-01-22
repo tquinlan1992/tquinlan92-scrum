@@ -36,4 +36,4 @@ class PouchWrapper {
 
 }
 
-export default PouchWrapper;
+export { PouchWrapper };

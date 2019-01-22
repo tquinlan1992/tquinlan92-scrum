@@ -1,5 +1,5 @@
 import { AppState } from "@headless/store";
-import { actions } from './redux';
+import { addTicketDialogActions } from './redux';
 
 export interface AddTicketDialogOwnProps {
     onRequestClose: () => void;
@@ -17,9 +17,9 @@ export const mapStateToProps = ({ addTicket }: AppState, ownProps: AddTicketDial
 export type Props = ReturnType<typeof mapStateToProps>; 
 
 export const mapDispatchToProps = {
-    addTicket: actions.addTicket,
-    setAddTicketState: actions.set,
-    reset: actions.reset
+    addTicket: addTicketDialogActions.addTicket,
+    setAddTicketState: addTicketDialogActions.set,
+    reset: addTicketDialogActions.reset
 };
 
 export type ComponentActions = typeof mapDispatchToProps;

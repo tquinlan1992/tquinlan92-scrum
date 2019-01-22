@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import { List, ListItem, ListItemText, Typography } from '@material-ui/core';
-import { sortBy } from 'lodash';
 
-const reorder = (list: any[], startIndex: number, endIndex: number) => {
+const reorder = (list: ListItem[], startIndex: number, endIndex: number) => {
   let result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
@@ -29,7 +28,7 @@ interface Props {
   title: string;
 }
 
-class DraggableList extends React.Component<Props, {items: any[];}> {
+class DraggableList extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
     this.onDragEnd = this.onDragEnd.bind(this);
@@ -37,7 +36,7 @@ class DraggableList extends React.Component<Props, {items: any[];}> {
 
   onDragEnd(propItems: ListItem[]) {
     // dropped outside the list
-    return (result: any) => {
+    return (result: DropResult) => {
     if (!result.destination) {
       return;
     }
@@ -52,21 +51,18 @@ class DraggableList extends React.Component<Props, {items: any[];}> {
     };
   }
 
-  // Normally you would want to split things out into separate components.
-  // But in this example everything is just done in one place for simplicity
   render() {
-    const orderedListItems = sortBy(this.props.listItems, 'priority');
     return (
       <React.Fragment>
       <Typography variant="h6" gutterBottom>
           {this.props.title} 
       </Typography>   
-      <DragDropContext onDragEnd={this.onDragEnd(orderedListItems)}>
+      <DragDropContext onDragEnd={this.onDragEnd(this.props.listItems)}>
         <Droppable droppableId="droppable">
           {(provided, snapshot) => (
             <div ref={provided.innerRef}>
               <List component="nav">
-                {orderedListItems.map((item, index) => (
+                {this.props.listItems.map((item, index) => (
                   <Draggable key={item._id} draggableId={item._id} index={index}>
                     {(provided, snapshot) => (
                       <div ref={provided.innerRef}
@@ -91,4 +87,4 @@ class DraggableList extends React.Component<Props, {items: any[];}> {
   }
 }
 
-export default DraggableList;
+export { DraggableList };

@@ -1,6 +1,6 @@
 import { AppThunkAction } from "@headless/store";
 import { getRemoteDB } from "@headless/database/pouch";
-import fetchTickets from "@components/TicketList/redux/thunkActions/fetchTickets";
+import { fetchTickets } from "@components/TicketList/redux/thunkActions/fetchTickets";
 
 function closeSprintTickets(sprintName: string): AppThunkAction {
     return async function (dispatch, getState) {
@@ -22,7 +22,7 @@ function closeSprintTickets(sprintName: string): AppThunkAction {
     };
 }
 
-export default function closeSprint(): AppThunkAction {
+export function closeSprint(): AppThunkAction {
     return async function (dispatch, getState) {
         try {
             const state = getState();

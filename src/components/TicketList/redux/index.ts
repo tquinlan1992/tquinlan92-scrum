@@ -1,4 +1,4 @@
-import thunkActions from './thunkActions';
+import { ticketListThunkActions } from './thunkActions';
 import { Ticket } from '@database/PouchWrapper';
 import { makeSimpleReducer } from 'tquinlan92-typescript-redux-utils';
 
@@ -38,9 +38,9 @@ const initialState = {
 
 const { actions: simpleActions, reducer } = makeSimpleReducer<TicketListState>('TicketList', initialState);
 
-export const actions = {
+export const ticketListActions = {
     ...simpleActions,
-    ...thunkActions
+    ...ticketListThunkActions
 };
 
-export default reducer;
+export { reducer as ticketListReducer };

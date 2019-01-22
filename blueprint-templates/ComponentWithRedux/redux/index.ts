@@ -1,5 +1,5 @@
 import { makeSimpleReducer } from 'tquinlan92-typescript-redux-utils';
-import thunkActions from './thunkActions';
+import { sampleThunkActions } from './thunkActions';
 
 export interface State {
 }
@@ -12,7 +12,7 @@ const { actions: simpleActions, reducer } = makeSimpleReducer<State>('AddTicketD
 
 export const actions = {
     ...simpleActions,
-    ...thunkActions
+    ...sampleThunkActions
 };
 
-export default reducer;
+export { reducer as sampleReducer };

@@ -2,7 +2,7 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import * as React from 'react';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-class Theme extends React.Component {
+export class Theme extends React.Component {
     muiTheme = createMuiTheme({
         palette: {
             primary: {
@@ -33,5 +33,3 @@ class Theme extends React.Component {
         );
     }
 }
-
-export default Theme;

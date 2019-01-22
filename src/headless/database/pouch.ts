@@ -1,5 +1,5 @@
 import * as PouchDBRaw from 'pouchdb-browser';
-import PouchWrapper, { Ticket } from './PouchWrapper';
+import { Ticket, PouchWrapper } from './PouchWrapper';
 import { MethodsReturnTypes } from './methods';
 const PouchDB: typeof PouchDBRaw = (PouchDBRaw as any).default;
 const pouchdbFindRaw = require('pouchdb-find');

@@ -1,5 +1,6 @@
 {
     "rules": {
-        "max-file-line-count": [true, 100]
+        "max-file-line-count": [true, 100],
+        "no-default-export": true
     }
 }

@@ -1,4 +1,4 @@
-import thunkActions from './thunkActions';
+import  { loadingThunkActions } from './thunkActions';
 import { makeSimpleReducer } from 'tquinlan92-typescript-redux-utils';
 
 export type LoadingState = {
@@ -13,7 +13,7 @@ const { actions: simpleActions, reducer } = makeSimpleReducer<LoadingState>('Loa
 
 export const actions = {
     ...simpleActions,
-    ...thunkActions
+    ...loadingThunkActions
 };
 
-export default reducer;
+export { reducer as loadingReducer };

@@ -1,5 +1,5 @@
-import closeSprint from './closeSprint';
+import { closeSprint } from './closeSprint';
 
-export default {
+export const closeSprintDialogThunkActions = {
     closeSprint
 };

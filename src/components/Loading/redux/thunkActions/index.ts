@@ -1,5 +1,5 @@
-import loadApp from './loadApp';
+import { loadApp } from './loadApp';
 
-export default {
+export const loadingThunkActions = {
     loadApp
 };

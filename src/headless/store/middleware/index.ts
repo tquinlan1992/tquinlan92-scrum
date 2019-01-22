@@ -1,9 +1,9 @@
 // import saveToLocalStorageState from './saveToLocalStorageState';
-import thunk from './thunk';
-import router from './router';
+import thunk from 'redux-thunk';
+import { router } from './router';
 import logger from 'redux-logger';
 
-export default [
+export const middleware = [
     // saveToLocalStorageState,
     router,
     thunk,

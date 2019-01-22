@@ -2,34 +2,27 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from "@headless/store";
 import { Button, Paper } from "@material-ui/core";
-import AddTicketDialog from '../AddTicketDialog';
-import { actions as ticketListActions, ClosedTicket, BacklogTicket, SprintTicket } from './redux';
+import { AddTicketDialogConnected} from '../AddTicketDialog';
+import { ticketListActions } from './redux';
 import { pick } from 'lodash';
-import CloseSprintDialog from '../CloseSprintDialog';
-import DraggableList from '../DraggableList';
+import { CloseSprintDialogConnected } from '../CloseSprintDialog';
 import { TicketTable } from '@components/Table';
+import { BacklogListConnected } from './BacklogList';
 
-interface TicketListProps {
-    showAddTicketDialog: boolean;
-    backlogTickets: BacklogTicket[];
-    sprintTickets: SprintTicket[];
-    closedTickets: ClosedTicket[];
-    showCloseSprintDialog: boolean;
-}
-
-const mapStateToProps = ({ ticketList }: AppState, ownProps: any): TicketListProps => {
+const mapStateToProps = ({ ticketList }: AppState, ownProps: any) => {
     const { showAddTicketDialog, showCloseSprintDialog } = ticketList;
     return {
         showAddTicketDialog,
-        ...pick(ticketList, 'backlogTickets', 'sprintTickets', 'closedTickets'),
+        ...pick(ticketList, 'sprintTickets', 'closedTickets'),
         showCloseSprintDialog
     };
 };
 
+type TicketListProps = ReturnType<typeof mapStateToProps>;
+
 const mapActionsToProps = {
     ...pick(ticketListActions, 'fetchTickets', 'closeTicket', 'addTicketToSprint'),
     setTicketListState: ticketListActions.set,
-    openAddTicketDialog: ticketListActions.openAddTicketDialog,
     onRemoveFromSprint: ticketListActions.removeFromSprint,
     openCloseSprintDialog: ticketListActions.openCloseSprintDialog,
     updatePriorities: ticketListActions.updatePriorities
@@ -41,10 +34,6 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
 
     async componentDidMount() {
         await this.props.fetchTickets();
-    }
-
-    openAddticketDialog() {
-        this.props.openAddTicketDialog();
     }
 
     closeAddticketDialog() {
@@ -68,18 +57,15 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
                 <Button title='Close Sprint' onClick={() => this.props.openCloseSprintDialog()}> Close Sprint </Button>
                 </Paper>
 
-                <Paper style={{margin: '5px auto'}}>
-                <DraggableList title='Backlog' listItems={this.props.backlogTickets} updateItems={this.props.updatePriorities.bind(this)}/>
-                <Button title='Add Ticket' onClick={this.openAddticketDialog.bind(this)}> Add Ticket </Button>
-                </Paper>
+                <BacklogListConnected />
 
-                <AddTicketDialog
+                <AddTicketDialogConnected
                     open={this.props.showAddTicketDialog}
                     onRequestClose={(this.closeAddticketDialog.bind(this))}
                     onSubmit={() => {this.props.setTicketListState({showAddTicketDialog: false});}}
                 />
 
-                <CloseSprintDialog 
+                <CloseSprintDialogConnected  
                     open={this.props.showCloseSprintDialog} 
                     onRequestClose={() => this.props.setTicketListState({ showCloseSprintDialog: false })}
                     onSubmit={() => this.props.setTicketListState({ showCloseSprintDialog: false })}
@@ -89,4 +75,4 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
     }
 }
 
-export default connect<TicketListProps, TicketListActions>(mapStateToProps, mapActionsToProps)(TicketList);
+export const TicketListConnected = connect<TicketListProps, TicketListActions>(mapStateToProps, mapActionsToProps)(TicketList);
