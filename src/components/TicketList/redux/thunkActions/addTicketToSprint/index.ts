@@ -8,7 +8,7 @@ export function addTicketToSprint(id: string): ThunkAction<void, AppState, void,
     return async function (dispatch) {
         try {
             const db = await getRemoteDB();
-            await db.markTicketInSprint(id);
+            await db.markTicketInSprint({id, sprint: true});
             await dispatch(fetchTickets());
         } catch (e) {
             console.log('error adding ticket');

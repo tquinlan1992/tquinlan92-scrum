@@ -1,15 +1,15 @@
-import { addTicketToSprint } from './';
+import { removeFromSprint } from './';
 import { mockStore, expectActionWithPayload, expectCalledOnceWith, mockClearAll } from '../../../../utils/testUtils';
 
 jest.mock('../../../../../headless/database/pouch', () => {
-    const markTicketInSprint = jest.fn();
+    const removeFromSprint = jest.fn();
     return {
         getRemoteDB: jest.fn(() => {
             return {
-                markTicketInSprint
+                removeFromSprint
             }
         }),
-        markTicketInSprint
+        removeFromSprint
     }
 })
 
@@ -27,20 +27,20 @@ const fetchTickets = require('../fetchTickets');
 
 const store = mockStore({});
 
-describe('when addTicketToSprint is called', () => {
+describe('when removeFromSprint is called', () => {
     beforeEach(() => {
         mockClearAll([
             pouch.getRemoteDB,
-            pouch.markTicketInSprint,
+            pouch.removeFromSprint,
             fetchTickets.fetchTickets
         ])
     })
-    it('it should add the ticket if no errors', async () => {
-        await store.dispatch(addTicketToSprint('ticketId'));
+    it('it should remove the ticket from the sprint if there are no errors', async () => {
+        await store.dispatch(removeFromSprint('ticketId'));
 
         expectCalledOnceWith(pouch.getRemoteDB);
 
-        expectCalledOnceWith(pouch.markTicketInSprint, {id: 'ticketId', sprint: true});
+        expectCalledOnceWith(pouch.removeFromSprint, 'ticketId');
 
         expectCalledOnceWith(fetchTickets.fetchTickets);
 
@@ -50,11 +50,11 @@ describe('when addTicketToSprint is called', () => {
             throw new Error('error getting remoteDB');
         })
         try {
-            await store.dispatch(addTicketToSprint('ticketId'));
+            await store.dispatch(removeFromSprint('ticketId'));
         } catch {
             expectCalledOnceWith(pouch.getRemoteDB);
 
-            expect(pouch.markTicketInSprint).toHaveBeenCalledTimes(0);
+            expect(pouch.removeFromSprint).toHaveBeenCalledTimes(0);
 
             expect(fetchTickets.fetchTickets).toHaveBeenCalledTimes(0);
         }

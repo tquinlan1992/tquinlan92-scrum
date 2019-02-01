@@ -1,16 +1,15 @@
-import { TicketPouchDb } from "../PouchWrapper";
+import { TicketPouchDb } from "../../PouchWrapper";
 
-export function deleteTicket(db: TicketPouchDb) {
-
+export function removeFromSprint(db: TicketPouchDb) {
     return async (id: string) => {
         try {
             const ticketDoc = await db.get(id);
             return db.put({
                 ...ticketDoc,
-                _deleted: true
+                sprint: false
             });
         } catch (e) {
-            throw new Error('error deleting ticket');
+            throw new Error('error closing ticket');
         }
     }
 }

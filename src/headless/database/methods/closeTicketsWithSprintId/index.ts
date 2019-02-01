@@ -1,4 +1,4 @@
-import { TicketPouchDb } from "../PouchWrapper";
+import { TicketPouchDb } from "../../PouchWrapper";
 
 export function closeTicketsWithSprintID(db: TicketPouchDb) {
     return async ({ ids, sprintName }:{ ids: string[]; sprintName: string; }) => {

@@ -1,4 +1,4 @@
-import { TicketPouchDb } from "../PouchWrapper";
+import { TicketPouchDb } from "../../PouchWrapper";
 
 export function closeTicket(db: TicketPouchDb) {
     return async (id: string) => {

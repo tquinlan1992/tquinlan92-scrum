@@ -1,6 +1,7 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { AnyAction, isType, ActionCreator } from 'typescript-fsa';
+import { AppState } from '../../headless/store';
 
 export function getAnyJestFn() {
     return jest.fn() as any;
@@ -18,6 +19,10 @@ export function expectActionWithPayload(actionToTest: AnyActionPayload, expected
 
 const middlewares = [thunk];
 export const mockStore = configureStore(middlewares);
+
+export function getMockStore(state: Partial<AppState>) {
+    return mockStore<AppState>(state);
+}
 
 export function expectCalledOnceWith(mockFunction: jest.Mock<{}>, calledWith?: any) {
     expect(mockFunction).toHaveBeenCalledTimes(1);
