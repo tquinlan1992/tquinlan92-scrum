@@ -1,6 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import { AppState } from "@headless/store";
-import { ticketListActions, SprintTicket, BacklogTicket, ClosedTicket } from "../";
+import { ticketListActions, SprintTicket, BacklogTicket, ClosedTicket } from "../..";
 import { AnyAction } from "redux";
 import { getRemoteDB } from "@headless/database/pouch";
 import { sortBy } from "lodash";
