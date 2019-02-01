@@ -3,7 +3,7 @@ import { mockStore, expectActionWithPayload, getMockStore, expectCalledOnceWith 
 
 jest.mock('../../../../../headless/database/pouch', () => {
     const closeTicketsWithSprintID = jest.fn(() => {
-        return new Promise(resolve => resolve())''
+        return new Promise(resolve => resolve());
     });
     return {
         getRemoteDB: jest.fn(() => {
