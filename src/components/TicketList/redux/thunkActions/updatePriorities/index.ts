@@ -1,5 +1,5 @@
 import { AppThunkAction } from "@headless/store";
-import { getRemoteDB } from "@headless/database/pouch";
+import { getRemoteDb } from "@headless/database/pouch";
 import { ticketListActions, BacklogTicket } from '../../';
 import { sortBy } from "lodash";
 
@@ -8,7 +8,7 @@ export function updatePriorities(newTickets: BacklogTicket[]): AppThunkAction {
         try {
             const newTicketsOrderedByPriority = sortBy(newTickets, 'priority');
             dispatch(ticketListActions.set({backlogTickets: newTicketsOrderedByPriority}));
-            const db = await getRemoteDB();
+            const db = await getRemoteDb();
             newTickets.forEach(async ({_id, priority}) =>{
                 await db.markTicketPriority({id: _id, priority});
             });

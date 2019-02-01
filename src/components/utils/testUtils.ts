@@ -21,7 +21,7 @@ const middlewares = [thunk];
 export const mockStore = configureStore(middlewares);
 
 export function getMockStore(state: Partial<AppState>) {
-    return mockStore<AppState>(state);
+    return mockStore(state);
 }
 
 export function expectCalledOnceWith(mockFunction: jest.Mock<{}>, calledWith?: any) {

@@ -21,7 +21,7 @@ jest.mock('../../../../../headless/database/pouch', () => {
         })
     });
     return {
-        getRemoteDB: jest.fn(() => {
+        getRemoteDb: jest.fn(() => {
             return {
                 getTickets
             }

@@ -4,7 +4,7 @@ import { mockStore, expectActionWithPayload, expectCalledOnceWith, mockClearAll 
 jest.mock('../../../../../headless/database/pouch', () => {
     const deleteTicket = jest.fn();
     return {
-        getRemoteDB: jest.fn(() => {
+        getRemoteDb: jest.fn(() => {
             return {
                 deleteTicket
             }
@@ -30,7 +30,7 @@ const store = mockStore({});
 describe('when deleteTicket is called', () => {
     beforeEach(() => {
         mockClearAll([
-            pouch.getRemoteDB,
+            pouch.getRemoteDb,
             pouch.deleteTicket,
             fetchTickets.fetchTickets
         ])
@@ -38,21 +38,21 @@ describe('when deleteTicket is called', () => {
     it('it should delete the ticket if no errors', async () => {
         await store.dispatch(deleteTicket('ticketId'));
 
-        expectCalledOnceWith(pouch.getRemoteDB);
+        expectCalledOnceWith(pouch.getRemoteDb);
 
         expectCalledOnceWith(pouch.deleteTicket, 'ticketId');
 
         expectCalledOnceWith(fetchTickets.fetchTickets);
 
     })
-    it('it should only call getRemoteDB if theres an error getting the remoteDB', async () => {
-        pouch.getRemoteDB = jest.fn(() => {
+    it('it should only call getRemoteDb if theres an error getting the remoteDB', async () => {
+        pouch.getRemoteDb = jest.fn(() => {
             throw new Error('error getting remoteDB');
         })
         try {
             await store.dispatch(deleteTicket('ticketId'));
         } catch {
-            expectCalledOnceWith(pouch.getRemoteDB);
+            expectCalledOnceWith(pouch.getRemoteDb);
 
             expect(pouch.deleteTicket).toHaveBeenCalledTimes(0);
 

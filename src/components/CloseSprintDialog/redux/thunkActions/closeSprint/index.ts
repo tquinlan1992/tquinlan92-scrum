@@ -1,11 +1,11 @@
 import { AppThunkAction } from "@headless/store";
-import { getRemoteDB } from "@headless/database/pouch";
+import { getRemoteDb } from "@headless/database/pouch";
 import { fetchTickets } from "@components/TicketList/redux/thunkActions/fetchTickets";
 
 function closeSprintTickets(sprintName: string): AppThunkAction {
     return async function (dispatch, getState) {
         try {
-            const db = await getRemoteDB();
+            const db = await getRemoteDb();
             const state = getState();
             const closedSprintTickets = state.ticketList.sprintTickets.filter(sprintTicket => {
                 return sprintTicket.closed;

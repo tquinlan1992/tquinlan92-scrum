@@ -8,7 +8,7 @@ PouchDB.plugin(pouchdbFind);
 
 let pouchDBActions: null | MethodsReturnTypes;
 
-export async function getRemoteDB() {
+export async function getRemoteDb() {
     return pouchDBActions as MethodsReturnTypes;
 }
 

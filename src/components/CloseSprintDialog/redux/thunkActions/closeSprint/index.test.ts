@@ -6,7 +6,7 @@ jest.mock('../../../../../headless/database/pouch', () => {
         return new Promise(resolve => resolve());
     });
     return {
-        getRemoteDB: jest.fn(() => {
+        getRemoteDb: jest.fn(() => {
             return new Promise(resolve => {
                 resolve({closeTicketsWithSprintID});
             })
@@ -42,7 +42,7 @@ describe('when thunkActions is called', () => {
     it('it should', async () => {
         await store.dispatch(closeSprint());
 
-        expectCalledOnceWith(pouch.getRemoteDB);
+        expectCalledOnceWith(pouch.getRemoteDb);
         
         const ids = [
             'id1'

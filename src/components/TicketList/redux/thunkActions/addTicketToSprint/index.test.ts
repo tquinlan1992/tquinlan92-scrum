@@ -4,7 +4,7 @@ import { mockStore, expectActionWithPayload, expectCalledOnceWith, mockClearAll 
 jest.mock('../../../../../headless/database/pouch', () => {
     const markTicketInSprint = jest.fn();
     return {
-        getRemoteDB: jest.fn(() => {
+        getRemoteDb: jest.fn(() => {
             return {
                 markTicketInSprint
             }
@@ -30,7 +30,7 @@ const store = mockStore({});
 describe('when addTicketToSprint is called', () => {
     beforeEach(() => {
         mockClearAll([
-            pouch.getRemoteDB,
+            pouch.getRemoteDb,
             pouch.markTicketInSprint,
             fetchTickets.fetchTickets
         ])
@@ -38,21 +38,21 @@ describe('when addTicketToSprint is called', () => {
     it('it should add the ticket if no errors', async () => {
         await store.dispatch(addTicketToSprint('ticketId'));
 
-        expectCalledOnceWith(pouch.getRemoteDB);
+        expectCalledOnceWith(pouch.getRemoteDb);
 
         expectCalledOnceWith(pouch.markTicketInSprint, {id: 'ticketId', sprint: true});
 
         expectCalledOnceWith(fetchTickets.fetchTickets);
 
     })
-    it('it should only call getRemoteDB if theres an error getting the remoteDB', async () => {
-        pouch.getRemoteDB = jest.fn(() => {
+    it('it should only call getRemoteDb if theres an error getting the remoteDB', async () => {
+        pouch.getRemoteDb = jest.fn(() => {
             throw new Error('error getting remoteDB');
         })
         try {
             await store.dispatch(addTicketToSprint('ticketId'));
         } catch {
-            expectCalledOnceWith(pouch.getRemoteDB);
+            expectCalledOnceWith(pouch.getRemoteDb);
 
             expect(pouch.markTicketInSprint).toHaveBeenCalledTimes(0);
 
