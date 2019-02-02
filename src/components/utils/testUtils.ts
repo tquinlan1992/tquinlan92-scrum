@@ -27,7 +27,7 @@ export function getMockStore(state: Partial<AppState>) {
 export function expectCalledOnceWith(mockFunction: jest.Mock<{}>, calledWith?: any) {
     expect(mockFunction).toHaveBeenCalledTimes(1);
     const expectedParams = calledWith ? [calledWith] : [];
-    expect(mockFunction.mock.calls[0]).toEqual(expectedParams);
+    expect(mockFunction.mock.calls[0]).toMatchObject(expectedParams);
 }
 
 export function mockClearAll(mockFunctions: jest.Mock<{}>[]) {

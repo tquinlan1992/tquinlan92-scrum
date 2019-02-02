@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test snapshot of component should render 1`] = `
+<Fragment>
+  <WithStyles(Typography)
+    gutterBottom={true}
+    variant="h6"
+  >
+    title
+  </WithStyles(Typography)>
+  <WithStyles(Table)>
+    <WithStyles(TableHead)>
+      <WithStyles(TableRow)>
+        <WithStyles(TableCell)>
+          Ticket
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Sprint Name
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell) />
+        <WithStyles(TableCell) />
+        <WithStyles(TableCell) />
+        <WithStyles(TableCell) />
+      </WithStyles(TableRow)>
+    </WithStyles(TableHead)>
+    <WithStyles(TableBody)>
+      <WithStyles(TableRow)
+        draggable={true}
+        key="_id"
+      >
+        <WithStyles(TableCell)>
+          <TextField
+            defaultValue="title"
+            required={false}
+            select={false}
+            variant="standard"
+          />
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          sprintName
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Closed
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          Sprint
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          <WithStyles(Button)
+            onClick={[Function]}
+            title="Add To Sprint"
+          >
+             Add To Sprint 
+          </WithStyles(Button)>
+          <WithStyles(Button)
+            onClick={[Function]}
+            title="Open Ticket"
+          >
+             Remove From Sprint 
+          </WithStyles(Button)>
+          <WithStyles(Button)
+            onClick={[Function]}
+            title="Close Ticket"
+          >
+             Close Ticket 
+          </WithStyles(Button)>
+        </WithStyles(TableCell)>
+      </WithStyles(TableRow)>
+      <WithStyles(TableRow)
+        draggable={true}
+        key="_id"
+      >
+        <WithStyles(TableCell)>
+          <TextField
+            defaultValue="title"
+            required={false}
+            select={false}
+            variant="standard"
+          />
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          sprintName
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell) />
+        <WithStyles(TableCell)>
+          Sprint
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          <WithStyles(Button)
+            onClick={[Function]}
+            title="Add To Sprint"
+          >
+             Add To Sprint 
+          </WithStyles(Button)>
+          <WithStyles(Button)
+            onClick={[Function]}
+            title="Open Ticket"
+          >
+             Remove From Sprint 
+          </WithStyles(Button)>
+          <WithStyles(Button)
+            onClick={[Function]}
+            title="Close Ticket"
+          >
+             Close Ticket 
+          </WithStyles(Button)>
+        </WithStyles(TableCell)>
+      </WithStyles(TableRow)>
+      <WithStyles(TableRow)
+        draggable={true}
+        key="_id"
+      >
+        <WithStyles(TableCell)>
+          <TextField
+            defaultValue="title"
+            required={false}
+            select={false}
+            variant="standard"
+          />
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          sprintName
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell) />
+        <WithStyles(TableCell)>
+          Sprint
+        </WithStyles(TableCell)>
+        <WithStyles(TableCell)>
+          <WithStyles(Button)
+            onClick={[Function]}
+            title="Add To Sprint"
+          >
+             Add To Sprint 
+          </WithStyles(Button)>
+          <WithStyles(Button)
+            onClick={[Function]}
+            title="Open Ticket"
+          >
+             Remove From Sprint 
+          </WithStyles(Button)>
+          <WithStyles(Button)
+            onClick={[Function]}
+            title="Close Ticket"
+          >
+             Close Ticket 
+          </WithStyles(Button)>
+        </WithStyles(TableCell)>
+      </WithStyles(TableRow)>
+    </WithStyles(TableBody)>
+  </WithStyles(Table)>
+</Fragment>
+`;

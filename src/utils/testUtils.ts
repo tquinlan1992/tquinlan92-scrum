@@ -20,3 +20,13 @@ export function mockPouch(dbMethods: object) {
     return mockPouchRequire;
 }
 
+export function mockShortId() {
+    jest.mock('shortid', () => {
+        let count = 0;
+        return () => {
+            count = count + 1;
+            return String(count);
+        }
+    })
+}
+

@@ -3,20 +3,45 @@ import { Props, Actions, mapStateToProps, mapDispatchToProps } from './mapProps'
 import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
 import { isNumber } from 'lodash';
 import { connect } from "react-redux";
+import * as shortid from 'shortid';
 
 interface StoryPointOption {
     value: number | string;
     label?: string; 
+    key: string;
 }
 
 type StoryPointOptions = StoryPointOption[];
 
 const storypointOptions:StoryPointOptions = [
-    {label: 'None', value: ''}, {value: 0.1},{value: 2},{value: 3}, {value: 5}, {value: 8}, {value: 13}, {value: 21}
+    {
+        label: 'None', value: '', key: shortid()
+    }, 
+    {
+        value: 0.1, key: shortid()
+    },
+    {
+        value: 2, key: shortid()
+    },
+    {
+        value: 3, key: shortid()
+    }, 
+    {
+        value: 5, key: shortid()
+    }, 
+    {
+        value: 8, key: shortid()
+    }, 
+    {
+        value: 13, key: shortid()
+    }, 
+    {
+        value: 21, key: shortid()
+    }
 ]
 
 const menuItemOptions = storypointOptions.map(option => {
-    return <MenuItem value={option.value}>{option.label || option.value}</MenuItem>
+    return <MenuItem key={option.key} value={option.value}>{option.label || option.value}</MenuItem>
 })
 
 export class StoryPointsInputComponent extends React.Component<Props & Actions> {

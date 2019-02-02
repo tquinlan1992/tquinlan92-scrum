@@ -1,7 +1,7 @@
 import { AppState } from "@headless/store";
 import { addTicketDialogActions } from '../redux';
 
-export const mapStateToProps = ({ addTicket }: AppState) => {
+export function mapStateToProps({ addTicket }: AppState) {
     return {
         storyPoint: addTicket.storyPoint
     };

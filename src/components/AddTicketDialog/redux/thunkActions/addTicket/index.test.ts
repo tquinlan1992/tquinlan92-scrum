@@ -32,7 +32,6 @@ describe('when thunkActions is called', () => {
     it('it should', async () => {
         await store.dispatch(addTicket());
 
-        const dispatchedActions = store.getActions();
 
         expectCalledOnceWith(pouch.getRemoteDb);
         expectCalledOnceWith(mockAddTicket, {

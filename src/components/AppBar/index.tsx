@@ -23,7 +23,7 @@ export class AppBar extends React.Component<StateProps & ComponentActions> {
     }
 }
 
-const mapStateToProps = ({ loading }: AppState) => {
+export function mapStateToProps({ loading }: AppState) {
     return {
         loading: loading.value
     };

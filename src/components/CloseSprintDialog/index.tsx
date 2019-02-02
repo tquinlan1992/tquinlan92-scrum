@@ -14,7 +14,7 @@ interface StateProps {
     sprintName: string;
 }
 
-const mapStateToProps = ({ closeSprintDialog }: AppState, ownProps: OwnProps) => {
+export const mapStateToProps = ({ closeSprintDialog }: AppState, ownProps: OwnProps) => {
     return {
         ...closeSprintDialog,
         ...ownProps

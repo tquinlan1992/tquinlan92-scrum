@@ -28,7 +28,7 @@ interface Props {
   title: string;
 }
 
-class DraggableList extends React.Component<Props> {
+export class DraggableList extends React.Component<Props> {
   constructor(props: Props) {
     super(props);
     this.onDragEnd = this.onDragEnd.bind(this);
@@ -86,5 +86,3 @@ class DraggableList extends React.Component<Props> {
     );
   }
 }
-
-export { DraggableList };

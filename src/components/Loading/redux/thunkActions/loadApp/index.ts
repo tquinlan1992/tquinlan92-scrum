@@ -1,6 +1,5 @@
 import { AppThunkAction } from "@headless/store";
 import { setupPouch } from "@database/pouch";
-import * as request from 'superagent';
 import * as urljoin from 'url-join';
 import { actions as loadingActions } from '@components/Loading/redux'; 
 import { fetchTickets } from '@components/TicketList/redux/thunkActions/fetchTickets';
@@ -12,8 +11,9 @@ interface APIConfig {
 export function loadApp(): AppThunkAction {
     return async function (dispatch) {
         try {
-            const res = await request.get('/static/api.json');
-            const apiConfig = res.body as APIConfig;
+            const response = await fetch('/static/api.json');
+            const jsonResponse = await response.json();
+            const apiConfig = jsonResponse as APIConfig;
             const remoteUrl = urljoin(apiConfig.cloudant, '/dev');
             const onChanges = () => {
                 dispatch(fetchTickets());
