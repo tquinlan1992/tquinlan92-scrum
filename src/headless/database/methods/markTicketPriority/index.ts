@@ -1,4 +1,4 @@
-import { TicketPouchDb } from "../PouchWrapper";
+import { TicketPouchDb } from "../../PouchWrapper";
 
 export function markTicketPriority(db: TicketPouchDb) {
     return async ({id, priority}: {id: string; priority?: number;}) => {
