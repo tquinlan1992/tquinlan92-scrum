@@ -20,7 +20,8 @@ describe('when dbMethod is called', () => {
             expect(newTicket1).toMatchObject({
                 _id: 'id1',
                 title: 'title1'
-            })
+            });
+            db.destory();
         })
     })
 });
