@@ -4,4 +4,4 @@ import createHistory from 'history/createBrowserHistory';
 
 export const history = createHistory();
 
-export default routerMiddleware(history);
+export const router = routerMiddleware(history);

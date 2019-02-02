@@ -1,5 +1,5 @@
 import { makeSimpleReducer } from 'tquinlan92-typescript-redux-utils';
-import thunkActions from './thunkActions';
+import { thunkActions } from './thunkActions';
 
 export interface AddTicketState {
     storyPoint: null | number;
@@ -15,9 +15,9 @@ const initialState = {
 
 const { actions: simpleActions, reducer } = makeSimpleReducer<AddTicketState>('AddTicketDialog', initialState);
 
-export const actions = {
+export const addTicketDialogActions = {
     ...simpleActions,
     ...thunkActions
 };
 
-export default reducer;
+export { reducer as addTicketDialogReducer };

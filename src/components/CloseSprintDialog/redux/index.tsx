@@ -1,7 +1,7 @@
 import { makeSimpleReducer } from 'tquinlan92-typescript-redux-utils';
-import thunkActions from './thunkActions';
+import { closeSprintDialogThunkActions } from './thunkActions';
 
-export interface State {
+export interface CloseSprintDialogState {
     sprintName: string;
 }
 
@@ -9,11 +9,11 @@ const initialState = {
     sprintName: ''
 };
 
-const { actions: simpleActions, reducer } = makeSimpleReducer<State>('AddTicketDialog', initialState);
+const { actions: simpleActions, reducer } = makeSimpleReducer<CloseSprintDialogState>('AddTicketDialog', initialState);
 
-export const actions = {
+export const closeSprintDialogActions = {
     ...simpleActions,
-    ...thunkActions
+    ...closeSprintDialogThunkActions
 };
 
-export default reducer;
+export {reducer as closeSprintDialogReducer };

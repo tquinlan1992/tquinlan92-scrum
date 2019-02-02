@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test snapshot of Loading component should render the app when loading is false 1`] = `
+<WithStyles(AppBar)
+  position="static"
+>
+  <WithStyles(Toolbar)>
+    <WithStyles(Button)
+      onClick={[Function]}
+    >
+       Add Ticket 
+    </WithStyles(Button)>
+  </WithStyles(Toolbar)>
+</WithStyles(AppBar)>
+`;
+
+exports[`test snapshot of Loading component should render the loading screen when loading is true 1`] = `
+<WithStyles(AppBar)
+  position="static"
+>
+  <WithStyles(Toolbar)>
+    <WithStyles(Button)
+      onClick={[Function]}
+    >
+       Add Ticket 
+    </WithStyles(Button)>
+  </WithStyles(Toolbar)>
+</WithStyles(AppBar)>
+`;

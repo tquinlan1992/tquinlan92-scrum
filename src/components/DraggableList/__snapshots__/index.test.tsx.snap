@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test snapshot of component should render 1`] = `
+<Fragment>
+  <WithStyles(Typography)
+    gutterBottom={true}
+    variant="h6"
+  >
+    title
+  </WithStyles(Typography)>
+  <DragDropContext
+    onDragEnd={[Function]}
+  >
+    <Connect(Droppable)
+      direction="vertical"
+      droppableId="droppable"
+      ignoreContainerClipping={false}
+      isCombineEnabled={false}
+      isDropDisabled={false}
+      type="DEFAULT"
+    >
+      <Component />
+    </Connect(Droppable)>
+  </DragDropContext>
+</Fragment>
+`;

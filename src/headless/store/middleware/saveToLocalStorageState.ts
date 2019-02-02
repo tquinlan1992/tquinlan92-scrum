@@ -1,4 +1,4 @@
-export default function saveToLocalStorageState(params: { getState: Function; }) {
+export function saveToLocalStorageState(params: { getState: Function; }) {
     return (next: any) => (action: any) => {
 
         const returnValue = next(action);

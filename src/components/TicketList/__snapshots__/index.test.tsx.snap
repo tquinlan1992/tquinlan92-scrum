@@ -2,69 +2,59 @@
 
 exports[`describe when the TicketList Component is given showAddTicketDialog as false TicketList should show the addTicketDialog open as false 1`] = `
 <div>
-  <h1>
-    Closed
-  </h1>
-  <TicketTable
-    tickets={
-      Array [
-        Object {
-          "_id": "id1",
-          "deleted": false,
-          "description": "closedDescription",
-          "storyPoint": 3,
-          "title": "closedTicketTitle",
-        },
-      ]
+  <WithStyles(Paper)
+    style={
+      Object {
+        "margin": "5px auto",
+      }
     }
-  />
-  <h1>
-    Sprint
-  </h1>
-  <WithStyles(Button)
-    onClick={[Function]}
-    title="Close Sprint"
   >
-     Close Sprint 
-  </WithStyles(Button)>
-  <TicketTable
-    onClose={[Function]}
-    onRemoveFromSprint={[Function]}
-    tickets={
-      Array [
-        Object {
-          "_id": "id1",
-          "deleted": false,
-          "description": "sprintDescription",
-          "storyPoint": 3,
-          "title": "sprintTicketTitle",
-        },
-      ]
+    <TicketTable
+      tickets={
+        Array [
+          Object {
+            "_id": "id1",
+            "deleted": false,
+            "description": "closedDescription",
+            "storyPoint": 3,
+            "title": "closedTicketTitle",
+          },
+        ]
+      }
+      title="Closed"
+    />
+  </WithStyles(Paper)>
+  <WithStyles(Paper)
+    style={
+      Object {
+        "margin": "5px auto",
+      }
     }
-  />
-  <h1>
-    Backlog
-  </h1>
-  <DraggableList
-    listItems={
-      Array [
-        Object {
-          "_id": "id1",
-          "deleted": false,
-          "description": "backlogDescription",
-          "storyPoint": 3,
-          "title": "backlogTicketTitle",
-        },
-      ]
-    }
-    updateItems={[Function]}
-  />
-  <WithStyles(Button)
-    onClick={[Function]}
-    title="Add Ticket"
   >
-     Add Ticket 
-  </WithStyles(Button)>
+    <TicketTable
+      onClose={[Function]}
+      onRemoveFromSprint={[Function]}
+      tickets={
+        Array [
+          Object {
+            "_id": "id1",
+            "deleted": false,
+            "description": "sprintDescription",
+            "storyPoint": 3,
+            "title": "sprintTicketTitle",
+          },
+        ]
+      }
+      title="Sprint"
+    />
+    <WithStyles(Button)
+      onClick={[Function]}
+      title="Close Sprint"
+    >
+       Close Sprint 
+    </WithStyles(Button)>
+  </WithStyles(Paper)>
+  <Connect(BacklogListComponent) />
   <Connect(AddTicketDialog)
     onRequestClose={[Function]}
     onSubmit={[Function]}
@@ -80,69 +70,59 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
 
 exports[`describe when the TicketList Component is given showAddTicketDialog as true TicketList should show the addTicketDialog open as true 1`] = `
 <div>
-  <h1>
-    Closed
-  </h1>
-  <TicketTable
-    tickets={
-      Array [
-        Object {
-          "_id": "id1",
-          "deleted": false,
-          "description": "closedDescription",
-          "storyPoint": 3,
-          "title": "closedTicketTitle",
-        },
-      ]
+  <WithStyles(Paper)
+    style={
+      Object {
+        "margin": "5px auto",
+      }
     }
-  />
-  <h1>
-    Sprint
-  </h1>
-  <WithStyles(Button)
-    onClick={[Function]}
-    title="Close Sprint"
   >
-     Close Sprint 
-  </WithStyles(Button)>
-  <TicketTable
-    onClose={[Function]}
-    onRemoveFromSprint={[Function]}
-    tickets={
-      Array [
-        Object {
-          "_id": "id1",
-          "deleted": false,
-          "description": "sprintDescription",
-          "storyPoint": 3,
-          "title": "sprintTicketTitle",
-        },
-      ]
+    <TicketTable
+      tickets={
+        Array [
+          Object {
+            "_id": "id1",
+            "deleted": false,
+            "description": "closedDescription",
+            "storyPoint": 3,
+            "title": "closedTicketTitle",
+          },
+        ]
+      }
+      title="Closed"
+    />
+  </WithStyles(Paper)>
+  <WithStyles(Paper)
+    style={
+      Object {
+        "margin": "5px auto",
+      }
     }
-  />
-  <h1>
-    Backlog
-  </h1>
-  <DraggableList
-    listItems={
-      Array [
-        Object {
-          "_id": "id1",
-          "deleted": false,
-          "description": "backlogDescription",
-          "storyPoint": 3,
-          "title": "backlogTicketTitle",
-        },
-      ]
-    }
-    updateItems={[Function]}
-  />
-  <WithStyles(Button)
-    onClick={[Function]}
-    title="Add Ticket"
   >
-     Add Ticket 
-  </WithStyles(Button)>
+    <TicketTable
+      onClose={[Function]}
+      onRemoveFromSprint={[Function]}
+      tickets={
+        Array [
+          Object {
+            "_id": "id1",
+            "deleted": false,
+            "description": "sprintDescription",
+            "storyPoint": 3,
+            "title": "sprintTicketTitle",
+          },
+        ]
+      }
+      title="Sprint"
+    />
+    <WithStyles(Button)
+      onClick={[Function]}
+      title="Close Sprint"
+    >
+       Close Sprint 
+    </WithStyles(Button)>
+  </WithStyles(Paper)>
+  <Connect(BacklogListComponent) />
   <Connect(AddTicketDialog)
     onRequestClose={[Function]}
     onSubmit={[Function]}

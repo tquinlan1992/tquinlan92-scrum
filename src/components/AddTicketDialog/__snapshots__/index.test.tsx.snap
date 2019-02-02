@@ -45,71 +45,7 @@ exports[`describe when the AddTicketDialog Component is given open as false AddT
           variant="standard"
         />
       </WithStyles(FormControl)>
-      <WithStyles(FormControl)>
-        <WithStyles(WithFormControlContext(InputLabel))
-          htmlFor="age-simple"
-        >
-          Story Point
-        </WithStyles(WithFormControlContext(InputLabel))>
-        <WithStyles(WithFormControlContext(Select))
-          inputProps={
-            Object {
-              "id": "age-simple",
-              "name": "age",
-            }
-          }
-          onChange={[Function]}
-          value={5}
-        >
-          <WithStyles(MenuItem)
-            value=""
-          >
-            <em>
-              None
-            </em>
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={0.1}
-          >
-            0.1
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={1}
-          >
-            1
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={2}
-          >
-            2
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={3}
-          >
-            3
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={5}
-          >
-            5
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={8}
-          >
-            8
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={13}
-          >
-            13
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={21}
-          >
-            21
-          </WithStyles(MenuItem)>
-        </WithStyles(WithFormControlContext(Select))>
-      </WithStyles(FormControl)>
+      <Connect(StoryPointsInputComponent) />
     </form>
   </WithStyles(DialogContent)>
   <WithStyles(DialogActions)>
@@ -174,71 +110,7 @@ exports[`describe when the AddTicketDialog Component is given open as true AddTi
           variant="standard"
         />
       </WithStyles(FormControl)>
-      <WithStyles(FormControl)>
-        <WithStyles(WithFormControlContext(InputLabel))
-          htmlFor="age-simple"
-        >
-          Story Point
-        </WithStyles(WithFormControlContext(InputLabel))>
-        <WithStyles(WithFormControlContext(Select))
-          inputProps={
-            Object {
-              "id": "age-simple",
-              "name": "age",
-            }
-          }
-          onChange={[Function]}
-          value={5}
-        >
-          <WithStyles(MenuItem)
-            value=""
-          >
-            <em>
-              None
-            </em>
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={0.1}
-          >
-            0.1
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={1}
-          >
-            1
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={2}
-          >
-            2
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={3}
-          >
-            3
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={5}
-          >
-            5
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={8}
-          >
-            8
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={13}
-          >
-            13
-          </WithStyles(MenuItem)>
-          <WithStyles(MenuItem)
-            value={21}
-          >
-            21
-          </WithStyles(MenuItem)>
-        </WithStyles(WithFormControlContext(Select))>
-      </WithStyles(FormControl)>
+      <Connect(StoryPointsInputComponent) />
     </form>
   </WithStyles(DialogContent)>
   <WithStyles(DialogActions)>

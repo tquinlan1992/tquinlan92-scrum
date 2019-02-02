@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test snapshot of component should render 1`] = `
+<WithStyles(Dialog)
+  fullWidth={true}
+  onExit={[Function]}
+  open={true}
+  title="Dialog With Actions"
+>
+  <WithStyles(DialogTitle)
+    id="form-dialog-title"
+  >
+    Close Sprint
+  </WithStyles(DialogTitle)>
+  <WithStyles(DialogContent)>
+    <form
+      autoComplete="off"
+    >
+      <WithStyles(FormControl)>
+        <TextField
+          autoFocus={true}
+          fullWidth={true}
+          id="name"
+          label="Sprint Name"
+          margin="dense"
+          onChange={[Function]}
+          required={true}
+          select={false}
+          type="text"
+          value="sprintName"
+          variant="standard"
+        />
+      </WithStyles(FormControl)>
+    </form>
+  </WithStyles(DialogContent)>
+  <WithStyles(DialogActions)>
+    <WithStyles(Button)
+      color="primary"
+      onClick={[Function]}
+    >
+      Cancel
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      color="primary"
+      onClick={[Function]}
+    >
+      Close Sprint
+    </WithStyles(Button)>
+  </WithStyles(DialogActions)>
+</WithStyles(Dialog)>
+`;

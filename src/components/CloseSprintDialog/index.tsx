@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, FormControl } from "@material-ui/core";
 import { connect } from 'react-redux';
 import { AppState } from "@headless/store";
-import { actions as closeSprintDialogActions } from './redux';
+import { closeSprintDialogActions } from './redux';
 
 interface OwnProps {
     onRequestClose: () => void;
@@ -14,7 +14,7 @@ interface StateProps {
     sprintName: string;
 }
 
-const mapStateToProps = ({ closeSprintDialog }: AppState, ownProps: OwnProps) => {
+export const mapStateToProps = ({ closeSprintDialog }: AppState, ownProps: OwnProps) => {
     return {
         ...closeSprintDialog,
         ...ownProps
@@ -84,4 +84,4 @@ export class CloseSprintDialog extends React.Component<OwnProps & ComponentActio
     }
 }
 
-export default connect<OwnProps & StateProps, ComponentActions, OwnProps>(mapStateToProps, mapDispatchToProps)(CloseSprintDialog);
+export const CloseSprintDialogConnected = connect<OwnProps & StateProps, ComponentActions, OwnProps>(mapStateToProps, mapDispatchToProps)(CloseSprintDialog);

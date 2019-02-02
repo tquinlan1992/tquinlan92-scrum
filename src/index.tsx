@@ -1,4 +1,4 @@
-import store from './headless';
-import AppStore from './components/App';
+import { reduxStore } from './headless';
+import { App } from './components/App';
 
-AppStore(store);
+App(reduxStore);

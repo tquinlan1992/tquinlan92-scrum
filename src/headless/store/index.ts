@@ -1,21 +1,21 @@
 import { createStore, applyMiddleware, AnyAction, Store, combineReducers } from "redux";
-import middleware from './middleware';
+import { middleware } from './middleware';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { routerReducer, RouterState } from "react-router-redux";
 import { TicketListState } from '@components/TicketList/redux';
-import addTicket, { AddTicketState } from '@components/AddTicketDialog/redux';
-import loading, { LoadingState } from '@components/Loading/redux';
+import { AddTicketState, addTicketDialogReducer } from '@components/AddTicketDialog/redux';
+import { LoadingState, loadingReducer } from '@components/Loading/redux';
 import { AppState } from '../store';
-import ticketList from '../../components/TicketList/redux';
+import { ticketListReducer } from '../../components/TicketList/redux';
 import { ThunkAction } from "redux-thunk";
-import closeSprintDialog, { State as CloseSprintDialogState } from '@components/CloseSprintDialog/redux';
+import { CloseSprintDialogState, closeSprintDialogReducer } from '@components/CloseSprintDialog/redux';
 
 const appReducer = combineReducers<AppState>({
     routing: routerReducer,
-    addTicket,
-    ticketList,
-    loading,
-    closeSprintDialog
+    addTicket: addTicketDialogReducer,
+    ticketList: ticketListReducer,
+    loading: loadingReducer,
+    closeSprintDialog: closeSprintDialogReducer
 });
 
 declare module 'redux' {
@@ -48,4 +48,4 @@ export interface AppState {
 
 const reduxStore: Store<AppState, AnyAction> = createStore<AppState, AnyAction, void, void>(appReducer, {}, composeWithDevTools<any, {}>(applyMiddleware(...middleware)));
 
-export default reduxStore;
+export { reduxStore };

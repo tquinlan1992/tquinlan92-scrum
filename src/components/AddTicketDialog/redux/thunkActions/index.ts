@@ -1,5 +1,5 @@
-import addTicket from './addTicket';
+import { addTicket } from './addTicket';
 
-export default {
+export const thunkActions = {
     addTicket
 };

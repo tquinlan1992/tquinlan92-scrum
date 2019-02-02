@@ -2,10 +2,10 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from "@headless/store";
 import { Switch, Route, Redirect } from 'react-router';
-import TicketList from '../TicketList';
+import { TicketListConnected } from '../TicketList';
 import CircularProgress from '@material-ui/core/CircularProgress/CircularProgress';
 import { actions as loadingActions } from './redux';
-import AppBar from '../AppBar';
+import { AppBarConnected } from '../AppBar';
 
 interface ComponentActions {
     loadApp: typeof loadingActions.loadApp;
@@ -14,7 +14,7 @@ interface ComponentActions {
 function Routes({withComponents}: {withComponents: boolean;}) {
     return (
         <Switch>
-            <Route exact path={"/feed"} component={withComponents ? TicketList : undefined} />
+            <Route exact path={"/feed"} component={withComponents ? TicketListConnected : undefined} />
             { !withComponents ? <Redirect to='/feed' /> : null }
         </Switch>
     );
@@ -35,7 +35,7 @@ export class Loading extends React.Component<StateProps & ComponentActions> {
 
         const app =
             <React.Fragment>
-                <AppBar />
+                <AppBarConnected />
                 <Routes withComponents={true}/>
             </React.Fragment>;
         const loadingOrApp = this.props.loading ? loading : app;
@@ -59,4 +59,4 @@ interface StateProps {
 
 const mapDispatchToProps = loadingActions;
 
-export default connect<StateProps, ComponentActions>(mapStateToProps, mapDispatchToProps)(Loading);
+export const LoadingConnected = connect<StateProps, ComponentActions>(mapStateToProps, mapDispatchToProps)(Loading);
