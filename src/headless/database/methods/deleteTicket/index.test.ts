@@ -26,6 +26,7 @@ describe('when dbMethod is called', () => {
                     "status": 404
                 });
             }
+            db.destroy();
         })
     })
 });

@@ -20,6 +20,7 @@ describe('when dbMethod is called', () => {
                 _id: 'id1',
                 title: 'title1'
             }])
+            db.destroy();
         })
     })
 });

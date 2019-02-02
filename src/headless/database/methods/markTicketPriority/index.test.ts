@@ -22,6 +22,7 @@ describe('when dbMethod is called', () => {
                 title: 'title1',
                 priority: 2
             })
+            db.destroy();
         })
     })
 });

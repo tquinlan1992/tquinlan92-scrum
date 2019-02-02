@@ -17,7 +17,8 @@ describe('when dbMethod is called', () => {
             const newTicket = await db.get(response.id);
             expect(newTicket).toMatchObject({
                 title: 'ticketTitle'
-            })
+            });
+            db.destroy();
         })
     })
 });
