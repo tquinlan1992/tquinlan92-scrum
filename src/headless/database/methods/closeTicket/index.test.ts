@@ -23,7 +23,6 @@ describe('when dbMethod is called', () => {
                 title: 'ticket',
                 closed: true
             })
-            await db.destroy();
         })
     })
 });

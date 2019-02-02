@@ -18,7 +18,6 @@ describe('when dbMethod is called', () => {
             expect(newTicket).toMatchObject({
                 title: 'ticketTitle'
             });
-            await db.destroy();
         })
     })
 });

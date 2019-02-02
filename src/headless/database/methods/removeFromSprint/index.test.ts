@@ -23,7 +23,6 @@ describe('when removeFromSprint is called', () => {
                 title: 'ticket',
                 sprint: false
             })
-            await db.destroy();
         })
     })
 });

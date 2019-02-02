@@ -23,7 +23,6 @@ describe('when dbMethod is called', () => {
                 title: 'title1',
                 sprint: true
             })
-            await db.destroy();
         })
     })
 });
