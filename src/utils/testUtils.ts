@@ -16,7 +16,13 @@ export function mockPouch(dbMethods: object) {
             resolve(dbMethods);
         })
     });
-    mockPouchRequire.getRemoteDb = mockGetRemoteDb;
+    Object.assign(
+        mockPouchRequire, 
+        {
+            getRemoteDb: mockGetRemoteDb 
+        }, 
+        dbMethods
+    )
     return mockPouchRequire;
 }
 

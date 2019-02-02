@@ -38,6 +38,7 @@
     "@types/superagent": "^3.8.5",
     "@types/url-join": "^0.8.2",
     "@types/uuid": "^3.4.4",
+    "export-from-json": "^1.1.1",
     "fetch-mock": "^7.3.0",
     "jest-junit": "^5.2.0",
     "pouchdb-adapter-memory": "^7.0.0",
