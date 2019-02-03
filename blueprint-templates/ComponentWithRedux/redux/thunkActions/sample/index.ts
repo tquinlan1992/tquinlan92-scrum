@@ -1,7 +1,7 @@
 import { AppThunkAction } from "@headless/store";
 
 export function sample(): AppThunkAction {
-    return async function (dispatch, getState) {
+    return async (dispatch, getState) => {
         const state = getState();
     };
 }
