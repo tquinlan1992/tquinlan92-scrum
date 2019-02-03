@@ -32,6 +32,7 @@ function testShowAddTicketDialogValue(showAddTicketDialog: boolean) {
                 closeTicket: mockActions.addTicket as any,
                 addTicketToSprint: mockActions.addTicket as any,
                 setTicketListState: mockActions.setTicketListState as any,
+                setAddTicketDialogState: mockActions.setTicketListState as any,
                 openAddTicketDialog: mockActions.openAddTicketDialog,
                 onRemoveFromSprint: mockActions.onRemoveFromSprint,
                 closeSprint: mockActions.closeSprint,
@@ -69,6 +70,7 @@ describe('when a user', () => {
                 closeTicket: mockActions.addTicket as any,
                 addTicketToSprint: mockActions.addTicket as any,
                 setTicketListState: mockActions.setTicketListState as any,
+                setAddTicketDialogState: mockActions.setTicketListState as any,
                 openAddTicketDialog: mockActions.openAddTicketDialog,
                 onRemoveFromSprint: mockActions.onRemoveFromSprint,
                 closeSprint: mockActions.closeSprint,
@@ -81,8 +83,8 @@ describe('when a user', () => {
             const result = shallow(<TicketList {...props} />);
             const dialogProps: any = result.find('Connect(AddTicketDialog)').props();
             dialogProps.onRequestClose();
-            expect(mockActions.setTicketListState.mock.calls).toMatchObject([
-                [{ showAddTicketDialog: false }]
+            expect(props.setAddTicketDialogState.mock.calls).toMatchObject([
+                [{ open: false }]
             ]);
         });
     });
