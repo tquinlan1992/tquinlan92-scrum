@@ -1,5 +1,5 @@
 import { addTicketToSprint } from './';
-import { mockStore, expectActionWithPayload, expectCalledOnceWith, mockClearAll } from '../../../../utils/testUtils';
+import { mockStore, mockClearAll, expectCalledOnceWith } from '../../../../../utils/testUtils';
 
 jest.mock('../../../../../headless/database/pouch', () => {
     const markTicketInSprint = jest.fn();

@@ -1,18 +1,25 @@
-import { thunkAction } from './';
-import { expectActionWithPayload, getMockStore } from '../../../../utils/testUtils';
-import { simpleActions } from './simpleActions';
+import { mockPouch, getMockStore, expectCalledOnceWith } from '../../../../../../utils/testUtils';
+
+const pouch = mockPouch({
+    importTickets: jest.fn()
+})
+
+
+import { importTickets } from './';
+import { Ticket } from '../../../../../../headless/database/PouchWrapper';
 
 const store = getMockStore({});
 
 describe('when thunkActions is called', () => {
-    it('it should', () => {
-        store.dispatch(thunkAction());
-        
-        const dispatchedActions = store.getActions();
-        
-        const [ action1 ] = dispatchedActions;
-        
-        expectActionWithPayload(action1, simpleActions.reset, null);
+    it('it should', async () => {
+        const tickets = [{
+            _id: 'id1',
+            title: 'title1'
+        } as Ticket];
+        await store.dispatch(importTickets(tickets));
+
+        expectCalledOnceWith(pouch.getRemoteDb);
+        expectCalledOnceWith(pouch.importTickets, tickets);
 
     })
 })

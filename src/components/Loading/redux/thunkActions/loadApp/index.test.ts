@@ -1,7 +1,7 @@
 import { loadApp } from './';
-import { mockStore, expectActionWithPayload, getMockStore, expectCalledOnceWith } from '../../../../utils/testUtils';
 import * as fetchMock from 'fetch-mock';
 import { actions as loadingActions } from '../../../../Loading/redux'
+import { getMockStore, expectCalledOnceWith, expectActionWithPayload } from '../../../../../utils/testUtils';
 
 jest.mock('../../../../../headless/database/pouch', () => {
     return {

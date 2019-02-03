@@ -9,10 +9,6 @@ export function importTickets(db: TicketPouchDb) {
         const ticketsWithoutRev = tickets.map(ticket => {
             return omit(ticket, '_rev') as Ticket;
         })
-        db.bulkDocs(ticketsWithoutRev).then((result) => {
-            console.log('result', result);
-        }).catch(e => {
-            console.log('error', e);
-        });
+        await db.bulkDocs(ticketsWithoutRev);
     }
 }

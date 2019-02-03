@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Props, Actions, mapStateToProps, mapDispatchToProps } from './mapProps';
 import { connect } from "react-redux";
+import { Input } from '@material-ui/core';
 
 
 export class ImportTickets extends React.Component<Props & Actions> {
@@ -14,15 +15,15 @@ export class ImportTickets extends React.Component<Props & Actions> {
                 this.props.importTickets(tickets);
             };
             const file = (input as any).files[0];
-            reader.readAsText(file);
+            if (file) {
+                reader.readAsText(file);
+            }
         }
     }
 
     render() {
         return (
-            <React.Fragment>
-                <input type="file" id="import" onChange={this.getFile.bind(this)} />
-            </React.Fragment>
+            <Input placeholder='Import Tickets' type="file" id="import" onChange={this.getFile.bind(this)} />
         );
     }
 }

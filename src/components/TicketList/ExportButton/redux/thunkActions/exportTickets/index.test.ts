@@ -1,4 +1,4 @@
-import { mockPouch } from '../../../../../../utils/testUtils';
+import { mockPouch, getMockStore, expectCalledOnceWith } from '../../../../../../utils/testUtils';
 const mockGetTickets = jest.fn(() => {
     return new Promise(resolve => {
         resolve([{title: 'test'}]);
@@ -9,7 +9,6 @@ const db = mockPouch({
 })
 
 import { exportTickets } from './';
-import { getMockStore, expectCalledOnceWith } from '../../../../../utils/testUtils';
 
 jest.mock('export-from-json', () => {
     return {

@@ -1,7 +1,7 @@
 import { openCloseSprintDialog } from '.';
-import { mockStore, expectActionWithPayload } from '../../../../utils/testUtils';
 import { ticketListActions } from '../../';
 import { closeSprintDialogActions } from '../../../../CloseSprintDialog/redux';
+import { mockStore, expectActionWithPayload } from '../../../../../utils/testUtils';
 
 const store = mockStore({});
 

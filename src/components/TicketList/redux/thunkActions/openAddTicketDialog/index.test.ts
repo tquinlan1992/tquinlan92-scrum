@@ -1,7 +1,7 @@
 import { openAddTicketDialog } from './';
-import { mockStore, expectActionWithPayload } from '../../../../utils/testUtils';
 import { addTicketDialogActions } from '../../../../AddTicketDialog/redux';
 import { ticketListActions } from '../..';
+import { mockStore, expectActionWithPayload } from '../../../../../utils/testUtils';
 
 const store = mockStore({});
 
