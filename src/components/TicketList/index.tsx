@@ -10,11 +10,12 @@ import { TicketTable } from '@components/Table';
 import { BacklogListConnected } from './BacklogList';
 import { ConnectedExportButton } from './ExportButton';
 import { ConnectedImportTickets } from './ImportTickets';
+import { addTicketDialogActions } from '@components/AddTicketDialog/redux';
 
-const mapStateToProps = ({ ticketList }: AppState, ownProps: any) => {
-    const { showAddTicketDialog, showCloseSprintDialog } = ticketList;
+const mapStateToProps = ({ ticketList, addTicket }: AppState, ownProps: any) => {
+    const { showCloseSprintDialog } = ticketList;
     return {
-        showAddTicketDialog,
+        showAddTicketDialog: addTicket.open,
         ...pick(ticketList, 'sprintTickets', 'closedTickets'),
         showCloseSprintDialog
     };
@@ -25,6 +26,7 @@ type TicketListProps = ReturnType<typeof mapStateToProps>;
 const mapActionsToProps = {
     ...pick(ticketListActions, 'fetchTickets', 'closeTicket', 'addTicketToSprint'),
     setTicketListState: ticketListActions.set,
+    setAddTicketDialogState: addTicketDialogActions.set,
     onRemoveFromSprint: ticketListActions.removeFromSprint,
     openCloseSprintDialog: ticketListActions.openCloseSprintDialog,
     updatePriorities: ticketListActions.updatePriorities
@@ -39,7 +41,7 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
     }
 
     closeAddticketDialog() {
-        this.props.setTicketListState({ showAddTicketDialog: false });
+        this.props.setAddTicketDialogState({ open : false });
     }
 
     onClickClose(id: string) {
@@ -67,7 +69,7 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
                 <AddTicketDialogConnected
                     open={this.props.showAddTicketDialog}
                     onRequestClose={(this.closeAddticketDialog.bind(this))}
-                    onSubmit={() => {this.props.setTicketListState({showAddTicketDialog: false});}}
+                    onSubmit={() => {this.props.setAddTicketDialogState({open: false});}}
                 />
 
                 <CloseSprintDialogConnected  
