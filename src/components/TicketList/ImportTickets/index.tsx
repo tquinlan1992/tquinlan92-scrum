@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Props, Actions, mapStateToProps, mapDispatchToProps } from './mapProps';
 import { connect } from "react-redux";
-import { Input } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
 
 export class ImportTickets extends React.Component<Props & Actions> {
     getFile() {
-        const input = document.getElementById('import');
+        const input = document.getElementById('file-upload-button');
         if (input) {
             var reader = new FileReader();
             reader.onload = () => {
@@ -23,7 +23,19 @@ export class ImportTickets extends React.Component<Props & Actions> {
 
     render() {
         return (
-            <Input placeholder='Import Tickets' type="file" id="import" onChange={this.getFile.bind(this)} />
+            <React.Fragment>
+                <input
+                    id="file-upload-button"
+                    type="file"
+                    hidden
+                    onChange={this.getFile.bind(this)}
+                />
+                <label htmlFor="file-upload-button">
+                    <Button component="span" >
+                        Import
+                    </Button>
+                </label>
+            </React.Fragment>
         );
     }
 }
