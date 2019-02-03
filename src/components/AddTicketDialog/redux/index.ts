@@ -5,12 +5,14 @@ export interface AddTicketState {
     storyPoint: null | number;
     description: string;
     title: string;
+    open: boolean;
 }
 
-const initialState = {
+const initialState: AddTicketState  = {
     storyPoint: null,
     description: '',
-    title: ''
+    title: '',
+    open: false
 };
 
 const { actions: simpleActions, reducer } = makeSimpleReducer<AddTicketState>('AddTicketDialog', initialState);

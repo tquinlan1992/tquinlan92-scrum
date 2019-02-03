@@ -19,7 +19,6 @@ export interface BacklogTicket extends Ticket {
 }
 
 export interface TicketListState {
-    showAddTicketDialog: boolean;
     tickets: Ticket[];
     sprintTickets: SprintTicket[];
     closedTickets: ClosedTicket[];
@@ -27,8 +26,7 @@ export interface TicketListState {
     showCloseSprintDialog: boolean;
 }
 
-const initialState = {
-    showAddTicketDialog: false,
+const initialState: TicketListState = {
     tickets: [],
     sprintTickets: [],
     closedTickets: [],
