@@ -10,7 +10,6 @@ import { TicketTable } from '@components/Table';
 import { BacklogListConnected } from './BacklogList';
 import { ConnectedExportButton } from './ExportButton';
 import { ConnectedImportTickets } from './ImportTickets';
-import './VoiceCommands';
 import { addTicketDialogActions } from '@components/AddTicketDialog/redux';
 
 const mapStateToProps = ({ ticketList, addTicket }: AppState, ownProps: any) => {
