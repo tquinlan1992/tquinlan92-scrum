@@ -1,5 +1,5 @@
 import { closeSprint } from './';
-import { mockStore, expectActionWithPayload, getMockStore, expectCalledOnceWith } from '../../../../utils/testUtils';
+import { getMockStore, expectCalledOnceWith } from '../../../../../utils/testUtils';
 
 jest.mock('../../../../../headless/database/pouch', () => {
     const closeTicketsWithSprintID = jest.fn(() => {

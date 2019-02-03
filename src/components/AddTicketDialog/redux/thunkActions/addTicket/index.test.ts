@@ -1,5 +1,4 @@
-import { mockPouch } from '../../../../../utils/testUtils';
-import { getMockStore, expectCalledOnceWith } from '../../../../utils/testUtils';
+import { mockPouch, getMockStore, expectCalledOnceWith } from '../../../../../utils/testUtils';
 
 const mockAddTicket = jest.fn(() => {
     return new Promise(resolve => resolve());

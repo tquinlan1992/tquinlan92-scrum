@@ -2,8 +2,8 @@ import * as React from 'react';
 import { shallow, configure } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 import { AddTicketDialog } from '.';
-import { getAnyJestFn } from '../utils/testUtils';
 import * as _ from 'lodash';
+import { getAnyJestFn } from '../../utils/testUtils';
 
 configure({ adapter: new Adapter() });
 

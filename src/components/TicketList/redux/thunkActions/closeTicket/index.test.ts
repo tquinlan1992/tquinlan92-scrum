@@ -1,5 +1,5 @@
 import { closeTicket } from './';
-import { mockStore, expectActionWithPayload, mockClearAll, expectCalledOnceWith } from '../../../../utils/testUtils';
+import { mockStore, mockClearAll, expectCalledOnceWith } from '../../../../../utils/testUtils';
 
 const store = mockStore({});
 

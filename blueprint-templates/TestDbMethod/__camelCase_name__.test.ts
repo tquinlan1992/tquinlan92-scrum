@@ -2,9 +2,6 @@ import { dbMethodCreator } from './';
 import { getMemoryPouchDb } from '../../../utils/testUtils';
 import { Ticket } from '../../PouchWrapper';
 
-
-
-
 describe('when dbMethod is called', () => {
     describe('with no error', () => {
         it('should work as expected', async () => {

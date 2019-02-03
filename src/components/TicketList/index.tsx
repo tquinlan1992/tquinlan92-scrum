@@ -9,6 +9,7 @@ import { CloseSprintDialogConnected } from '../CloseSprintDialog';
 import { TicketTable } from '@components/Table';
 import { BacklogListConnected } from './BacklogList';
 import { ConnectedExportButton } from './ExportButton';
+import { ConnectedImportTickets } from './ImportTickets';
 
 const mapStateToProps = ({ ticketList }: AppState, ownProps: any) => {
     const { showAddTicketDialog, showCloseSprintDialog } = ticketList;
@@ -61,6 +62,7 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
                 <BacklogListConnected />
 
                 <ConnectedExportButton />
+                <ConnectedImportTickets />
                 
                 <AddTicketDialogConnected
                     open={this.props.showAddTicketDialog}

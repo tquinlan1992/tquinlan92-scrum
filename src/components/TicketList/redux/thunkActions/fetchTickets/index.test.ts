@@ -1,6 +1,6 @@
 import { fetchTickets } from '.';
-import { mockStore, expectActionWithPayload } from '../../../../utils/testUtils';
 import { ticketListActions } from "../..";
+import { mockStore, expectActionWithPayload } from '../../../../../utils/testUtils';
 
 jest.mock('../../../../../headless/database/pouch', () => {
     const getTickets = jest.fn(() => {

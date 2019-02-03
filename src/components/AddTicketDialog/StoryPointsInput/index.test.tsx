@@ -1,9 +1,8 @@
-import { mockShortId } from '../../../utils/testUtils';
+import { mockShortId, getAnyJestFn } from '../../../utils/testUtils';
 mockShortId();
 import { StoryPointsInputComponent } from './';
 import { shallow } from 'enzyme';
 import * as React from 'react';
-import { getAnyJestFn } from '../../utils/testUtils';
 
 
 describe('test snapshot of component', () => {

@@ -1,6 +1,6 @@
 import { closeTicket } from './';
-import { getMemoryPouchDb } from '../../../utils/testUtils';
 import { Ticket } from '../../PouchWrapper';
+import { getMemoryPouchDb } from '../../../../utils/testUtils';
 
 
 

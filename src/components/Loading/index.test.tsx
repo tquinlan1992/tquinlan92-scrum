@@ -1,7 +1,7 @@
 import { Loading } from './';
 import { shallow } from 'enzyme';
-import { getAnyJestFn } from '../utils/testUtils';
 import * as React from 'react';
+import { getAnyJestFn } from '../../utils/testUtils';
 
 describe('test snapshot of Loading component', () => {
     it('should render the loading screen when loading is true', () => {
