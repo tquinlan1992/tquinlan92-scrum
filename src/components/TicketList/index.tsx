@@ -8,6 +8,7 @@ import { pick } from 'lodash';
 import { CloseSprintDialogConnected } from '../CloseSprintDialog';
 import { TicketTable } from '@components/Table';
 import { BacklogListConnected } from './BacklogList';
+import { ConnectedExportButton } from './ExportButton';
 
 const mapStateToProps = ({ ticketList }: AppState, ownProps: any) => {
     const { showAddTicketDialog, showCloseSprintDialog } = ticketList;
@@ -59,6 +60,8 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
 
                 <BacklogListConnected />
 
+                <ConnectedExportButton />
+                
                 <AddTicketDialogConnected
                     open={this.props.showAddTicketDialog}
                     onRequestClose={(this.closeAddticketDialog.bind(this))}

@@ -12,5 +12,5 @@ export class Component extends React.Component<Props & Actions> {
     }
 }
 
-export const connectedComponent = connect<Props, Actions>(mapStateToProps, mapDispatchToProps)(Component);
+export const ConnectedComponent = connect<Props, Actions>(mapStateToProps, mapDispatchToProps)(Component);
 
