@@ -1,7 +1,7 @@
 import { ImportTickets } from './';
 import { shallow } from 'enzyme';
 import * as React from 'react';
-import { getAnyJestFn } from '../../../utils/testUtils';
+import { getAnyJestFn } from '../../../../utils/testUtils';
 
 describe('test snapshot of component', () => {
     it('should render', () => {

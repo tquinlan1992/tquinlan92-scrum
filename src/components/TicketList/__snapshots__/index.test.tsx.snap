@@ -55,8 +55,6 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
     </WithStyles(Button)>
   </WithStyles(Paper)>
   <Connect(BacklogListComponent) />
-  <Connect(ExportButton) />
-  <Connect(ImportTickets) />
   <Connect(AddTicketDialog)
     onRequestClose={[Function]}
     onSubmit={[Function]}
@@ -125,8 +123,6 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
     </WithStyles(Button)>
   </WithStyles(Paper)>
   <Connect(BacklogListComponent) />
-  <Connect(ExportButton) />
-  <Connect(ImportTickets) />
   <Connect(AddTicketDialog)
     onRequestClose={[Function]}
     onSubmit={[Function]}

@@ -8,8 +8,6 @@ import { pick } from 'lodash';
 import { CloseSprintDialogConnected } from '../CloseSprintDialog';
 import { TicketTable } from '@components/Table';
 import { BacklogListConnected } from './BacklogList';
-import { ConnectedExportButton } from './ExportButton';
-import { ConnectedImportTickets } from './ImportTickets';
 import { addTicketDialogActions } from '@components/AddTicketDialog/redux';
 
 const mapStateToProps = ({ ticketList, addTicket }: AppState, ownProps: any) => {
@@ -63,9 +61,6 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
 
                 <BacklogListConnected />
 
-                <ConnectedExportButton />
-                <ConnectedImportTickets />
-                
                 <AddTicketDialogConnected
                     open={this.props.showAddTicketDialog}
                     onRequestClose={(this.closeAddticketDialog.bind(this))}
