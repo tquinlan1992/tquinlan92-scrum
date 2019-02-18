@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { connect, Omit } from 'react-redux';
 import { AppState } from "@headless/store";
 import { AppBar as MaterialUiAppBar, Button, Theme, WithStyles, withStyles } from '@material-ui/core';
 import { ticketListActions } from '@components/TicketList/redux';
@@ -24,7 +24,11 @@ const styles = getTheme(theme => {
 interface StateProps {
 }
 
-export class AppBar extends React.Component<StateProps & ComponentActions & WithStyles<typeof styles>> {
+interface ComponentActionsNoThunk extends Omit<ComponentActions, 'openAddTicketDialog'> {
+    openAddTicketDialog: () => void;
+}  
+
+export class AppBar extends React.Component<StateProps & ComponentActionsNoThunk & WithStyles<typeof styles>> {
     addTicket() {
         this.props.openAddTicketDialog();
     }
@@ -52,4 +56,4 @@ const mapDispatchToProps = {
 
 type ComponentActions = typeof mapDispatchToProps;
 
-export const AppBarConnected = connect<StateProps, ComponentActions>(mapStateToProps, mapDispatchToProps)(AppBarStyled);
+export const AppBarConnected = connect<StateProps, ComponentActions, void, AppState>(mapStateToProps, mapDispatchToProps)(AppBarStyled);

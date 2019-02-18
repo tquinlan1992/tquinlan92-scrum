@@ -4,7 +4,7 @@ import { get } from "lodash";
 
 export const mapStateToProps = (state: AppState, ownProps: RouteComponentProps) => {
     return {
-        currentPath: get(ownProps, 'location.pathname'),
+        currentPath: get(ownProps, 'location.pathname') as string | undefined,
     };
 };
 

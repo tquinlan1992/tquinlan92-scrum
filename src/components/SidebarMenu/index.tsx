@@ -4,16 +4,22 @@ import { connect } from "react-redux";
 import { List, ListItem, ListItemText } from '@material-ui/core';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 import { history } from '../../headless/store/middleware/router';
-
+import { paths } from '@components/Routes';
+import { AppState } from '@headless/store';
 
 const menuItems = [
     {
         text: 'Tickets',
-        path: '/feed'
+        path: paths.feed.path
     },
     {
         text: 'Import/Export',
-        path: '/import_export'
+        path: paths.import_export.path
+    },
+
+    {
+        text: 'Code',
+        path: paths.code.path
     }
 ];
 
@@ -33,7 +39,7 @@ export class SidebarMenu extends React.Component<Props & Actions> {
         return (
             <List>
                 {menuItems.map(menuItem => (
-                    <ListItem onClick={this.onListItemClick(menuItem.path)} button key={menuItem.text} selected={isSelected(menuItem.path, this.props.currentPath)}>
+                    <ListItem onClick={this.onListItemClick(menuItem.path)} button key={menuItem.text} selected={isSelected(menuItem.path, this.props.currentPath || '')}>
                         <ListItemText primary={menuItem.text} />
                     </ListItem>
                 ))}
@@ -42,5 +48,5 @@ export class SidebarMenu extends React.Component<Props & Actions> {
     }
 }
 
-export const SidebarMenuConnected = withRouter(connect<Props, Actions, RouteComponentProps>(mapStateToProps, mapDispatchToProps)(SidebarMenu));
+export const SidebarMenuConnected = withRouter(connect<Props, Actions, RouteComponentProps, AppState>(mapStateToProps, mapDispatchToProps)(SidebarMenu));
 

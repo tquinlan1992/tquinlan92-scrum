@@ -3,6 +3,8 @@ import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, F
 import { AddTicketDialogOwnProps, ComponentActions, mapStateToProps, mapDispatchToProps, Props } from './mapProps';
 import { StoryPointsInputConnected } from './StoryPointsInput';
 import { connect } from "react-redux";
+import { AppState } from '@headless/store';
+import { Omit } from 'lodash';
 
 export interface StateProps {
     storyPoint: number | null;
@@ -10,7 +12,11 @@ export interface StateProps {
     title: string;
 }
 
-export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & ComponentActions & StateProps> {
+interface ComponentActionsVoid extends Omit<ComponentActions, 'addTicket'> {
+    addTicket: () => void;
+}
+
+export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & ComponentActionsVoid & StateProps> {
 
     onStoryPointsChange(event: React.ChangeEvent<HTMLSelectElement>) {
         this.props.setAddTicketState({storyPoint: Number(event.target.value) });
@@ -80,4 +86,4 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
     }
 }
 
-export const AddTicketDialogConnected = connect<Props, ComponentActions, AddTicketDialogOwnProps>(mapStateToProps, mapDispatchToProps)(AddTicketDialog);
+export const AddTicketDialogConnected = connect<Props, ComponentActions, AddTicketDialogOwnProps, AppState>(mapStateToProps, mapDispatchToProps)(AddTicketDialog);

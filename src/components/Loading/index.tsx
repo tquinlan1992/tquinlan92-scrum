@@ -7,12 +7,17 @@ import { StyledSidebar } from '../Sidebar/index';
 import { SidebarMenuConnected } from '@components/SidebarMenu';
 import { Router } from 'react-router';
 import { history } from '../../headless/store/middleware/router';
+import { Omit } from 'lodash';
 
 interface ComponentActions {
     loadApp: typeof loadingActions.loadApp;
 }
 
-export class Loading extends React.Component<StateProps & ComponentActions> {
+interface ComponentActionsNoThunk extends Omit<ComponentActions, 'loadApp'> {
+    loadApp: () => void;
+}
+
+export class Loading extends React.Component<StateProps & ComponentActionsNoThunk> {
     componentDidMount() {
         this.props.loadApp();
     }
@@ -45,4 +50,4 @@ interface StateProps {
 
 const mapDispatchToProps = loadingActions;
 
-export const LoadingConnected = connect<StateProps, ComponentActions>(mapStateToProps, mapDispatchToProps)(Loading);
+export const LoadingConnected = connect<StateProps, ComponentActions, void, AppState>(mapStateToProps, mapDispatchToProps)(Loading);

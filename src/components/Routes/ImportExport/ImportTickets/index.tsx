@@ -2,8 +2,15 @@ import * as React from 'react';
 import { Props, Actions, mapStateToProps, mapDispatchToProps } from './mapProps';
 import { connect } from "react-redux";
 import { Button } from '@material-ui/core';
+import { AppState } from '@headless/store';
+import { Omit } from 'lodash';
+import { Ticket } from '@headless/database/PouchWrapper';
 
-export class ImportTickets extends React.Component<Props & Actions> {
+interface ActionsNoThunk extends Omit<Actions, 'importTickets'> {
+    importTickets: (tickets: Ticket[]) => void;
+}
+
+export class ImportTickets extends React.Component<Props & ActionsNoThunk> {
     getFile() {
         const input = document.getElementById('file-upload-button');
         if (input) {
@@ -39,5 +46,5 @@ export class ImportTickets extends React.Component<Props & Actions> {
     }
 }
 
-export const ConnectedImportTickets = connect<Props, Actions>(mapStateToProps, mapDispatchToProps)(ImportTickets);
+export const ConnectedImportTickets = connect<Props, Actions, void, AppState>(mapStateToProps, mapDispatchToProps)(ImportTickets);
 

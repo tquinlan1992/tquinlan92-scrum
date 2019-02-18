@@ -1,6 +1,6 @@
 import { Ticket } from '../headless/database/PouchWrapper';
 import * as pouchDBMemoryAdapter from 'pouchdb-adapter-memory';
-import * as PouchDB from 'pouchdb-browser';
+import PouchDB from 'pouchdb-browser';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { AnyAction, isType, ActionCreator } from 'typescript-fsa';
