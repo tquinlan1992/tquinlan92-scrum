@@ -11,9 +11,7 @@ const db = mockPouch({
 import { exportTickets } from './';
 
 jest.mock('export-from-json', () => {
-    return {
-        default: jest.fn()
-    }
+        return jest.fn()
 });
 const exportFromJson = require('export-from-json');
 
@@ -25,7 +23,7 @@ describe('when thunkActions is called', () => {
         
         expectCalledOnceWith(db.getTickets);
 
-        expectCalledOnceWith(exportFromJson.default, {
+        expectCalledOnceWith(exportFromJson, {
             fileName: 'tickets',
             exportType: 'json',
             data: [{title: 'test'}]

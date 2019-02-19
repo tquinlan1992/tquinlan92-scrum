@@ -1,5 +1,5 @@
 import { Ticket } from '../headless/database/PouchWrapper';
-import * as pouchDBMemoryAdapter from 'pouchdb-adapter-memory';
+import pouchDBMemoryAdapter from 'pouchdb-adapter-memory';
 import PouchDB from 'pouchdb-browser';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -23,18 +23,18 @@ export async function getMemoryPouchDb(docs?: Ticket[]) {
 
 
 export function mockPouchDB() {
-    jest.mock('../headless/database/pouch', () => {
+    jest.mock('@headless/database/pouch', () => {
         return {};
     });
 }
 
 export function mockPouch(dbMethods: object) {
-    jest.mock('../headless/database/pouch', () => {
+    jest.mock('@headless/database/pouch', () => {
         return {
 
         }
     })
-    const mockPouchRequire = require('../headless/database/pouch');
+    const mockPouchRequire = require('@headless/database/pouch');
     const mockGetRemoteDb = jest.fn(() => {
         return new Promise(resolve => {
             resolve(dbMethods);
@@ -48,16 +48,6 @@ export function mockPouch(dbMethods: object) {
         dbMethods
     )
     return mockPouchRequire;
-}
-
-export function mockShortId() {
-    jest.mock('shortid', () => {
-        let count = 0;
-        return () => {
-            count = count + 1;
-            return String(count);
-        }
-    })
 }
 
 export function getAnyJestFn() {
@@ -75,7 +65,7 @@ export function expectActionWithPayload(actionToTest: AnyActionPayload, expected
 
 
 const middlewares = [thunk];
-export const mockStore = configureStore(middlewares);
+export const mockStore = configureStore<Partial<AppState>, any>(middlewares);
 
 export function getMockStore(state: Partial<AppState>) {
     return mockStore(state);

@@ -51,7 +51,7 @@ exports[`describe when the AddTicketDialog Component is given open as false AddT
   <WithStyles(DialogActions)>
     <WithStyles(Button)
       color="primary"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       Cancel
     </WithStyles(Button)>
@@ -116,7 +116,7 @@ exports[`describe when the AddTicketDialog Component is given open as true AddTi
   <WithStyles(DialogActions)>
     <WithStyles(Button)
       color="primary"
-      onClick={[Function]}
+      onClick={[MockFunction]}
     >
       Cancel
     </WithStyles(Button)>

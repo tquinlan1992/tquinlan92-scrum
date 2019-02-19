@@ -5,6 +5,7 @@ const mockAddTicket = jest.fn(() => {
 });
 
 const pouch = mockPouch({ addTicket: mockAddTicket });
+
 import { addTicket } from './';
 
 

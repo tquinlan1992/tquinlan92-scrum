@@ -1,5 +1,8 @@
 const path = require('path');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const {
+  fixBabelImports
+} = require("customize-cra");
 
 module.exports = function override(config) {
   config.resolve = {
@@ -20,6 +23,7 @@ module.exports = function override(config) {
       languages: ['javascript', 'typescript']
     })
   ]
+
 
   return config;
 };
