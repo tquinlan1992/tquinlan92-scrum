@@ -10,7 +10,8 @@ export const mapStateToProps = ({codeState}: AppState) => {
 export type Props = ReturnType<typeof mapStateToProps>;
 
 export const mapDispatchToProps = {
-    setCode: (code: string) => codeActions.set({code})
+    loadCode: codeActions.loadCode,
+    saveCode: codeActions.saveCode
 };
 
 export type Actions = typeof mapDispatchToProps;

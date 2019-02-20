@@ -1,3 +1,7 @@
+import { loadCode } from "./loadCode";
+import { saveCode } from "./saveCode";
 
-export const sampleThunkActions = {
+export const codeThunkActions = {
+    loadCode,
+    saveCode
 };

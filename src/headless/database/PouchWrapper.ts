@@ -1,6 +1,16 @@
 import { mapValues } from 'lodash';
 import { methods, MethodsReturnTypes } from "./methods";
 
+export enum DocTypes {
+    ticket,
+    code
+}
+
+export interface Code {
+    code: string;
+    type: DocTypes.code
+}
+
 export interface Ticket {
     title: string;
     storyPoint: null | number;
@@ -11,11 +21,12 @@ export interface Ticket {
     sprintName?: string;
     priority?: number;
     _id: string;
+    type: DocTypes.ticket
 }
 
 export type Tickets = Ticket[];
 
-export type TicketPouchDb = PouchDB.Database<Ticket>;
+export type TicketPouchDb = PouchDB.Database<Ticket | Code>;
 
 class PouchWrapper {
 

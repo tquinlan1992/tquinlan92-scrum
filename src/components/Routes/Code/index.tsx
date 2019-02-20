@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { Props, Actions, mapStateToProps, mapDispatchToProps } from './mapProps';
-import { connect } from "react-redux";
+import { connect, Omit } from "react-redux";
 
 import MonacoEditor from 'react-monaco-editor';
 import { AppState } from '@headless/store';
 import { Button } from '@material-ui/core';
 import { getRemoteDb } from "@headless/database/pouch";
 
-export class Code extends React.Component<Props & Actions> {
+interface ActionsNoThunk extends Omit<Actions, 'loadCode' | 'saveCode'> {
+    loadCode: () => void;
+    saveCode: (newCode: string) => void;
+}
+
+export class Code extends React.Component<Props & ActionsNoThunk> {
 
     state = {
         tickets: [],
@@ -15,8 +20,12 @@ export class Code extends React.Component<Props & Actions> {
         evalComponents: []
     }
 
+    componentDidMount() {
+        this.props.loadCode();
+    }
+
     onCodeChange(newCode: string) {
-        this.props.setCode(newCode);
+        this.props.saveCode(newCode);
     }
 
     consoleLog(text: string) {

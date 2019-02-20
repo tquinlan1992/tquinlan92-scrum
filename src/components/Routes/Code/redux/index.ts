@@ -1,5 +1,5 @@
 import { makeSimpleReducer } from 'tquinlan92-typescript-redux-utils';
-import { sampleThunkActions } from './thunkActions';
+import { codeThunkActions } from './thunkActions';
 
 export interface CodeState {
     code: string;
@@ -13,7 +13,7 @@ const { actions: simpleActions, reducer } = makeSimpleReducer<CodeState>('Code',
 
 export const codeActions = {
     ...simpleActions,
-    ...sampleThunkActions
+    ...codeThunkActions
 };
 
 export { reducer as codeStateReducer };
