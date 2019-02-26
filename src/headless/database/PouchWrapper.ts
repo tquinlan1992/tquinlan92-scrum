@@ -24,6 +24,11 @@ export interface Ticket {
     type: DocTypes.ticket
 }
 
+export interface Docs {
+    Code: Code;
+    Ticket: Ticket;
+}
+
 export type Tickets = Ticket[];
 
 export type TicketPouchDb = PouchDB.Database<Ticket | Code>;

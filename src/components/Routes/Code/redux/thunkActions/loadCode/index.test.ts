@@ -1,18 +1,36 @@
-import { thunkAction } from './';
-import { expectActionWithPayload, getMockStore } from '../../../../utils/testUtils';
-import { simpleActions } from './simpleActions';
+import { loadCode } from './';
+import { expectActionWithPayload, getMockStore, mockPouch, expectCalledOnceWith } from '@src/utils/testUtils';
+import { codeActions } from '../..';
+
+const mockGetCode = jest.fn(() => {
+    return new Promise(resolve => resolve(
+        {
+            code: 'code'
+        }
+    ));
+});
+
+const pouch = mockPouch({ getCode: mockGetCode });
 
 const store = getMockStore({});
 
-describe('when thunkActions is called', () => {
-    it('it should', () => {
-        store.dispatch(thunkAction());
+jest.mock('@headless/database/pouch', () => {
+    return {
+
+    }
+})
+
+describe('when loadCode is called', () => {
+    it('it should call load code from db and set code', async () => {
+        await store.dispatch(loadCode());
         
         const dispatchedActions = store.getActions();
         
         const [ action1 ] = dispatchedActions;
         
-        expectActionWithPayload(action1, simpleActions.reset, null);
+        expectCalledOnceWith(mockGetCode);
+
+        expectActionWithPayload(action1, codeActions.code, 'code');
 
     })
 })

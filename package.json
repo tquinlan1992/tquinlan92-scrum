@@ -83,7 +83,8 @@
       "^@headless/(.*)$": "<rootDir>/src/headless/$1",
       "^@components/(.*)$": "<rootDir>/src/components/$1",
       "^@database/(.*)$": "<rootDir>/src/headless/database/$1",
-      "^@utils/(.*)$": "<rootDir>/src/utils/$1"
+      "^@utils/(.*)$": "<rootDir>/src/utils/$1",
+      "^@src/(.*)$": "<rootDir>/src/$1"
     },
     "snapshotSerializers": [
       "enzyme-to-json/serializer"

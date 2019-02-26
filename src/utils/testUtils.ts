@@ -1,4 +1,4 @@
-import { Ticket } from '../headless/database/PouchWrapper';
+import { Ticket, Docs } from '../headless/database/PouchWrapper';
 import pouchDBMemoryAdapter from 'pouchdb-adapter-memory';
 import PouchDB from 'pouchdb-browser';
 import configureStore from 'redux-mock-store';
@@ -10,11 +10,15 @@ const pouchdbFind = require('pouchdb-find');
 PouchDB.plugin(pouchDBMemoryAdapter);
 PouchDB.plugin(pouchdbFind);
 
-export async function getMemoryPouchDb(docs?: Ticket[]) {
-    const db = new PouchDB<Ticket>('mydb', { adapter: 'memory' });
+export async function getMemoryPouchDb(docs?: Array<Docs['Code'] | Docs['Ticket']>) {
+    const db = new PouchDB<Docs['Ticket'] | Docs['Code']>('mydb', { adapter: 'memory' });
     if (docs) {
         docs.forEach(async doc => {
+            try {
             await db.put(doc);
+            } catch(e) {
+                console.log('e', e);
+            }
         })
     }
     return db;

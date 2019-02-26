@@ -3,8 +3,7 @@ import { getRemoteDb } from "@headless/database/pouch";
 import { codeActions } from "../..";
 
 export function loadCode(): AppThunkAction {
-    return async (dispatch, getState) => {
-        const state = getState();
+    return async (dispatch) => {
         const db = await getRemoteDb();
         const codeDoc = await db.getCode();
         const newCode = codeDoc ? codeDoc.code : ''
