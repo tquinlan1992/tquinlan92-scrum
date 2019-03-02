@@ -1,27 +1,34 @@
-import { TicketListConnected } from "@components/TicketList";
 import * as React from "react";
 import { Route, Redirect, Switch } from "react-router";
-import { ConnectedImportExport } from "./ImportExport";
-import { ConnectedCode } from "./Code";
+import { map } from "lodash";
+import { paths } from "./paths";
 
-export const paths = {
-    feed: {
-        path: '/feed'
-    },
-    import_export: {
-        path: '/import_export'
-    },
-    code: {
-        path: '/code'
-    }
+interface Paths {
+    [index: string]: Path
+} 
+
+interface Path {
+    path: string;
+    component: any;
+    children?: Paths;
 }
+
+function getRoutesFromPaths(paths: Paths) {
+    return map(paths, path => {
+        let routesFromPath= [<Route exact path={path.path} component={path.component} />];
+        if (path.children) {
+            routesFromPath = routesFromPath.concat(...getRoutesFromPaths(path.children))
+        }
+        return routesFromPath;
+    });
+}
+
+const routes = getRoutesFromPaths(paths)
 
 export function Routes() {
     return (
             <Switch>
-                <Route exact path={paths.feed.path} component={TicketListConnected} />
-                <Route exact path={paths.import_export.path} component={ConnectedImportExport} />
-                <Route exact path={paths.code.path} component={ConnectedCode} />
+                {routes}
                 <Redirect to='/feed'/>
             </Switch>
     );

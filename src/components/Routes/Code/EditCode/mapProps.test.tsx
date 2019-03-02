@@ -4,7 +4,9 @@ import { AppState } from '@headless/store';
 describe('mapStateToProps', () => {
     const state: Partial<AppState> = ({
         codeState: {
-            code: 'code'
+            editCode: {
+                code: 'code'
+            }
         }
     });
     const props = mapStateToProps(state as AppState)

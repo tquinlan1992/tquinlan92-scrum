@@ -13,7 +13,8 @@ module.exports = function override(config) {
       "@headless": path.resolve(__dirname, "src/headless/"),
       "@components": path.resolve(__dirname, "src/components/"),
       "@database": path.resolve(__dirname, "src/headless/database/"),
-      "@utils": path.resolve(__dirname, "src/utils/")
+      "@utils": path.resolve(__dirname, "src/utils/"),
+      "@src": path.resolve(__dirname, "src/")
     }
   };
   config.plugins = [

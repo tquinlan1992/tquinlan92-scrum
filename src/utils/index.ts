@@ -1,4 +1,6 @@
 import * as _ from 'lodash';
+import { connect, MapStateToPropsParam, MergeProps } from 'react-redux';
+import { AppState } from '@headless/store';
 
 type PropsMap<M, K extends keyof M> = {[P in K]: M[P]};
 
@@ -8,3 +10,7 @@ export function pick<M extends object, K extends keyof M>(obj: M, ...props: K[])
 }
 
 export type Diff<T extends string, U extends string> = ({ [P in T]: P } & { [P in U]: never } & { [x: string]: never })[T];
+
+export function appStateConnect<Props, Actions, OwnProps extends {}>(mapStateToProps: MapStateToPropsParam<Props, OwnProps, AppState>, actions: Actions){
+    return connect<Props, Actions, OwnProps, AppState>(mapStateToProps, actions);
+}

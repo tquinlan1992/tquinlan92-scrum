@@ -9,7 +9,7 @@ import { AppState } from '../store';
 import { ticketListReducer } from '../../components/TicketList/redux';
 import { ThunkAction } from "redux-thunk";
 import { CloseSprintDialogState, closeSprintDialogReducer } from '@components/CloseSprintDialog/redux';
-import { CodeState, codeStateReducer } from "@components/Routes/Code/redux";
+import { RootCodeState, rootCodeReducer } from "@components/Routes/Code/redux";
 
 
 const appReducer = combineReducers<AppState>({
@@ -18,7 +18,7 @@ const appReducer = combineReducers<AppState>({
     ticketList: ticketListReducer,
     loading: loadingReducer,
     closeSprintDialog: closeSprintDialogReducer,
-    codeState: codeStateReducer
+    codeState: rootCodeReducer
 });
 
 declare module 'redux' {
@@ -47,7 +47,7 @@ export interface AppState {
     addTicket: AddTicketState;
     loading: LoadingState;
     closeSprintDialog: CloseSprintDialogState;
-    codeState: CodeState;
+    codeState: RootCodeState;
 }
 
 const reduxStore: Store<AppState, AnyAction> = createStore<AppState, AnyAction, void, void>(appReducer, {}, composeWithDevTools<any, {}>(applyMiddleware(...middleware)));

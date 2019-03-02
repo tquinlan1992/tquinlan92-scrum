@@ -87,3 +87,6 @@ export function mockClearAll(mockFunctions: jest.Mock<{}>[]) {
     })
 }
 
+export function getPartialState(appState: Partial<AppState>) {
+    return appState as AppState;
+}

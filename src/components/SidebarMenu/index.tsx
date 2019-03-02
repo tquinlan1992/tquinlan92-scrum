@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { List, ListItem, ListItemText } from '@material-ui/core';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 import { history } from '../../headless/store/middleware/router';
-import { paths } from '@components/Routes';
 import { AppState } from '@headless/store';
+import { paths } from '@components/Routes/paths';
 
 const menuItems = [
     {
