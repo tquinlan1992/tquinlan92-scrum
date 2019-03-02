@@ -3,9 +3,9 @@ import { codeActions } from "../..";
 import { getRemoteDb } from "@headless/database/pouch";
 
 export function saveCode(newCode: string): AppThunkAction {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         dispatch(codeActions.code(newCode));
         const db = await getRemoteDb();
-        await db.saveCode(newCode);
+        await db.saveCode({newCode, name: 'first code'});
     };
 }

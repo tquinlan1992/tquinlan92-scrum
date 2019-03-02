@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { List, ListItem, ListItemText } from '@material-ui/core';
 import {withRouter, RouteComponentProps} from 'react-router-dom';
 import { history } from '../../headless/store/middleware/router';
-import { AppState } from '@headless/store';
 import { paths } from '@components/Routes/paths';
 
 const menuItems = [
@@ -48,5 +47,5 @@ export class SidebarMenu extends React.Component<Props & Actions> {
     }
 }
 
-export const SidebarMenuConnected = withRouter(connect<Props, Actions, RouteComponentProps, AppState>(mapStateToProps, mapDispatchToProps)(SidebarMenu));
+export const SidebarMenuConnected = withRouter(connect(mapStateToProps, mapDispatchToProps)(SidebarMenu));
 

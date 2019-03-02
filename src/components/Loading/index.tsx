@@ -50,4 +50,4 @@ interface StateProps {
 
 const mapDispatchToProps = loadingActions;
 
-export const LoadingConnected = connect<StateProps, ComponentActions, void, AppState>(mapStateToProps, mapDispatchToProps)(Loading);
+export const LoadingConnected = connect(mapStateToProps, mapDispatchToProps)(Loading);

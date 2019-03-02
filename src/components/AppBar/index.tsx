@@ -56,4 +56,4 @@ const mapDispatchToProps = {
 
 type ComponentActions = typeof mapDispatchToProps;
 
-export const AppBarConnected = connect<StateProps, ComponentActions, void, AppState>(mapStateToProps, mapDispatchToProps)(AppBarStyled);
+export const AppBarConnected = connect(mapStateToProps, mapDispatchToProps)(AppBarStyled);

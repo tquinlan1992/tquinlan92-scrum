@@ -1,8 +1,8 @@
 import { v4 as uuid } from "uuid";
-import { TicketPouchDb, DocTypes } from "../../PouchWrapper";
+import { TicketPouchDb, DocTypes, Code } from "../../PouchWrapper";
 
 export function saveCode(db: TicketPouchDb) {
-    return async (newCode: string) => {
+    return async ({newCode, name }: {newCode: string; name: string;}) => {
         try {
             const response = await db.find({
                 selector: { 
@@ -16,10 +16,11 @@ export function saveCode(db: TicketPouchDb) {
                     code: newCode
                 })
             } else { 
-                await db.put({
+                await db.put<Code>({
                     _id: uuid(),
                     type: DocTypes.code,
-                    code: newCode
+                    code: newCode,
+                    name
                 });
             }
         } catch (e) {

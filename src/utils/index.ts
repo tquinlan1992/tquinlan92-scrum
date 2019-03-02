@@ -10,7 +10,3 @@ export function pick<M extends object, K extends keyof M>(obj: M, ...props: K[])
 }
 
 export type Diff<T extends string, U extends string> = ({ [P in T]: P } & { [P in U]: never } & { [x: string]: never })[T];
-
-export function appStateConnect<Props, Actions, OwnProps extends {}>(mapStateToProps: MapStateToPropsParam<Props, OwnProps, AppState>, actions: Actions){
-    return connect<Props, Actions, OwnProps, AppState>(mapStateToProps, actions);
-}

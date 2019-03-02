@@ -86,4 +86,4 @@ export class TicketList extends React.Component<TicketListProps & ActionsNoThunk
     }
 }
 
-export const TicketListConnected = connect<TicketListProps, TicketListActions, void, AppState>(mapStateToProps, mapActionsToProps)(TicketList);
+export const TicketListConnected = connect(mapStateToProps, mapActionsToProps)(TicketList);

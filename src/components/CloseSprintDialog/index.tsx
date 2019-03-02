@@ -89,4 +89,4 @@ export class CloseSprintDialog extends React.Component<OwnProps & ComponentActio
     }
 }
 
-export const CloseSprintDialogConnected = connect<OwnProps & StateProps, ComponentActions, OwnProps, AppState>(mapStateToProps, mapDispatchToProps)(CloseSprintDialog);
+export const CloseSprintDialogConnected = connect(mapStateToProps, mapDispatchToProps)(CloseSprintDialog);

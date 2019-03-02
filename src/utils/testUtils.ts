@@ -5,6 +5,7 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { AnyAction, isType, ActionCreator } from 'typescript-fsa';
 import { AppState } from '../headless/store';
+import { DeepPartial } from 'ts-essentials';
 
 const pouchdbFind = require('pouchdb-find');
 PouchDB.plugin(pouchDBMemoryAdapter);
@@ -87,6 +88,6 @@ export function mockClearAll(mockFunctions: jest.Mock<{}>[]) {
     })
 }
 
-export function getPartialState(appState: Partial<AppState>) {
+export function getPartialState(appState: DeepPartial<AppState>) {
     return appState as AppState;
 }

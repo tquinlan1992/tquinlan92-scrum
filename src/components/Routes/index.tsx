@@ -13,11 +13,13 @@ interface Path {
     children?: Paths;
 }
 
-function getRoutesFromPaths(paths: Paths) {
+function getRoutesFromPaths(paths: Paths, basePath: string = '') {
     return map(paths, path => {
+        const basePathWithPath = `${basePath}${path.path}`;
+        path.path = basePathWithPath;
         let routesFromPath= [<Route exact path={path.path} component={path.component} />];
         if (path.children) {
-            routesFromPath = routesFromPath.concat(...getRoutesFromPaths(path.children))
+            routesFromPath = routesFromPath.concat(...getRoutesFromPaths(path.children, basePathWithPath))
         }
         return routesFromPath;
     });

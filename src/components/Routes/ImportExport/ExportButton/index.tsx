@@ -17,5 +17,5 @@ export class ExportButton extends React.Component<Props & ComponentActionsNoThun
     }
 }
 
-export const ConnectedExportButton = connect<Props, Actions, void, AppState>(mapStateToProps, mapDispatchToProps)(ExportButton);
+export const ConnectedExportButton = connect(mapStateToProps, mapDispatchToProps)(ExportButton);
 

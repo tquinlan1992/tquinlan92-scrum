@@ -1,7 +1,7 @@
 import { TicketListConnected } from "@components/TicketList";
 import { ConnectedImportExport } from "./ImportExport";
 import { CodePage } from "./Code";
-import { CreateNewCodeConnect } from "./Code/CreateNewCode";
+import { CreateCodeConnect } from "./Code/CreateCode";
 
 export const paths = {
     feed: {
@@ -18,7 +18,7 @@ export const paths = {
         children: {
             newEntry: {
                 path: '/newEntry',
-                component: CreateNewCodeConnect
+                component: CreateCodeConnect
             }
         }
     }

@@ -1,4 +1,7 @@
 import { AppState } from "@headless/store";
+import { selectCodeActions } from "./redux";
+import { ThunkDispatch } from "redux-thunk";
+import { AnyAction } from 'typescript-fsa';
 
 export const mapStateToProps = (state: AppState) => {
     return {
@@ -7,8 +10,12 @@ export const mapStateToProps = (state: AppState) => {
 
 export type Props = ReturnType<typeof mapStateToProps>;
 
-export const mapDispatchToProps = {
-
+export function mapDispatchToProps(dispatch: ThunkDispatch<AppState, undefined, AnyAction>) {
+    return {
+        loadCodeOptions: () => dispatch(selectCodeActions.loadCodeOptions)
+    }
 };
 
-export type Actions = typeof mapDispatchToProps;
+export type MapDispatchToProps = typeof mapDispatchToProps;
+
+export type Actions = ReturnType<typeof mapDispatchToProps>;

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Props, Actions, mapStateToProps, mapDispatchToProps } from './mapProps';
 import { connect, Omit } from "react-redux";
-import { AppState } from '@headless/store';
 import { getRemoteDb } from "@headless/database/pouch";
 import { SelectCodeConnect } from '../SelectCode';
 import { Code } from '@components/Code';
@@ -73,5 +72,5 @@ export class EditCode extends React.Component<Props & ActionsNoThunk> {
     }
 }
 
-export const EditCodeConnected = connect<Props, Actions, void, AppState>(mapStateToProps, mapDispatchToProps)(EditCode);
+export const EditCodeConnected = connect(mapStateToProps, mapDispatchToProps)(EditCode);
 

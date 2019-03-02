@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Props, Actions, mapStateToProps, mapDispatchToProps } from './mapProps';
 import { connect } from "react-redux";
 import { Button } from '@material-ui/core';
-import { AppState } from '@headless/store';
 import { Omit } from 'lodash';
 import { Ticket } from '@headless/database/PouchWrapper';
 
@@ -46,5 +45,5 @@ export class ImportTickets extends React.Component<Props & ActionsNoThunk> {
     }
 }
 
-export const ConnectedImportTickets = connect<Props, Actions, void, AppState>(mapStateToProps, mapDispatchToProps)(ImportTickets);
+export const ConnectedImportTickets = connect(mapStateToProps, mapDispatchToProps)(ImportTickets);
 

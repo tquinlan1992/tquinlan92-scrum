@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { Props, Actions, mapStateToProps, mapDispatchToProps } from './mapProps';
-import { connect } from "react-redux";
+import { Props, Actions, mapStateToProps, mapDispatchToProps, MapDispatchToProps } from './mapProps';
 import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
-import { AppState } from '@headless/store';
-import { appStateConnect } from '@src/utils';
+import { connect } from 'react-redux';
 
 
 export class SelectCode extends React.Component<Props & Actions> {
+
+    componentDidMount() {
+        this.props.loadCodeOptions()
+    }
 
     render() {
         return (
@@ -32,5 +34,5 @@ export class SelectCode extends React.Component<Props & Actions> {
     }
 }
 
-export const SelectCodeConnect = appStateConnect<Props, Actions, {}>(mapStateToProps, mapDispatchToProps)(SelectCode);
+export const SelectCodeConnect = connect(mapStateToProps, mapDispatchToProps)(SelectCode);
 

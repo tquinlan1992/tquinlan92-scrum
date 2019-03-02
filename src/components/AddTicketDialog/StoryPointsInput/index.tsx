@@ -4,7 +4,6 @@ import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
 import { isNumber } from 'lodash';
 import { connect } from "react-redux";
 import shortid from 'shortid';
-import { AppState } from '@headless/store';
 
 interface StoryPointOption {
     value: number | string;
@@ -70,4 +69,4 @@ export class StoryPointsInputComponent extends React.Component<Props & Actions> 
     }
 }
 
-export const StoryPointsInputConnected = connect<Props, Actions, void, AppState>(mapStateToProps, mapDispatchToProps)(StoryPointsInputComponent);
+export const StoryPointsInputConnected = connect(mapStateToProps, mapDispatchToProps)(StoryPointsInputComponent);

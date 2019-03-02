@@ -3,7 +3,6 @@ import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, F
 import { AddTicketDialogOwnProps, ComponentActions, mapStateToProps, mapDispatchToProps, Props } from './mapProps';
 import { StoryPointsInputConnected } from './StoryPointsInput';
 import { connect } from "react-redux";
-import { AppState } from '@headless/store';
 import { Omit } from 'lodash';
 
 export interface StateProps {
@@ -86,4 +85,4 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
     }
 }
 
-export const AddTicketDialogConnected = connect<Props, ComponentActions, AddTicketDialogOwnProps, AppState>(mapStateToProps, mapDispatchToProps)(AddTicketDialog);
+export const AddTicketDialogConnected = connect(mapStateToProps, mapDispatchToProps)(AddTicketDialog);

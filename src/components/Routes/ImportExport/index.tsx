@@ -3,7 +3,6 @@ import { Props, Actions, mapStateToProps, mapDispatchToProps } from './mapProps'
 import { connect } from "react-redux";
 import { ConnectedExportButton } from './ExportButton';
 import { ConnectedImportTickets } from './ImportTickets';
-import { AppState } from '@headless/store';
 
 
 export class ImportExport extends React.Component<Props & Actions> {
@@ -18,5 +17,5 @@ export class ImportExport extends React.Component<Props & Actions> {
     }
 }
 
-export const ConnectedImportExport = connect<Props, Actions, void, AppState>(mapStateToProps, mapDispatchToProps)(ImportExport);
+export const ConnectedImportExport = connect(mapStateToProps, mapDispatchToProps)(ImportExport);
 

@@ -1,5 +1,5 @@
 import { sample } from './sample';
 
-export const sampleThunkActions = {
+export const thunkActions = {
     sample
 };
