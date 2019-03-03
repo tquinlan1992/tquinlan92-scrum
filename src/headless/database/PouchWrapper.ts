@@ -8,7 +8,6 @@ export enum DocTypes {
 
 export interface Code {
     _id: string;
-    name: string;
     code: string;
     type: DocTypes.code
 }

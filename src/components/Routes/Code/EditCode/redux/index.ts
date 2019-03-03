@@ -3,10 +3,12 @@ import { codeThunkActions } from './thunkActions';
 
 export interface EditCodeState {
     code: string;
+    _id: string;
 }
 
 export const codeInitialState = {
-    code: ''
+    code: '',
+    _id: ''
 };
 
 const { actions: simpleActions, reducer } = makeSimpleReducer<EditCodeState>('Code', codeInitialState);

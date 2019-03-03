@@ -1,18 +1,27 @@
 import { mapStateToProps } from './mapProps';
-import { getPartialState } from '@utils/testUtils';
+import { getPartialState } from '@src/utils/testUtils';
 
 describe('mapStateToProps', () => {
     const state = getPartialState({
         codeState: {
-            createCode: {
-                code: 'code'
+            selectCode: {
+             options: [
+                    {
+                        _id: '_id'
+                    }
+                ]
             }
         }
     });
+
     const props = mapStateToProps(state)
     it('should return valid props', () => {
         expect(props).toEqual({
-            sprintName: 'sprintName',
+            options: [
+                {
+                    _id: '_id'
+                }
+            ]
         })
     })
 })

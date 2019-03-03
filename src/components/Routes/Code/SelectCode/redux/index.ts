@@ -2,7 +2,6 @@ import { makeSimpleReducer } from 'tquinlan92-typescript-redux-utils';
 import { thunkActions } from './thunkActions';
 
 interface Option {
-    name: string;
     _id: string;
 }
 
@@ -21,4 +20,4 @@ export const selectCodeActions = {
     ...thunkActions
 };
 
-export { reducer as sampleReducer };
+export { reducer as selectCodeReducer };

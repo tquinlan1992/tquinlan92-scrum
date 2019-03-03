@@ -9,7 +9,8 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test -w 1 --env=jsdom --reporters=default --reporters=jest-junit --coverage --ci",
-    "test-watch": "node ./node_modules/.bin/react-app-rewired --inspect test --env=jsdom --runInBand",
+    "test-coverage": "react-app-rewired test --coverage",
+    "test-watch": "node ./node_modules/.bin/react-app-rewired --inspect test --env=jsdom",
     "test-e2e": "testcafe chrome:headless ./src/e2eTest/index.ts",
     "test-e2e-report": "testcafe chrome:headless ./src/e2eTest/index.ts -r xunit:/tmp/test-results/res.xml"
   },

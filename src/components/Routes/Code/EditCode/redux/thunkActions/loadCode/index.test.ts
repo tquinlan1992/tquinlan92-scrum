@@ -10,7 +10,7 @@ const mockGetCode = jest.fn(() => {
     ));
 });
 
-const pouch = mockPouch({ getCode: mockGetCode });
+mockPouch({ getCode: mockGetCode });
 
 const store = getMockStore({});
 

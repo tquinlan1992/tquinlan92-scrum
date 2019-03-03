@@ -72,8 +72,8 @@ export function expectActionWithPayload(actionToTest: AnyActionPayload, expected
 const middlewares = [thunk];
 export const mockStore = configureStore<Partial<AppState>, any>(middlewares);
 
-export function getMockStore(state: Partial<AppState>) {
-    return mockStore(state);
+export function getMockStore(state: DeepPartial<AppState>) {
+    return mockStore(state as AppState);
 }
 
 export function expectCalledOnceWith(mockFunction: jest.Mock<{}>, calledWith?: any) {

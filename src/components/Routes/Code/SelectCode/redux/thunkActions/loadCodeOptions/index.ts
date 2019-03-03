@@ -6,10 +6,6 @@ export function loadCodeOptions(): AppThunkAction {
     return async (dispatch) => {
         const db = await getRemoteDb();
         const codes = await db.getCodes();
-        const options = codes.map( ({name, _id}) => ({
-            name,
-            _id
-        }));
-        dispatch(selectCodeActions.options(options));
+        dispatch(selectCodeActions.options(codes));
     };
 }

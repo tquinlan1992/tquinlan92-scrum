@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Props, Actions, mapStateToProps, mapDispatchToProps, MapDispatchToProps } from './mapProps';
+import { Props, Actions, mapStateToProps, mapDispatchToProps } from './mapProps';
 import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
 import { connect } from 'react-redux';
 
@@ -11,23 +11,23 @@ export class SelectCode extends React.Component<Props & Actions> {
     }
 
     render() {
+      const firstMenuItem = this.props.options[0];
+      const firstMenuItemValue = firstMenuItem ? firstMenuItem._id : ''
+      const menuItems = this.props.options.map(({_id}) => (
+        <MenuItem value={_id}>{_id}</MenuItem>
+      ));
         return (
             <FormControl>
             <InputLabel htmlFor="age-simple">Age</InputLabel>
             <Select
-              value={10}
+              value={firstMenuItemValue}
               onChange={() => alert('test')}
               inputProps={{
                 name: 'age',
                 id: 'age-simple',
               }}
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {menuItems}
             </Select>
           </FormControl>
         );

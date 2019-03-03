@@ -1,13 +1,13 @@
 import { EditCodeState, editCodeStateReducer } from '../EditCode/redux';
 import { combineReducers } from 'redux';
-import { CreateCodeState, createCodeReducer } from '../CreateCode/redux/index';
+import { SelectCodeState, selectCodeReducer } from '../SelectCode/redux/index';
 
 export interface RootCodeState {
     editCode: EditCodeState;
-    createCode: CreateCodeState
+    selectCode: SelectCodeState;
 }
 
 export const rootCodeReducer = combineReducers({
     editCode: editCodeStateReducer,
-    createCode: createCodeReducer
+    selectCode: selectCodeReducer
 })

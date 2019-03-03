@@ -1,12 +1,12 @@
 import { thunkAction } from './';
-import { expectActionWithPayload, getMockStore } from '../../../../utils/testUtils';
+import { expectActionWithPayload, getMockStore } from '@src/utils/testUtils';
 import { simpleActions } from './simpleActions';
 
-const store = getMockStore({});
-
 describe('when thunkActions is called', () => {
-    it('it should', () => {
-        store.dispatch(thunkAction());
+    it('it should', async () => {
+        const store = getMockStore({});
+
+        await store.dispatch(thunkAction());
         
         const dispatchedActions = store.getActions();
         
