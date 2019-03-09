@@ -1,6 +1,6 @@
-import { dbMethodCreator } from './';
+import { getCode } from './';
 import { getMemoryPouchDb } from '@src/utils/testUtils';
-import { Ticket } from '../../PouchWrapper';
+import { Code } from '../../PouchWrapper';
 
 describe('when dbMethod is called', () => {
     describe('with no error', () => {
@@ -8,15 +8,15 @@ describe('when dbMethod is called', () => {
             const db = await getMemoryPouchDb([
                 {
                     _id: 'id1',
-                    title: 'title1'
-                } as Ticket
+                    code: 'code'
+                } as Code
             ]);
-            const method = await dbMethodCreator(db);
+            const method = await getCode(db);
             await method('id1');
             const newTicket1 = await db.get('id1');
             expect(newTicket1).toMatchObject({
                 _id: 'id1',
-                title: 'title1'
+                code: 'code'
             });
         })
     })

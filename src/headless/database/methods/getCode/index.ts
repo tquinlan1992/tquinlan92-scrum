@@ -1,11 +1,13 @@
 import { TicketPouchDb, DocTypes, Code } from "../../PouchWrapper";
 
 export function getCode(db: TicketPouchDb) {
-    return async () => {
+    return async (_id: string) => {
         try {
             const response = await db.find({
                 selector: { 
-                    type: DocTypes.code
+                    _id: {
+                        $in: [_id]
+                    }
                  }
             });
             const codeDoc = response.docs[0];

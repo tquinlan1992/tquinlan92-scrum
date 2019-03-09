@@ -5,12 +5,7 @@ import { getRemoteDb } from "@headless/database/pouch";
 import { SelectCodeConnect } from '../SelectCode';
 import { Code } from '@components/Code';
 
-interface ActionsNoThunk extends Omit<Actions, 'loadCode' | 'saveCode'> {
-    loadCode: () => void;
-    saveCode: (newCode: string) => void;
-}
-
-export class EditCode extends React.Component<Props & ActionsNoThunk> {
+export class EditCode extends React.Component<Props & Actions> {
 
     state = {
         tickets: [],
@@ -19,7 +14,7 @@ export class EditCode extends React.Component<Props & ActionsNoThunk> {
     }
 
     componentDidMount() {
-        this.props.loadCode();
+        this.props.loadCode(this.props._id);
     }
 
     onCodeChange(newCode: string) {
@@ -60,8 +55,7 @@ export class EditCode extends React.Component<Props & ActionsNoThunk> {
     render() {
         const codeProps = {
             code: this.props.code,
-            saveCode: this.props.saveCode,
-            loadCode: this.props.loadCode
+            saveCode: this.props.saveCode
         }
         return (
             <React.Fragment>

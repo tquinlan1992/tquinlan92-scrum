@@ -5,7 +5,6 @@ import { getRemoteDb } from "@headless/database/pouch";
 
 interface Props {
     code: string;
-    loadCode?: () => void;
     saveCode: (newCode: string) => void;
 }
 
@@ -15,10 +14,6 @@ export class Code extends React.Component<Props> {
         tickets: [],
         console: '',
         evalComponents: []
-    }
-
-    componentDidMount() {
-        this.props.loadCode && this.props.loadCode();
     }
 
     onCodeChange(newCode: string) {

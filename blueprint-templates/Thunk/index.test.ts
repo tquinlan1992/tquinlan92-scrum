@@ -1,6 +1,6 @@
 import { thunkAction } from './';
 import { expectActionWithPayload, getMockStore } from '@src/utils/testUtils';
-import { simpleActions } from '../..';
+import { simpleActions } from '../..';;
 
 describe('when thunkActions is called', () => {
     it('it should', async () => {

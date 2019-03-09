@@ -13,7 +13,7 @@ export const codeInitialState = {
 
 const { actions: simpleActions, reducer } = makeSimpleReducer<EditCodeState>('Code', codeInitialState);
 
-export const codeActions = {
+export const editCodeActions = {
     ...simpleActions,
     ...codeThunkActions
 };

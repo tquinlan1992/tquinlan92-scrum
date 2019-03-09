@@ -10,6 +10,9 @@ describe('mapStateToProps', () => {
                         _id: '_id'
                     }
                 ]
+            },
+            editCode: {
+                _id: 'editCodeId'
             }
         }
     });
@@ -21,7 +24,8 @@ describe('mapStateToProps', () => {
                 {
                     _id: '_id'
                 }
-            ]
+            ],
+            _id: 'editCodeId'
         })
     })
 })

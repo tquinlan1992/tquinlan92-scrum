@@ -6,7 +6,7 @@ interface Option {
 }
 
 export interface SelectCodeState {
-    options: Option[]
+    options: Option[];
 }
 
 const selectCodeInititalState = {

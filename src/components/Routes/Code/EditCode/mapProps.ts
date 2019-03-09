@@ -1,17 +1,22 @@
 import { AppState } from "@headless/store";
-import { codeActions } from './redux'
+import { editCodeActions } from './redux'
+import { AppStateThunkDispatch } from "@src/utils";
 
 export const mapStateToProps = ({codeState}: AppState) => {
+    const { code, _id } = codeState.editCode;
     return {
-        code: codeState.editCode.code
+        code,
+        _id
     };
 };
 
 export type Props = ReturnType<typeof mapStateToProps>;
 
-export const mapDispatchToProps = {
-    loadCode: codeActions.loadCode,
-    saveCode: codeActions.saveCode
+export function mapDispatchToProps(dispatch: AppStateThunkDispatch) {
+    return {
+        loadCode: (id: string) => { dispatch(editCodeActions.loadCode(id)) },
+        saveCode: (newCode: string) => { dispatch(editCodeActions.saveCode(newCode)) }
+    }
 };
 
-export type Actions = typeof mapDispatchToProps;
+export type Actions = ReturnType<typeof mapDispatchToProps>;

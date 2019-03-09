@@ -1,7 +1,7 @@
 import { saveCode } from './';
 import { expectActionWithPayload, getMockStore, expectCalledOnceWith } from '@src/utils/testUtils';
 import { mockPouch } from '@src/utils/testUtils';
-import { codeActions } from '../..';
+import { editCodeActions } from '../..';
 
 const mockSaveCode = jest.fn(() => {
     return new Promise(resolve => resolve(
@@ -29,7 +29,7 @@ describe('when thunkActions is called', () => {
         
         const [ action1 ] = dispatchedActions;
         
-        expectActionWithPayload(action1, codeActions.code, 'new code');
+        expectActionWithPayload(action1, editCodeActions.code, 'new code');
 
         expectCalledOnceWith(mockSaveCode, {newCode: 'new code', _id: '_id'});
 
