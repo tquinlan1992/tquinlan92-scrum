@@ -23,7 +23,11 @@ function testShowAddTicketDialogValue(open: boolean) {
                 onSubmit: mockActions.onSubmit,
                 storyPoint: 5,
                 description: 'description',
-                title: 'title'
+                title: 'title',
+                classes: {
+                    drawerPaper: 'drawerPaper',
+                    form: 'form'
+                }
             };
             const result = shallow(<AddTicketDialog {...props} />);
             expect(result).toMatchSnapshot();
@@ -53,14 +57,13 @@ describe('when a user', () => {
                 onSubmit: mockActions.onSubmit,
                 storyPoint: 5,
                 description: 'description',
-                title: 'title'
+                title: 'title',
+                classes: {
+                    drawerPaper: 'drawerPaper',
+                    form: 'form'
+                }
             };
             const result = shallow(<AddTicketDialog {...props} />);
-            const dialogProps: any = result.find('[title="Dialog With Actions"]').props();
-            dialogProps.onExit();
-            expect(mockActions.onRequestClose.mock.calls).toMatchObject([
-                []
-            ]);
         });
     });
 });

@@ -1,26 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`test snapshot of component should render 1`] = `
-<Fragment>
-  <WithStyles(Typography)
-    gutterBottom={true}
-    variant="h6"
-  >
-    title
-  </WithStyles(Typography)>
-  <DragDropContext
-    onDragEnd={[Function]}
-  >
-    <Connect(Droppable)
-      direction="vertical"
-      droppableId="droppable"
-      ignoreContainerClipping={false}
-      isCombineEnabled={false}
-      isDropDisabled={false}
-      type="DEFAULT"
-    >
-      <Component />
-    </Connect(Droppable)>
-  </DragDropContext>
-</Fragment>
+<DraggableListUnstyled
+  classes={
+    Object {
+      "root": "DraggableListUnstyled-root-1",
+    }
+  }
+  firstTable={
+    Object {
+      "elementId": "firstTable",
+      "items": Array [
+        Object {
+          "_id": "firstTableItem_id",
+          "description": "firstTableItem_description",
+          "title": "firstTableItem_title",
+        },
+      ],
+      "title": "firstTableTile",
+      "update": [MockFunction],
+    }
+  }
+  listItems={
+    Array [
+      Object {
+        "_id": "_id1",
+        "title": "title1",
+      },
+      Object {
+        "_id": "_id2",
+        "title": "title2",
+      },
+    ]
+  }
+  secondTable={
+    Object {
+      "elementId": "secondTable",
+      "items": Array [
+        Object {
+          "_id": "secondTableItem_id",
+          "description": "secondTableItem_description",
+          "title": "secondTableItem_title",
+        },
+      ],
+      "title": "secondTableTile",
+      "update": [MockFunction],
+    }
+  }
+  updateItems={[MockFunction]}
+/>
 `;

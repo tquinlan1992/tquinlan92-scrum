@@ -7,16 +7,16 @@ import shortid from 'shortid';
 
 interface StoryPointOption {
     value: number | string;
-    label?: string; 
+    label?: string;
     key: string;
 }
 
 type StoryPointOptions = StoryPointOption[];
 
-const storypointOptions:StoryPointOptions = [
+const storypointOptions: StoryPointOptions = [
     {
         label: 'None', value: '', key: shortid()
-    }, 
+    },
     {
         value: 0.1, key: shortid()
     },
@@ -25,16 +25,16 @@ const storypointOptions:StoryPointOptions = [
     },
     {
         value: 3, key: shortid()
-    }, 
+    },
     {
         value: 5, key: shortid()
-    }, 
+    },
     {
         value: 8, key: shortid()
-    }, 
+    },
     {
         value: 13, key: shortid()
-    }, 
+    },
     {
         value: 21, key: shortid()
     }
@@ -47,24 +47,24 @@ const menuItemOptions = storypointOptions.map(option => {
 export class StoryPointsInputComponent extends React.Component<Props & Actions> {
 
     onStoryPointsChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        this.props.setAddTicketState({storyPoint: Number(event.target.value) });
+        this.props.setAddTicketState({ storyPoint: Number(event.target.value) });
     }
 
     render() {
         return (
             <FormControl>
-            <InputLabel htmlFor="age-simple">Story Point</InputLabel>
-            <Select
-                value={isNumber(this.props.storyPoint) ? this.props.storyPoint : ''}
-                onChange={this.onStoryPointsChange.bind(this)}
-                inputProps={{
-                    name: 'age',
-                    id: 'age-simple',
-                }}
-            >
-                {menuItemOptions}
-            </Select>
-        </FormControl>
+                <InputLabel htmlFor="age-simple">Story Point</InputLabel>
+                <Select
+                    value={isNumber(this.props.storyPoint) ? this.props.storyPoint : ''}
+                    onChange={this.onStoryPointsChange.bind(this)}
+                    inputProps={{
+                        name: 'age',
+                        id: 'age-simple',
+                    }}
+                >
+                    {menuItemOptions}
+                </Select>
+            </FormControl>
         );
     }
 }

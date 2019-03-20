@@ -23,6 +23,7 @@ export interface Ticket {
     priority?: number;
     _id: string;
     type: DocTypes.ticket
+    _rev?: string;
 }
 
 export interface Docs {

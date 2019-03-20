@@ -1,9 +1,10 @@
-import * as React from 'react';
-import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, FormControl } from "@material-ui/core";
-import { AddTicketDialogOwnProps, ComponentActions, mapStateToProps, mapDispatchToProps, Props } from './mapProps';
-import { StoryPointsInputConnected } from './StoryPointsInput';
-import { connect } from "react-redux";
+import { Button, createStyles, Drawer, FormControl, TextField, Theme, WithStyles, withStyles, Typography } from '@material-ui/core';
 import { Omit } from 'lodash';
+import * as React from 'react';
+import { connect } from 'react-redux';
+
+import { AddTicketDialogOwnProps, ComponentActions, mapDispatchToProps, mapStateToProps } from './mapProps';
+import { StoryPointsInputConnected } from './StoryPointsInput';
 
 export interface StateProps {
     storyPoint: number | null;
@@ -11,14 +12,23 @@ export interface StateProps {
     title: string;
 }
 
+const styles = (theme: Theme) => createStyles({
+    drawerPaper: {
+        width: '54%'
+    },
+    form: {
+        padding: '10px'
+    }
+})
+
 interface ComponentActionsVoid extends Omit<ComponentActions, 'addTicket'> {
     addTicket: () => void;
 }
 
-export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & ComponentActionsVoid & StateProps> {
+export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & ComponentActionsVoid & StateProps & WithStyles<typeof styles>> {
 
     onStoryPointsChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        this.props.setAddTicketState({storyPoint: Number(event.target.value) });
+        this.props.setAddTicketState({ storyPoint: Number(event.target.value) });
     }
 
     onCreate() {
@@ -35,54 +45,51 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
     }
 
     render() {
+        const { classes } = this.props;
         return (
-            <Dialog
-                title="Dialog With Actions"
+            <Drawer
+                anchor="right"
                 open={this.props.open}
-                onExit={(this.props.onRequestClose.bind(this))}
-                fullWidth
+                onClose={(this.props.onRequestClose.bind(this))}
+                classes={{
+                    paper: classes.drawerPaper,
+                }}
             >
-                <DialogTitle id="form-dialog-title">Create a Ticket</DialogTitle>
-                <DialogContent>
-                    <form autoComplete="off">
-                        <FormControl>
+                <div className={classes.form}>
+                <Typography variant="h5" component="h3">Create a Ticket</Typography>
+                    <form autoComplete="off" className={classes.form}>
+                        <FormControl fullWidth>
                             <TextField
                                 autoFocus
                                 margin="dense"
                                 id="name"
                                 label="Title"
                                 type="text"
-                                fullWidth
                                 required
                                 value={this.props.title}
                                 onChange={this.onTitleChange.bind(this)}
                             />
-                        </FormControl>
-                        <FormControl>
                             <TextField
                                 id="multiline-flexible"
                                 label="Description"
                                 multiline
                                 margin="dense"
-                                fullWidth
                                 value={this.props.description}
                                 onChange={this.onDescriptionChange.bind(this)}
                             />
+                            <StoryPointsInputConnected />
                         </FormControl>
-                        <StoryPointsInputConnected />
                     </form>
-                </DialogContent>
-                <DialogActions>
                     <Button onClick={(this.props.onRequestClose)} color="primary">
                         Cancel
                     </Button>
                     <Button onClick={this.onCreate.bind(this)} color="primary">
                         Create
                     </Button>
-                </DialogActions>
-            </Dialog>
+                </div>
+            </Drawer>
         );
     }
 }
 
-export const AddTicketDialogConnected = connect(mapStateToProps, mapDispatchToProps)(AddTicketDialog);
+export const AddTicketDialogConnected = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(AddTicketDialog));

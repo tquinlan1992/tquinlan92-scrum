@@ -5,19 +5,27 @@ import { DraggableList } from '@components/DraggableList';
 import { connect } from "react-redux";
 import { Omit } from 'lodash';
 
-interface ActionsNoThunk extends Omit<Actions, 'openAddTicketDialog' | 'updatePriorities'> {
-    openAddTicketDialog: () => void;
-    updatePriorities: (newTickets: any[]) => void;
-}
-
-export class BacklogListComponent extends React.Component<Props & ActionsNoThunk> {
+export class BacklogListComponent extends React.Component<Props & Actions> {
 
     render() {
+        const { backlogTickets, updatePriorities, sprintTickets, updateSprintPriorities } = this.props;
+        const firstTable = {
+            elementId: 'backlog',
+            title: 'Backlog',
+            items: backlogTickets,
+            update: updatePriorities
+        }
+        const secondTable = {
+            elementId: 'sprint',
+            title: 'Sprint',
+            items: sprintTickets,
+            update: updateSprintPriorities
+        }
         return (
-            <Paper style={{margin: '5px auto'}}>
-            <DraggableList title='Backlog' listItems={this.props.backlogTickets} updateItems={this.props.updatePriorities.bind(this)}/>
-            <Button title='Add Ticket' onClick={this.props.openAddTicketDialog}> Add Ticket </Button>
-            </Paper>
+            <React.Fragment>
+                <DraggableList secondTable={secondTable} firstTable={firstTable} />
+                <Button title='Add Ticket' onClick={this.props.openAddTicketDialog}> Add Ticket </Button>
+            </React.Fragment>
         );
     }
 }

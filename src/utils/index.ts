@@ -3,6 +3,8 @@ import { connect, MapStateToPropsParam, MergeProps } from 'react-redux';
 import { AppState } from '@headless/store';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
+import { Theme } from '@material-ui/core';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
 
 type PropsMap<M, K extends keyof M> = {[P in K]: M[P]};
 
@@ -14,3 +16,11 @@ export function pick<M extends object, K extends keyof M>(obj: M, ...props: K[])
 export type Diff<T extends string, U extends string> = ({ [P in T]: P } & { [P in U]: never } & { [x: string]: never })[T];
 
 export type AppStateThunkDispatch = ThunkDispatch<AppState, undefined, AnyAction>;
+
+type CreateStylesReturnTheme<C extends string> = Record<C, CSSProperties>;
+
+type GetThemeCallback<C extends string> = (theme: Theme) => CreateStylesReturnTheme<C>;
+
+export function getTheme<C extends string>(getThemeCallback: GetThemeCallback<C>) {
+    return (theme: Theme) => getThemeCallback(theme);
+}

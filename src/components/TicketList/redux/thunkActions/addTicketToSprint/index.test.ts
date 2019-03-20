@@ -1,7 +1,7 @@
 import { addTicketToSprint } from './';
-import { mockStore, mockClearAll, expectCalledOnceWith } from '../../../../../utils/testUtils';
+import { mockStore, mockClearAll, expectCalledOnceWith } from '@src/utils/testUtils';
 
-jest.mock('../../../../../headless/database/pouch', () => {
+jest.mock('@headless/database/pouch', () => {
     const markTicketInSprint = jest.fn();
     return {
         getRemoteDb: jest.fn(() => {
@@ -13,17 +13,7 @@ jest.mock('../../../../../headless/database/pouch', () => {
     }
 })
 
-const pouch = require('../../../../../headless/database/pouch');
-
-jest.mock('../fetchTickets', () => {
-    return {
-        fetchTickets: jest.fn(() => {
-            return () => { }
-        })
-    }
-});
-
-const fetchTickets = require('../fetchTickets');
+const pouch = require('@headless/database/pouch');
 
 const store = mockStore({});
 
@@ -32,7 +22,6 @@ describe('when addTicketToSprint is called', () => {
         mockClearAll([
             pouch.getRemoteDb,
             pouch.markTicketInSprint,
-            fetchTickets.fetchTickets
         ])
     })
     it('it should add the ticket if no errors', async () => {
@@ -42,7 +31,6 @@ describe('when addTicketToSprint is called', () => {
 
         expectCalledOnceWith(pouch.markTicketInSprint, {id: 'ticketId', sprint: true});
 
-        expectCalledOnceWith(fetchTickets.fetchTickets);
 
     })
     it('it should only call getRemoteDb if theres an error getting the remoteDB', async () => {
@@ -55,8 +43,6 @@ describe('when addTicketToSprint is called', () => {
             expectCalledOnceWith(pouch.getRemoteDb);
 
             expect(pouch.markTicketInSprint).toHaveBeenCalledTimes(0);
-
-            expect(fetchTickets.fetchTickets).toHaveBeenCalledTimes(0);
         }
     })
 })

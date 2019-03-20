@@ -63,11 +63,6 @@ export class TicketList extends React.Component<TicketListProps & ActionsNoThunk
                 <TicketTable title='Closed' tickets={this.props.closedTickets} />
                 </Paper>
 
-                <Paper style={{margin: '5px auto'}}>
-                <TicketTable title='Sprint' onClose={this.onClickClose.bind(this)} onRemoveFromSprint={this.props.onRemoveFromSprint.bind(this)} tickets={this.props.sprintTickets} />
-                <Button title='Close Sprint' onClick={() => this.props.openCloseSprintDialog()}> Close Sprint </Button>
-                </Paper>
-
                 <BacklogListConnected />
 
                 <AddTicketDialogConnected

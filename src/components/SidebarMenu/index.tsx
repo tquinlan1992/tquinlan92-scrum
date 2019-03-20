@@ -14,11 +14,6 @@ const menuItems = [
     {
         text: 'Import/Export',
         path: paths.import_export.path
-    },
-
-    {
-        text: 'Code',
-        path: paths.code.path
     }
 ];
 

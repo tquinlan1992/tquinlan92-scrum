@@ -21,13 +21,15 @@ export function fetchTickets(): ThunkAction<void, AppState, void, AnyAction> {
                 return ticket.sprint;
             }) as SprintTicket[];
 
+            const sortedSprintTicketsByPriority = sortBy(sprintTickets, 'priority');
+
             const closedTickets = tickets.filter(ticket => {
                 return !ticket.sprint && ticket.closed;
             }) as ClosedTicket[];
 
             dispatch(ticketListActions.set({
                 backlogTickets: sortedBacklogTicketsByPriority,
-                sprintTickets,
+                sprintTickets: sortedSprintTicketsByPriority,
                 closedTickets
             }));
         } catch (e) {
