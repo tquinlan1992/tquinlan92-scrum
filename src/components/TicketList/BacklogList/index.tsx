@@ -3,18 +3,32 @@ import { Props, Actions, mapStateToProps, mapDispatchToProps } from './mapProps'
 import { Paper, Button } from '@material-ui/core';
 import { DraggableList } from '@components/DraggableList';
 import { connect } from "react-redux";
+import { Omit } from 'lodash';
 
 export class BacklogListComponent extends React.Component<Props & Actions> {
 
     render() {
+        const { backlogTickets, updatePriorities, sprintTickets, updateSprintPriorities } = this.props;
+        const firstTable = {
+            elementId: 'backlog',
+            title: 'Backlog',
+            items: backlogTickets,
+            update: updatePriorities
+        }
+        const secondTable = {
+            elementId: 'sprint',
+            title: 'Sprint',
+            items: sprintTickets,
+            update: updateSprintPriorities
+        }
         return (
-            <Paper style={{margin: '5px auto'}}>
-            <DraggableList title='Backlog' listItems={this.props.backlogTickets} updateItems={this.props.updatePriorities.bind(this)}/>
-            <Button title='Add Ticket' onClick={this.props.openAddTicketDialog}> Add Ticket </Button>
-            </Paper>
+            <React.Fragment>
+                <DraggableList secondTable={secondTable} firstTable={firstTable} />
+                <Button title='Add Ticket' onClick={this.props.openAddTicketDialog}> Add Ticket </Button>
+            </React.Fragment>
         );
     }
 }
 
-export const BacklogListConnected = connect<Props, Actions>(mapStateToProps, mapDispatchToProps)(BacklogListComponent);
+export const BacklogListConnected = connect(mapStateToProps, mapDispatchToProps)(BacklogListComponent);
 

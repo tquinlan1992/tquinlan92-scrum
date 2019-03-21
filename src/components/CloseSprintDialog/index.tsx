@@ -3,6 +3,7 @@ import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, F
 import { connect } from 'react-redux';
 import { AppState } from "@headless/store";
 import { closeSprintDialogActions } from './redux';
+import { Omit } from 'lodash';
 
 interface OwnProps {
     onRequestClose: () => void;
@@ -30,7 +31,11 @@ const mapDispatchToProps = {
 
 type ComponentActions = typeof mapDispatchToProps;
 
-export class CloseSprintDialog extends React.Component<OwnProps & ComponentActions & StateProps> {
+interface ComponentActionsNoThunk extends Omit<ComponentActions, 'closeSprint'> {
+    closeSprint: () => void;
+}
+
+export class CloseSprintDialog extends React.Component<OwnProps & ComponentActionsNoThunk & StateProps> {
 
     onSprintNameChange(event: React.ChangeEvent<HTMLSelectElement>) {
         this.props.setCloseSprintDialogState({ sprintName: event.target.value });
@@ -84,4 +89,4 @@ export class CloseSprintDialog extends React.Component<OwnProps & ComponentActio
     }
 }
 
-export const CloseSprintDialogConnected = connect<OwnProps & StateProps, ComponentActions, OwnProps>(mapStateToProps, mapDispatchToProps)(CloseSprintDialog);
+export const CloseSprintDialogConnected = connect(mapStateToProps, mapDispatchToProps)(CloseSprintDialog);

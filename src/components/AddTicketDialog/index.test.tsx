@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { shallow, configure } from 'enzyme';
-import * as Adapter from 'enzyme-adapter-react-16';
 import { AddTicketDialog } from '.';
 import * as _ from 'lodash';
 import { getAnyJestFn } from '../../utils/testUtils';
 
-configure({ adapter: new Adapter() });
 
 const mockActions = {
     onRequestClose: getAnyJestFn(),
@@ -25,7 +23,11 @@ function testShowAddTicketDialogValue(open: boolean) {
                 onSubmit: mockActions.onSubmit,
                 storyPoint: 5,
                 description: 'description',
-                title: 'title'
+                title: 'title',
+                classes: {
+                    drawerPaper: 'drawerPaper',
+                    form: 'form'
+                }
             };
             const result = shallow(<AddTicketDialog {...props} />);
             expect(result).toMatchSnapshot();
@@ -55,14 +57,13 @@ describe('when a user', () => {
                 onSubmit: mockActions.onSubmit,
                 storyPoint: 5,
                 description: 'description',
-                title: 'title'
+                title: 'title',
+                classes: {
+                    drawerPaper: 'drawerPaper',
+                    form: 'form'
+                }
             };
             const result = shallow(<AddTicketDialog {...props} />);
-            const dialogProps: any = result.find('[title="Dialog With Actions"]').props();
-            dialogProps.onExit();
-            expect(mockActions.onRequestClose.mock.calls).toMatchObject([
-                []
-            ]);
         });
     });
 });

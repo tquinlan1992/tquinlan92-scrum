@@ -1,88 +1,116 @@
 import * as React from 'react';
-import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
-import { List, ListItem, ListItemText, Typography } from '@material-ui/core';
+import { DragDropContext, DropResult } from 'react-beautiful-dnd';
+import { BacklogTicket, SprintTicket } from '@components/TicketList/redux';
+import { DroppableId, Item } from './DroppableId';
+import { Grid, Paper, withStyles, WithStyles } from '@material-ui/core';
+import { getTheme } from '@src/utils';
 
-const reorder = (list: ListItem[], startIndex: number, endIndex: number) => {
-  let result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
+function reorder<List extends any[]>(list: List, startIndex: number, endIndex: number, newItem?: any) {
+    let result = Array.from(list);
+    if (!newItem) {
+        [newItem] = result.splice(startIndex, 1);
+    }
+    result.splice(endIndex, 0, newItem);
 
-  result = result.map((item, key) => {
-    return {
-      ...item,
-      priority: key
-    };
-  });
+    result = result.map((item, key) => {
+        return {
+            ...item,
+            priority: key
+        };
+    });
 
-  return result;
+    return result;
 };
 
-interface ListItem {
-  _id: string;
-  title: string;
+interface Table {
+    elementId: string;
+    title: string;
+    items: Item[],
+    update: (newItems: Item[], id?: string) => void
 }
 
 interface Props {
-  listItems: ListItem[];
-  updateItems: (newItems: ListItem[]) => void;
-  title: string;
+    firstTable: Table,
+    secondTable: Table
 }
 
-export class DraggableList extends React.Component<Props> {
-  constructor(props: Props) {
-    super(props);
-    this.onDragEnd = this.onDragEnd.bind(this);
-  }
+const styles = getTheme(theme => {
+    return {
+        root: {
+            flexGrow: 1,
+        }
+    }
+})
 
-  onDragEnd(propItems: ListItem[]) {
-    // dropped outside the list
-    return (result: DropResult) => {
-    if (!result.destination) {
-      return;
+
+class DraggableListUnstyled extends React.Component<Props & WithStyles<typeof styles>> {
+
+    onDragEnd({ firstTableItems, secondTableItems }: { firstTableItems: Item[], secondTableItems: Item[] }) {
+        // dropped outside the list
+        return ({ source, destination }: DropResult) => {
+            if (!destination) {
+                return;
+            }
+
+            let newFirstTableItem: Item | undefined;
+            let newSecondTableItem: Item | undefined;
+            if (source.droppableId === this.props.firstTable.elementId && destination.droppableId === this.props.secondTable.elementId) {
+                const newItem = firstTableItems[source.index];
+                newFirstTableItem = newItem;
+            }
+
+            if (source.droppableId === this.props.secondTable.elementId && destination.droppableId === this.props.firstTable.elementId) {
+                const newItem = secondTableItems[source.index];
+                newSecondTableItem = newItem;
+            }
+
+            if (destination.droppableId === this.props.firstTable.elementId) {
+                const newFirstTableItemsItems = reorder(
+                    firstTableItems,
+                    source.index,
+                    destination.index,
+                    newSecondTableItem
+                );
+
+                this.props.firstTable.update(newFirstTableItemsItems, newSecondTableItem ? newSecondTableItem._id : undefined);
+            } else if (destination.droppableId === this.props.secondTable.elementId) {
+                const newSecondTableItems = reorder(
+                    secondTableItems,
+                    source.index,
+                    destination.index,
+                    newFirstTableItem
+                );
+
+                this.props.secondTable.update(newSecondTableItems, newFirstTableItem ? newFirstTableItem._id : undefined);
+            }
+        };
     }
 
-    const items = reorder(
-      propItems,
-      result.source.index,
-      result.destination.index
-    );
-
-    this.props.updateItems(items);
-    };
-  }
-
-  render() {
-    return (
-      <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-          {this.props.title} 
-      </Typography>   
-      <DragDropContext onDragEnd={this.onDragEnd(this.props.listItems)}>
-        <Droppable droppableId="droppable">
-          {(provided, snapshot) => (
-            <div ref={provided.innerRef}>
-              <List component="nav">
-                {this.props.listItems.map((item, index) => (
-                  <Draggable key={item._id} draggableId={item._id} index={index}>
-                    {(provided, snapshot) => (
-                      <div ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}>
-                        <ListItem button>
-                          <ListItemText primary={item.title} />
-                          <ListItemText primary={item.title} />
-                        </ListItem>
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </List>
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
-      </React.Fragment>
-    );
-  }
+    render() {
+        return (
+            <React.Fragment>
+                <DragDropContext onDragEnd={this.onDragEnd({ firstTableItems: this.props.firstTable.items, secondTableItems: this.props.secondTable.items })}>
+                    <div className={this.props.classes.root}>
+                        <Grid
+                            container
+                            spacing={24}
+                        >
+                            <Grid item style={{ width: '50%' }}>
+                                <Paper style={{ margin: '5px auto' }}>
+                                    <DroppableId backlogItems={this.props.firstTable.items} elementId={this.props.firstTable.elementId} title={this.props.firstTable.title} />
+                                </Paper>
+                            </Grid>
+                            <Grid item style={{ width: '50%' }}>
+                                <Paper>
+                                    <DroppableId backlogItems={this.props.secondTable.items} elementId={this.props.secondTable.elementId} title={this.props.secondTable.title} />
+                                </Paper>
+                            </Grid>
+                        </Grid>
+                    </div>
+                </DragDropContext>
+            </React.Fragment >
+        );
+    }
 }
+
+export const DraggableList = withStyles(styles)(DraggableListUnstyled) 

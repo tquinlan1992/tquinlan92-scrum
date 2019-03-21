@@ -2,14 +2,22 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from "@headless/store";
 import { actions as loadingActions } from './redux';
-import { AppBarConnected } from '../AppBar';
 import { Routes } from '@components/Routes';
+import { StyledSidebar } from '../Sidebar/index';
+import { SidebarMenuConnected } from '@components/SidebarMenu';
+import { Router } from 'react-router';
+import { history } from '../../headless/store/middleware/router';
+import { Omit } from 'lodash';
 
 interface ComponentActions {
     loadApp: typeof loadingActions.loadApp;
 }
 
-export class Loading extends React.Component<StateProps & ComponentActions> {
+interface ComponentActionsNoThunk extends Omit<ComponentActions, 'loadApp'> {
+    loadApp: () => void;
+}
+
+export class Loading extends React.Component<StateProps & ComponentActionsNoThunk> {
     componentDidMount() {
         this.props.loadApp();
     }
@@ -18,10 +26,9 @@ export class Loading extends React.Component<StateProps & ComponentActions> {
         const loading = null;
 
         const app =
-            <React.Fragment>
-                <AppBarConnected />
-                <Routes />
-            </React.Fragment>;
+            <Router history={history}>
+                <StyledSidebar sidebar={<SidebarMenuConnected />} main={<Routes />} />
+            </Router>
         const loadingOrApp = this.props.loading ? loading : app;
         return (
             <div>
@@ -43,4 +50,4 @@ interface StateProps {
 
 const mapDispatchToProps = loadingActions;
 
-export const LoadingConnected = connect<StateProps, ComponentActions>(mapStateToProps, mapDispatchToProps)(Loading);
+export const LoadingConnected = connect(mapStateToProps, mapDispatchToProps)(Loading);

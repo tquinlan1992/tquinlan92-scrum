@@ -1,5 +1,11 @@
-import { mockShortId, getAnyJestFn } from '../../../utils/testUtils';
-mockShortId();
+import { getAnyJestFn } from '../../../utils/testUtils';
+jest.mock('shortid', () => {
+    let count = 0;
+    return () => {
+        count = count + 1;
+        return String(count);
+    }
+});
 import { StoryPointsInputComponent } from './';
 import { shallow } from 'enzyme';
 import * as React from 'react';

@@ -1,5 +1,5 @@
 import { dbMethodCreator } from './';
-import { getMemoryPouchDb } from '../../../utils/testUtils';
+import { getMemoryPouchDb } from '@src/utils/testUtils';
 import { Ticket } from '../../PouchWrapper';
 
 describe('when dbMethod is called', () => {

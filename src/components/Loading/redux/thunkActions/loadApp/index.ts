@@ -1,6 +1,6 @@
 import { AppThunkAction } from "@headless/store";
 import { setupPouch } from "@database/pouch";
-import * as urljoin from 'url-join';
+import urljoin from 'url-join';
 import { actions as loadingActions } from '@components/Loading/redux'; 
 import { fetchTickets } from '@components/TicketList/redux/thunkActions/fetchTickets';
 

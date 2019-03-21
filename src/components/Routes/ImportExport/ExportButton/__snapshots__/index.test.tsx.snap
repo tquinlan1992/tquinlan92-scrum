@@ -2,7 +2,7 @@
 
 exports[`test snapshot of component should render 1`] = `
 <WithStyles(Button)
-  onClick={[Function]}
+  onClick={[MockFunction]}
 >
    Export 
 </WithStyles(Button)>

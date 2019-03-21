@@ -3,13 +3,11 @@ import { connect } from 'react-redux';
 import { AppState } from "@headless/store";
 import { Button, Paper } from "@material-ui/core";
 import { AddTicketDialogConnected} from '../AddTicketDialog';
-import { ticketListActions } from './redux';
-import { pick } from 'lodash';
+import { ticketListActions, BacklogTicket } from './redux';
+import { pick, Omit } from 'lodash';
 import { CloseSprintDialogConnected } from '../CloseSprintDialog';
 import { TicketTable } from '@components/Table';
 import { BacklogListConnected } from './BacklogList';
-import { ConnectedExportButton } from './ExportButton';
-import { ConnectedImportTickets } from './ImportTickets';
 import { addTicketDialogActions } from '@components/AddTicketDialog/redux';
 
 const mapStateToProps = ({ ticketList, addTicket }: AppState, ownProps: any) => {
@@ -34,7 +32,16 @@ const mapActionsToProps = {
 
 type TicketListActions = typeof mapActionsToProps;
 
-export class TicketList extends React.Component<TicketListProps & TicketListActions> {
+interface ActionsNoThunk extends Omit<TicketListActions, 'onRemoveFromSprint' | 'fetchTickets' | 'closeTicket' | 'addTicketToSprint' | 'openCloseSprintDialog' | 'updatePriorities'> {
+    onRemoveFromSprint: (id: string) => void;
+    fetchTickets: () => void;
+    closeTicket: (id: string) => void;
+    addTicketToSprint: (id: string) => void;
+    openCloseSprintDialog: () => void;
+    updatePriorities: (newTickets: BacklogTicket[]) => void;
+} 
+
+export class TicketList extends React.Component<TicketListProps & ActionsNoThunk> {
 
     async componentDidMount() {
         await this.props.fetchTickets();
@@ -56,16 +63,8 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
                 <TicketTable title='Closed' tickets={this.props.closedTickets} />
                 </Paper>
 
-                <Paper style={{margin: '5px auto'}}>
-                <TicketTable title='Sprint' onClose={this.onClickClose.bind(this)} onRemoveFromSprint={this.props.onRemoveFromSprint.bind(this)} tickets={this.props.sprintTickets} />
-                <Button title='Close Sprint' onClick={() => this.props.openCloseSprintDialog()}> Close Sprint </Button>
-                </Paper>
-
                 <BacklogListConnected />
 
-                <ConnectedExportButton />
-                <ConnectedImportTickets />
-                
                 <AddTicketDialogConnected
                     open={this.props.showAddTicketDialog}
                     onRequestClose={(this.closeAddticketDialog.bind(this))}
@@ -82,4 +81,4 @@ export class TicketList extends React.Component<TicketListProps & TicketListActi
     }
 }
 
-export const TicketListConnected = connect<TicketListProps, TicketListActions>(mapStateToProps, mapActionsToProps)(TicketList);
+export const TicketListConnected = connect(mapStateToProps, mapActionsToProps)(TicketList);

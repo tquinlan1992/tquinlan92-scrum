@@ -6,6 +6,7 @@ import { openAddTicketDialog } from './openAddTicketDialog';
 import { removeFromSprint } from './removeFromSprint';
 import { openCloseSprintDialog } from './openCloseSprintDialog';
 import { updatePriorities } from './updatePriorities';
+import { updateSprintPriorities } from './updateSprintPriorites';
 
 export const ticketListThunkActions = {
     fetchTickets,
@@ -15,5 +16,6 @@ export const ticketListThunkActions = {
     openAddTicketDialog,
     removeFromSprint,
     openCloseSprintDialog,
-    updatePriorities
+    updatePriorities,
+    updateSprintPriorities
 };

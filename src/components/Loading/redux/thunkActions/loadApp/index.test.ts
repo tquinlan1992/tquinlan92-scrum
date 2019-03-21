@@ -1,5 +1,5 @@
 import { loadApp } from './';
-import * as fetchMock from 'fetch-mock';
+import fetchMock from 'fetch-mock';
 import { actions as loadingActions } from '../../../../Loading/redux'
 import { getMockStore, expectCalledOnceWith, expectActionWithPayload } from '../../../../../utils/testUtils';
 

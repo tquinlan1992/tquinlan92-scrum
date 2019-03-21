@@ -2,8 +2,33 @@
 
 exports[`test snapshot of Loading component should render the app when loading is false 1`] = `
 <div>
-  <Connect(AppBar) />
-  <Routes />
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <WithStyles(Sidebar)
+      main={<Routes />}
+      sidebar={<withRouter(Connect(SidebarMenu)) />}
+    />
+  </Router>
 </div>
 `;
 

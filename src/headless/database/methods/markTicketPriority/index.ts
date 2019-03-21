@@ -1,13 +1,10 @@
 import { TicketPouchDb } from "../../PouchWrapper";
+import { Tickets } from '@headless/database/PouchWrapper';
 
 export function markTicketPriority(db: TicketPouchDb) {
-    return async ({id, priority}: {id: string; priority?: number;}) => {
+    return async (docs: Tickets) => {
         try {
-            const ticketDoc = await db.get(id);
-            return db.put({
-                ...ticketDoc,
-                priority
-            });
+            await db.bulkDocs(docs)
         } catch (e) {
             throw new Error('error including ticket');
         }

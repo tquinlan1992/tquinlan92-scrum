@@ -1,20 +1,25 @@
-import { Ticket } from '../headless/database/PouchWrapper';
-import * as pouchDBMemoryAdapter from 'pouchdb-adapter-memory';
-import * as PouchDB from 'pouchdb-browser';
+import { Ticket, Docs } from '../headless/database/PouchWrapper';
+import pouchDBMemoryAdapter from 'pouchdb-adapter-memory';
+import PouchDB from 'pouchdb-browser';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { AnyAction, isType, ActionCreator } from 'typescript-fsa';
 import { AppState } from '../headless/store';
+import { DeepPartial } from 'ts-essentials';
 
 const pouchdbFind = require('pouchdb-find');
 PouchDB.plugin(pouchDBMemoryAdapter);
 PouchDB.plugin(pouchdbFind);
 
-export async function getMemoryPouchDb(docs?: Ticket[]) {
-    const db = new PouchDB<Ticket>('mydb', { adapter: 'memory' });
+export async function getMemoryPouchDb(docs?: Array<Docs['Code'] | Docs['Ticket']>) {
+    const db = new PouchDB<Docs['Ticket'] | Docs['Code']>('mydb', { adapter: 'memory' });
     if (docs) {
         docs.forEach(async doc => {
+            try {
             await db.put(doc);
+            } catch(e) {
+                console.log('e', e);
+            }
         })
     }
     return db;
@@ -23,18 +28,18 @@ export async function getMemoryPouchDb(docs?: Ticket[]) {
 
 
 export function mockPouchDB() {
-    jest.mock('../headless/database/pouch', () => {
+    jest.mock('@headless/database/pouch', () => {
         return {};
     });
 }
 
 export function mockPouch(dbMethods: object) {
-    jest.mock('../headless/database/pouch', () => {
+    jest.mock('@headless/database/pouch', () => {
         return {
 
         }
     })
-    const mockPouchRequire = require('../headless/database/pouch');
+    const mockPouchRequire = require('@headless/database/pouch');
     const mockGetRemoteDb = jest.fn(() => {
         return new Promise(resolve => {
             resolve(dbMethods);
@@ -48,16 +53,6 @@ export function mockPouch(dbMethods: object) {
         dbMethods
     )
     return mockPouchRequire;
-}
-
-export function mockShortId() {
-    jest.mock('shortid', () => {
-        let count = 0;
-        return () => {
-            count = count + 1;
-            return String(count);
-        }
-    })
 }
 
 export function getAnyJestFn() {
@@ -75,10 +70,10 @@ export function expectActionWithPayload(actionToTest: AnyActionPayload, expected
 
 
 const middlewares = [thunk];
-export const mockStore = configureStore(middlewares);
+export const mockStore = configureStore<Partial<AppState>, any>(middlewares);
 
-export function getMockStore(state: Partial<AppState>) {
-    return mockStore(state);
+export function getMockStore(state: DeepPartial<AppState>) {
+    return mockStore(state as AppState);
 }
 
 export function expectCalledOnceWith(mockFunction: jest.Mock<{}>, calledWith?: any) {
@@ -93,3 +88,6 @@ export function mockClearAll(mockFunctions: jest.Mock<{}>[]) {
     })
 }
 
+export function getPartialState(appState: DeepPartial<AppState>) {
+    return appState as AppState;
+}

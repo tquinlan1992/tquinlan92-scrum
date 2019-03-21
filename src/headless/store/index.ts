@@ -10,6 +10,7 @@ import { ticketListReducer } from '../../components/TicketList/redux';
 import { ThunkAction } from "redux-thunk";
 import { CloseSprintDialogState, closeSprintDialogReducer } from '@components/CloseSprintDialog/redux';
 
+
 const appReducer = combineReducers<AppState>({
     routing: routerReducer,
     addTicket: addTicketDialogReducer,

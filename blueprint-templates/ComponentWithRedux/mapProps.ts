@@ -1,4 +1,5 @@
-import { AppState } from "@headless/store";
+import { AppState } from "@src/headless/store";
+import { AppStateThunkDispatch } from "@src/utils";
 
 export const mapStateToProps = (state: AppState) => {
     return {
@@ -7,8 +8,10 @@ export const mapStateToProps = (state: AppState) => {
 
 export type Props = ReturnType<typeof mapStateToProps>;
 
-export const mapDispatchToProps = {
+export function mapDispatchToProps(dispatch: AppStateThunkDispatch) {
+    return {
 
+    }
 };
 
-export type Actions = typeof mapDispatchToProps;
+export type Actions = ReturnType<typeof mapDispatchToProps>;

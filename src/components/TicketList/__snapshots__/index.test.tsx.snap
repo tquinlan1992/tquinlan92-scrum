@@ -24,40 +24,8 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
       title="Closed"
     />
   </WithStyles(Paper)>
-  <WithStyles(Paper)
-    style={
-      Object {
-        "margin": "5px auto",
-      }
-    }
-  >
-    <TicketTable
-      onClose={[Function]}
-      onRemoveFromSprint={[Function]}
-      tickets={
-        Array [
-          Object {
-            "_id": "id1",
-            "deleted": false,
-            "description": "sprintDescription",
-            "storyPoint": 3,
-            "title": "sprintTicketTitle",
-          },
-        ]
-      }
-      title="Sprint"
-    />
-    <WithStyles(Button)
-      onClick={[Function]}
-      title="Close Sprint"
-    >
-       Close Sprint 
-    </WithStyles(Button)>
-  </WithStyles(Paper)>
   <Connect(BacklogListComponent) />
-  <Connect(ExportButton) />
-  <Connect(ImportTickets) />
-  <Connect(AddTicketDialog)
+  <Connect(WithStyles(AddTicketDialog))
     onRequestClose={[Function]}
     onSubmit={[Function]}
     open={false}
@@ -94,40 +62,8 @@ exports[`describe when the TicketList Component is given showAddTicketDialog as 
       title="Closed"
     />
   </WithStyles(Paper)>
-  <WithStyles(Paper)
-    style={
-      Object {
-        "margin": "5px auto",
-      }
-    }
-  >
-    <TicketTable
-      onClose={[Function]}
-      onRemoveFromSprint={[Function]}
-      tickets={
-        Array [
-          Object {
-            "_id": "id1",
-            "deleted": false,
-            "description": "sprintDescription",
-            "storyPoint": 3,
-            "title": "sprintTicketTitle",
-          },
-        ]
-      }
-      title="Sprint"
-    />
-    <WithStyles(Button)
-      onClick={[Function]}
-      title="Close Sprint"
-    >
-       Close Sprint 
-    </WithStyles(Button)>
-  </WithStyles(Paper)>
   <Connect(BacklogListComponent) />
-  <Connect(ExportButton) />
-  <Connect(ImportTickets) />
-  <Connect(AddTicketDialog)
+  <Connect(WithStyles(AddTicketDialog))
     onRequestClose={[Function]}
     onSubmit={[Function]}
     open={true}

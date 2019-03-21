@@ -6,6 +6,9 @@ import { AppState } from '../../headless/store';
 describe('test snapshot of Loading component', () => {
     it('should render the loading screen when loading is true', () => {
         const props = {
+            classes: {
+                appBar: 'appBar'
+            },
             loading: true,
             openAddTicketDialog: jest.fn()
         };
@@ -14,6 +17,9 @@ describe('test snapshot of Loading component', () => {
     });
     it('should render the app when loading is false', () => {
         const props = {
+            classes: {
+                appBar: 'appBar'
+            },
             loading: false,
             openAddTicketDialog: jest.fn()
         };
