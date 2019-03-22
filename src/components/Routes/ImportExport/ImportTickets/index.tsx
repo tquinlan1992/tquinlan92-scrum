@@ -36,7 +36,7 @@ export class ImportTickets extends React.Component<Props & ActionsNoThunk> {
                     onChange={this.getFile.bind(this)}
                 />
                 <label htmlFor="file-upload-button">
-                    <Button component="span" >
+                    <Button color="primary" variant="contained" component="span" >
                         Import
                     </Button>
                 </label>

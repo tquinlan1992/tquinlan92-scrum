@@ -47,20 +47,26 @@ exports[`test snapshot of component should render 1`] = `
         </WithStyles(TableCell)>
         <WithStyles(TableCell)>
           <WithStyles(Button)
+            color="primary"
             onClick={[Function]}
             title="Add To Sprint"
+            variant="contained"
           >
              Add To Sprint 
           </WithStyles(Button)>
           <WithStyles(Button)
+            color="primary"
             onClick={[Function]}
             title="Open Ticket"
+            variant="contained"
           >
              Remove From Sprint 
           </WithStyles(Button)>
           <WithStyles(Button)
+            color="primary"
             onClick={[Function]}
             title="Close Ticket"
+            variant="contained"
           >
              Close Ticket 
           </WithStyles(Button)>
@@ -87,20 +93,26 @@ exports[`test snapshot of component should render 1`] = `
         </WithStyles(TableCell)>
         <WithStyles(TableCell)>
           <WithStyles(Button)
+            color="primary"
             onClick={[Function]}
             title="Add To Sprint"
+            variant="contained"
           >
              Add To Sprint 
           </WithStyles(Button)>
           <WithStyles(Button)
+            color="primary"
             onClick={[Function]}
             title="Open Ticket"
+            variant="contained"
           >
              Remove From Sprint 
           </WithStyles(Button)>
           <WithStyles(Button)
+            color="primary"
             onClick={[Function]}
             title="Close Ticket"
+            variant="contained"
           >
              Close Ticket 
           </WithStyles(Button)>
@@ -127,20 +139,26 @@ exports[`test snapshot of component should render 1`] = `
         </WithStyles(TableCell)>
         <WithStyles(TableCell)>
           <WithStyles(Button)
+            color="primary"
             onClick={[Function]}
             title="Add To Sprint"
+            variant="contained"
           >
              Add To Sprint 
           </WithStyles(Button)>
           <WithStyles(Button)
+            color="primary"
             onClick={[Function]}
             title="Open Ticket"
+            variant="contained"
           >
              Remove From Sprint 
           </WithStyles(Button)>
           <WithStyles(Button)
+            color="primary"
             onClick={[Function]}
             title="Close Ticket"
+            variant="contained"
           >
              Close Ticket 
           </WithStyles(Button)>

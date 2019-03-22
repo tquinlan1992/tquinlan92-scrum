@@ -3,25 +3,141 @@
 exports[`test snapshot of Loading component should render the app when loading is false 1`] = `
 <WithStyles(AppBar)
   className="appBar"
+  color="secondary"
   position="fixed"
 >
-  <WithStyles(Button)
-    onClick={[Function]}
+  <WithStyles(Grid)
+    container={true}
+    style={
+      Object {
+        "height": "67px",
+      }
+    }
   >
-     Add Ticket 
-  </WithStyles(Button)>
+    <WithStyles(Grid)
+      item={true}
+      style={
+        Object {
+          "cursor": "pointer",
+          "margin": "auto",
+          "width": "10%",
+        }
+      }
+    >
+      <img
+        src="logo.png"
+        style={
+          Object {
+            "height": "55px",
+            "margin": "auto",
+          }
+        }
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      style={
+        Object {
+          "width": "80%",
+        }
+      }
+    />
+    <WithStyles(Grid)
+      item={true}
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#00D036",
+          "cursor": "pointer",
+          "height": "67px",
+          "width": "10%",
+        }
+      }
+    >
+      <WithStyles(Typography)
+        style={
+          Object {
+            "color": "white",
+            "fontSize": "17px",
+            "fontWeight": "bold",
+            "lineHeight": "47px",
+          }
+        }
+      >
+        + New Task
+      </WithStyles(Typography)>
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
 </WithStyles(AppBar)>
 `;
 
 exports[`test snapshot of Loading component should render the loading screen when loading is true 1`] = `
 <WithStyles(AppBar)
   className="appBar"
+  color="secondary"
   position="fixed"
 >
-  <WithStyles(Button)
-    onClick={[Function]}
+  <WithStyles(Grid)
+    container={true}
+    style={
+      Object {
+        "height": "67px",
+      }
+    }
   >
-     Add Ticket 
-  </WithStyles(Button)>
+    <WithStyles(Grid)
+      item={true}
+      style={
+        Object {
+          "cursor": "pointer",
+          "margin": "auto",
+          "width": "10%",
+        }
+      }
+    >
+      <img
+        src="logo.png"
+        style={
+          Object {
+            "height": "55px",
+            "margin": "auto",
+          }
+        }
+      />
+    </WithStyles(Grid)>
+    <WithStyles(Grid)
+      item={true}
+      style={
+        Object {
+          "width": "80%",
+        }
+      }
+    />
+    <WithStyles(Grid)
+      item={true}
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#00D036",
+          "cursor": "pointer",
+          "height": "67px",
+          "width": "10%",
+        }
+      }
+    >
+      <WithStyles(Typography)
+        style={
+          Object {
+            "color": "white",
+            "fontSize": "17px",
+            "fontWeight": "bold",
+            "lineHeight": "47px",
+          }
+        }
+      >
+        + New Task
+      </WithStyles(Typography)>
+    </WithStyles(Grid)>
+  </WithStyles(Grid)>
 </WithStyles(AppBar)>
 `;

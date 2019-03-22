@@ -80,10 +80,10 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
                             <StoryPointsInputConnected />
                         </FormControl>
                     </form>
-                    <Button onClick={(this.props.onRequestClose)} color="primary">
+                    <Button color="primary" variant="contained" className='raisedPrimary' onClick={(this.props.onRequestClose)}>
                         Cancel
                     </Button>
-                    <Button onClick={this.onCreate.bind(this)} color="primary">
+                    <Button color="primary" variant="contained" onClick={this.onCreate.bind(this)}>
                         Create
                     </Button>
                 </div>

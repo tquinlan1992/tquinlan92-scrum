@@ -59,9 +59,7 @@ export class TicketList extends React.Component<TicketListProps & ActionsNoThunk
         return (
             <div>
                 
-                <Paper style={{margin: '5px auto'}}>
                 <TicketTable title='Closed' tickets={this.props.closedTickets} />
-                </Paper>
 
                 <BacklogListConnected />
 

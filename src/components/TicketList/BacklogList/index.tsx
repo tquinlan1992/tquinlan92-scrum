@@ -24,7 +24,7 @@ export class BacklogListComponent extends React.Component<Props & Actions> {
         return (
             <React.Fragment>
                 <DraggableList secondTable={secondTable} firstTable={firstTable} />
-                <Button title='Add Ticket' onClick={this.props.openAddTicketDialog}> Add Ticket </Button>
+                <Button color="primary" variant="raised" title='Add Ticket' onClick={this.props.openAddTicketDialog}> Add Ticket </Button>
             </React.Fragment>
         );
     }

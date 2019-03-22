@@ -2,7 +2,9 @@
 
 exports[`test snapshot of component should render 1`] = `
 <WithStyles(Button)
+  color="primary"
   onClick={[MockFunction]}
+  variant="contained"
 >
    Export 
 </WithStyles(Button)>

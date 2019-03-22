@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { DroppableProvided, Draggable, Droppable } from 'react-beautiful-dnd';
-import { Typography, List, ListItem, ListItemText } from '@material-ui/core';
+import { Typography, List, ListItem, ListItemText, Card, CardContent, Menu, MenuItem, withStyles, WithStyles } from '@material-ui/core';
+import { getTheme } from '@src/utils';
+import './style.css';
 
 export interface Item {
     _id: string;
@@ -14,24 +16,48 @@ interface Props {
     title: string;
 }
 
-export class DroppableId extends React.Component<Props> {
+const styles = getTheme(theme => {
+    return {
+        card: {
+            root: {
+
+            }
+        }
+    }
+})
+
+class DroppableIdUnstyled extends React.Component<Props & WithStyles<typeof styles>> {
+    state = {
+        anchorEl: null,
+    }
+
+    handleClick: React.ReactEventHandler = event => {
+        this.setState({ anchorEl: event.currentTarget });
+        event.preventDefault();
+    };
+
+    handleClose = () => {
+        this.setState({ anchorEl: null });
+    };
+
     render() {
         const droppable = (provided: DroppableProvided) => {
             return (
                 <div ref={provided.innerRef}>
-                    <Typography variant="h6" gutterBottom>
-                        {this.props.title}
-                    </Typography>
-                    <List component="nav">
+                    <List component="nav" style={{ minHeight: '200px' }}>
                         {this.props.backlogItems.map((item, index) => (
                             <Draggable key={item._id} draggableId={item._id} index={index}>
-                                {(provided, snapshot) => (
+                                {provided => (
                                     <div ref={provided.innerRef}
+                                        className='noHoverOutline'
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}>
-                                        <ListItem button>
-                                            <ListItemText style={{ width: '50%' }} primary={item.title} />
-                                            <ListItemText style={{ width: '50%' }} primary={item.description} />
+                                        <ListItem onContextMenu={this.handleClick}>
+                                            <Card style={{ minWidth: '100%' }}>
+                                                <CardContent style={{ minWidth: '100%' }}>
+                                                    <ListItemText style={{ width: '50%' }} primary={item.title} />
+                                                </CardContent>
+                                            </Card>
                                         </ListItem>
                                     </div>
                                 )}
@@ -39,13 +65,29 @@ export class DroppableId extends React.Component<Props> {
                         ))}
                         {provided.placeholder}
                     </List>
+                    <Menu
+                        id="simple-menu"
+                        anchorEl={this.state.anchorEl}
+                        open={Boolean(this.state.anchorEl)}
+                        onClose={this.handleClose}
+                        style={{ left: '10px' }}
+                    >
+                        <MenuItem onClick={this.handleClose}>Close</MenuItem>
+                    </Menu>
                 </div>
             );
         }
         return (
-            <Droppable droppableId={this.props.elementId}>
-                {droppable}
-            </Droppable>
+            <React.Fragment>
+                <Typography variant="h6" gutterBottom>
+                    {this.props.title}
+                </Typography>
+                <Droppable droppableId={this.props.elementId}>
+                    {droppable}
+                </Droppable>
+            </React.Fragment>
         )
     }
 }
+
+export const DroppableId = withStyles(styles)(DroppableIdUnstyled);

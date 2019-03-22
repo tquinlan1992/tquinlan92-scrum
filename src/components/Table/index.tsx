@@ -45,9 +45,9 @@ export function TicketTable({ tickets, onClose, onAddTicketToSprint, onRemoveFro
                                 {ticket.sprint ? 'Sprint' : ''}
                             </TableCell>
                             <TableCell>
-                                {onAddTicketToSprint ? <Button title='Add To Sprint' onClick={() => onAddTicketToSprint(ticket._id)}> Add To Sprint </Button> : null}
-                                {onRemoveFromSprint ? <Button title='Open Ticket' onClick={() => onRemoveFromSprint(ticket._id)}> Remove From Sprint </Button> : null}
-                                {onClose ? <Button title='Close Ticket' onClick={() => onClose(ticket._id)}> Close Ticket </Button> : null}
+                                {onAddTicketToSprint ? <Button color="primary" variant="contained" title='Add To Sprint' onClick={() => onAddTicketToSprint(ticket._id)}> Add To Sprint </Button> : null}
+                                {onRemoveFromSprint ? <Button color="primary" variant="contained" title='Open Ticket' onClick={() => onRemoveFromSprint(ticket._id)}> Remove From Sprint </Button> : null}
+                                {onClose ? <Button color="primary" variant="contained" title='Close Ticket' onClick={() => onClose(ticket._id)}> Close Ticket </Button> : null}
                             </TableCell>
                         </TableRow>);
                     })}

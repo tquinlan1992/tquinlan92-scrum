@@ -54,14 +54,17 @@ exports[`describe when the AddTicketDialog Component is given open as false AddT
       </WithStyles(FormControl)>
     </form>
     <WithStyles(Button)
+      className="raisedPrimary"
       color="primary"
       onClick={[MockFunction]}
+      variant="contained"
     >
       Cancel
     </WithStyles(Button)>
     <WithStyles(Button)
       color="primary"
       onClick={[Function]}
+      variant="contained"
     >
       Create
     </WithStyles(Button)>
@@ -123,14 +126,17 @@ exports[`describe when the AddTicketDialog Component is given open as true AddTi
       </WithStyles(FormControl)>
     </form>
     <WithStyles(Button)
+      className="raisedPrimary"
       color="primary"
       onClick={[MockFunction]}
+      variant="contained"
     >
       Cancel
     </WithStyles(Button)>
     <WithStyles(Button)
       color="primary"
       onClick={[Function]}
+      variant="contained"
     >
       Create
     </WithStyles(Button)>

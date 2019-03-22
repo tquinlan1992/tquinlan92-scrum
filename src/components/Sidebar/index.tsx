@@ -39,16 +39,16 @@ function Sidebar(props: Props & WithStyles<typeof styles>) {
         <div className={classes.root}>
             <CssBaseline />
             <AppBarConnected />
-            <Drawer
+            {/* <Drawer
                 className={classes.drawer}
-                variant="permanent"
+            variant="permanent"
                 classes={{
                     paper: classes.drawerPaper,
                 }}
             >
                 <div className={classes.toolbar} />
                 {props.sidebar}
-            </Drawer>
+            </Drawer> */}
             <main className={classes.content}>
                 <div className={classes.toolbar} />
                 {props.main}

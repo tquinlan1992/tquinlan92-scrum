@@ -77,10 +77,10 @@ export class CloseSprintDialog extends React.Component<OwnProps & ComponentActio
                     </form>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={(this.props.onRequestClose)} color="primary">
+                    <Button color="primary" variant="contained" onClick={(this.props.onRequestClose)}>
                         Cancel
                     </Button>
-                    <Button onClick={this.onSubmit.bind(this)} color="primary">
+                    <Button color="primary" variant="contained" onClick={this.onSubmit.bind(this)}>
                         Close Sprint
                     </Button>
                 </DialogActions>

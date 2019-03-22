@@ -12,7 +12,7 @@ export class ExportButton extends React.Component<Props & ComponentActionsNoThun
 
     render() {
         return (
-            <Button onClick={this.props.exportTickets}> Export </Button>
+            <Button color="primary" variant="contained" onClick={this.props.exportTickets}> Export </Button>
         );
     }
 }

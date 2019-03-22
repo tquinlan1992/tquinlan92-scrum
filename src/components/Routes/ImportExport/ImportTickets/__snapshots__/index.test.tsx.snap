@@ -12,7 +12,9 @@ exports[`test snapshot of component should render 1`] = `
     htmlFor="file-upload-button"
   >
     <WithStyles(Button)
+      color="primary"
       component="span"
+      variant="contained"
     >
       Import
     </WithStyles(Button)>
