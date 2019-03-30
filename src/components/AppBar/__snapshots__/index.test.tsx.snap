@@ -15,6 +15,7 @@ exports[`test snapshot of Loading component should render the app when loading i
     }
   >
     <WithStyles(Grid)
+      className="center"
       item={true}
       style={
         Object {
@@ -41,8 +42,26 @@ exports[`test snapshot of Loading component should render the app when loading i
           "width": "80%",
         }
       }
-    />
+    >
+      <WithStyles(Tabs)
+        centered={true}
+        indicatorColor="primary"
+        onChange={[Function]}
+        textColor="primary"
+        value={null}
+      >
+        <WithStyles(Tab)
+          disabled={true}
+          label="Closed"
+        />
+        <WithStyles(Tab)
+          disabled={true}
+          label="Open"
+        />
+      </WithStyles(Tabs)>
+    </WithStyles(Grid)>
     <WithStyles(Grid)
+      className="center"
       item={true}
       onClick={[Function]}
       style={
@@ -86,6 +105,7 @@ exports[`test snapshot of Loading component should render the loading screen whe
     }
   >
     <WithStyles(Grid)
+      className="center"
       item={true}
       style={
         Object {
@@ -112,8 +132,26 @@ exports[`test snapshot of Loading component should render the loading screen whe
           "width": "80%",
         }
       }
-    />
+    >
+      <WithStyles(Tabs)
+        centered={true}
+        indicatorColor="primary"
+        onChange={[Function]}
+        textColor="primary"
+        value={null}
+      >
+        <WithStyles(Tab)
+          disabled={true}
+          label="Closed"
+        />
+        <WithStyles(Tab)
+          disabled={true}
+          label="Open"
+        />
+      </WithStyles(Tabs)>
+    </WithStyles(Grid)>
     <WithStyles(Grid)
+      className="center"
       item={true}
       onClick={[Function]}
       style={

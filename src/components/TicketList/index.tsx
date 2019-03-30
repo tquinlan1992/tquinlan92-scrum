@@ -59,8 +59,6 @@ export class TicketList extends React.Component<TicketListProps & ActionsNoThunk
         return (
             <div>
                 
-                <TicketTable title='Closed' tickets={this.props.closedTickets} />
-
                 <BacklogListConnected />
 
                 <AddTicketDialogConnected

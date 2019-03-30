@@ -1,4 +1,4 @@
-import { mockPouch, getMockStore, expectCalledOnceWith } from '../../../../../../../utils/testUtils';
+import { mockPouch, getMockStore, expectCalledOnceWith } from '@src/utils/testUtils';
 
 const pouch = mockPouch({
     importTickets: jest.fn()
@@ -6,7 +6,7 @@ const pouch = mockPouch({
 
 
 import { importTickets } from './';
-import { Ticket } from '../../../../../../../headless/database/PouchWrapper';
+import { Ticket } from '@src/headless/database/PouchWrapper';
 
 const store = getMockStore({});
 

@@ -11,8 +11,8 @@ const pouchdbFind = require('pouchdb-find');
 PouchDB.plugin(pouchDBMemoryAdapter);
 PouchDB.plugin(pouchdbFind);
 
-export async function getMemoryPouchDb(docs?: Array<Docs['Code'] | Docs['Ticket']>) {
-    const db = new PouchDB<Docs['Ticket'] | Docs['Code']>('mydb', { adapter: 'memory' });
+export async function getMemoryPouchDb(docs?: Array<Docs['Ticket']>) {
+    const db = new PouchDB<Docs['Ticket']>('mydb', { adapter: 'memory' });
     if (docs) {
         docs.forEach(async doc => {
             try {
@@ -71,6 +71,10 @@ export function expectActionWithPayload(actionToTest: AnyActionPayload, expected
 
 const middlewares = [thunk];
 export const mockStore = configureStore<Partial<AppState>, any>(middlewares);
+
+export function getMockState(state: DeepPartial<AppState>) {
+    return state as AppState;
+}
 
 export function getMockStore(state: DeepPartial<AppState>) {
     return mockStore(state as AppState);

@@ -3,6 +3,7 @@ import { setupPouch } from "@database/pouch";
 import urljoin from 'url-join';
 import { actions as loadingActions } from '@components/Loading/redux'; 
 import { fetchTickets } from '@components/TicketList/redux/thunkActions/fetchTickets';
+const parseDomain = require('parse-domain');
 
 interface APIConfig {
     cloudant: string;
@@ -14,7 +15,7 @@ export function loadApp(subdomainToUse?: string): AppThunkAction {
             const response = await fetch('/static/api.json');
             const jsonResponse = await response.json();
             const apiConfig = jsonResponse as APIConfig;
-            const subdomain = window.location.hostname.split('.')[0];
+            const { subdomain } = parseDomain(window.location.hostname);
             const remoteUrl = urljoin(apiConfig.cloudant, `/${subdomainToUse || subdomain}`);
             const onChanges = async () => {
                 await dispatch(fetchTickets());

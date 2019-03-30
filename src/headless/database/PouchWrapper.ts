@@ -6,12 +6,6 @@ export enum DocTypes {
     code
 }
 
-export interface Code {
-    _id: string;
-    code: string;
-    type: DocTypes.code
-}
-
 export interface Ticket {
     title: string;
     storyPoint: null | number;
@@ -27,13 +21,12 @@ export interface Ticket {
 }
 
 export interface Docs {
-    Code: Code;
     Ticket: Ticket;
 }
 
 export type Tickets = Ticket[];
 
-export type TicketPouchDb = PouchDB.Database<Ticket | Code>;
+export type TicketPouchDb = PouchDB.Database<Ticket>;
 
 class PouchWrapper {
 

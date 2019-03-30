@@ -7,6 +7,7 @@ import { removeFromSprint } from './removeFromSprint';
 import { openCloseSprintDialog } from './openCloseSprintDialog';
 import { updatePriorities } from './updatePriorities';
 import { updateSprintPriorities } from './updateSprintPriorites';
+import { openEditTask } from './openEditTicket/openEditTicket';
 
 export const ticketListThunkActions = {
     fetchTickets,
@@ -17,5 +18,6 @@ export const ticketListThunkActions = {
     removeFromSprint,
     openCloseSprintDialog,
     updatePriorities,
-    updateSprintPriorities
+    updateSprintPriorities,
+    openEditTask
 };

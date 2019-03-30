@@ -17,7 +17,9 @@ export const mapDispatchToProps = (dispatch: AppStateThunkDispatch) => ({
     openAddTicketDialog: () => dispatch(ticketListActions.openAddTicketDialog()),
     updatePriorities: (newItems: Item[], id?: string) => dispatch(ticketListActions.updatePriorities(newItems as BacklogTicket[], id)),
     addToSprint: (id: string) => dispatch(ticketListActions.addTicketToSprint(id)),
-    updateSprintPriorities: (sprintTickets: Item[], id?: string) => dispatch(ticketListActions.updateSprintPriorities(sprintTickets as SprintTicket[], id))
+    updateSprintPriorities: (sprintTickets: Item[], id?: string) => dispatch(ticketListActions.updateSprintPriorities(sprintTickets as SprintTicket[], id)),
+    closeTicket: (id: string) => dispatch(ticketListActions.closeTicket(id)),
+    openEditTicket: (id: string) => dispatch(ticketListActions.openEditTask(id))
 });
 
 export type Actions = ReturnType<typeof mapDispatchToProps>;

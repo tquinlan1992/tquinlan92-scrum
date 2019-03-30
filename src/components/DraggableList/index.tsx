@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import { BacklogTicket, SprintTicket } from '@components/TicketList/redux';
-import { DroppableId, Item } from './DroppableId';
+import { DroppableId, Item, MenuItems } from './DroppableId';
 import { Grid, Paper, withStyles, WithStyles } from '@material-ui/core';
 import { getTheme } from '@src/utils';
 import { remove } from 'lodash';
@@ -32,7 +32,8 @@ interface Table {
 
 interface Props {
     firstTable: Table,
-    secondTable: Table
+    secondTable: Table,
+    menuItems: MenuItems;
 }
 
 const styles = getTheme(theme => {
@@ -46,12 +47,18 @@ const styles = getTheme(theme => {
     }
 })
 
-
 class DraggableListUnstyled extends React.Component<Props & WithStyles<typeof styles>> {
 
     state = {
         firstTable: this.props.firstTable.items,
         secondTable: this.props.secondTable.items
+    }
+
+    componentWillReceiveProps(newProps: Props) {
+        this.setState({
+            firstTable: newProps.firstTable.items,
+            secondTable: newProps.secondTable.items
+        });
     }
 
     onDragEnd({ firstTableItems, secondTableItems }: { firstTableItems: Item[], secondTableItems: Item[] }) {
@@ -127,10 +134,10 @@ class DraggableListUnstyled extends React.Component<Props & WithStyles<typeof st
                             spacing={24}
                         >
                             <Grid item style={{ width: '50%' }}>
-                                <DroppableId backlogItems={this.state.firstTable} elementId={this.props.firstTable.elementId} title={this.props.firstTable.title} />
+                                <DroppableId menuItems={this.props.menuItems} backlogItems={this.state.firstTable} elementId={this.props.firstTable.elementId} title={this.props.firstTable.title} />
                             </Grid>
                             <Grid item style={{ width: '50%' }}>
-                                <DroppableId backlogItems={this.state.secondTable} elementId={this.props.secondTable.elementId} title={this.props.secondTable.title} />
+                                <DroppableId menuItems={this.props.menuItems} backlogItems={this.state.secondTable} elementId={this.props.secondTable.elementId} title={this.props.secondTable.title} />
                             </Grid>
                         </Grid>
                     </div>

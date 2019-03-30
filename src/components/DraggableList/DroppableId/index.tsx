@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DroppableProvided, Draggable, Droppable } from 'react-beautiful-dnd';
-import { Typography, List, ListItem, ListItemText, Card, CardContent, Menu, MenuItem, withStyles, WithStyles } from '@material-ui/core';
+import { Typography, List, ListItem, ListItemText, Card, CardContent, Menu, MenuItem, withStyles, WithStyles, ListItemSecondaryAction, IconButton } from '@material-ui/core';
 import { getTheme } from '@src/utils';
 import './style.css';
 
@@ -8,12 +8,21 @@ export interface Item {
     _id: string;
     title: string;
     description?: string;
+    storyPoint: number | null;
 }
+
+interface MenuItem {
+    label: string;
+    onClick: (id: string) => void;
+}
+
+export type MenuItems = MenuItem[];
 
 interface Props {
     backlogItems: Item[];
     elementId: string;
     title: string;
+    menuItems: MenuItems;
 }
 
 const styles = getTheme(theme => {
@@ -22,6 +31,10 @@ const styles = getTheme(theme => {
             root: {
 
             }
+        },
+        listItem: {
+            padding: '1px',
+            borderRadius: '0px'
         }
     }
 })
@@ -31,13 +44,26 @@ class DroppableIdUnstyled extends React.Component<Props & WithStyles<typeof styl
         anchorEl: null,
     }
 
-    handleClick: React.ReactEventHandler = event => {
-        this.setState({ anchorEl: event.currentTarget });
-        event.preventDefault();
+    itemMenuId: string = '';
+
+    handleOpenItemMenu = (id: string): React.ReactEventHandler => {
+        return event => {
+            this.itemMenuId = id;
+            this.setState({ anchorEl: event.currentTarget });
+            event.preventDefault();
+        };
     };
 
-    handleClose = () => {
+    handleClose() {
+        this.itemMenuId = '';
         this.setState({ anchorEl: null });
+    }
+
+    handleMenuClick(method: MenuItem['onClick']) {
+        return () => {
+            method(this.itemMenuId);
+            this.handleClose();
+        }
     };
 
     render() {
@@ -49,13 +75,16 @@ class DroppableIdUnstyled extends React.Component<Props & WithStyles<typeof styl
                             <Draggable key={item._id} draggableId={item._id} index={index}>
                                 {provided => (
                                     <div ref={provided.innerRef}
-                                        className='noHoverOutline'
+                                        className='draggableItem'
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}>
-                                        <ListItem onContextMenu={this.handleClick}>
+                                        <ListItem onClick={() => alert(item._id)} onContextMenu={this.handleOpenItemMenu(item._id)} className={this.props.classes.listItem}>
                                             <Card style={{ minWidth: '100%' }}>
                                                 <CardContent style={{ minWidth: '100%' }}>
                                                     <ListItemText style={{ width: '50%' }} primary={item.title} />
+                                                    <ListItemSecondaryAction>
+                                                        {item.storyPoint}
+                                                    </ListItemSecondaryAction>
                                                 </CardContent>
                                             </Card>
                                         </ListItem>
@@ -68,11 +97,13 @@ class DroppableIdUnstyled extends React.Component<Props & WithStyles<typeof styl
                     <Menu
                         id="simple-menu"
                         anchorEl={this.state.anchorEl}
-                        open={Boolean(this.state.anchorEl)}
-                        onClose={this.handleClose}
+                        open={!!this.state.anchorEl}
+                        onClose={this.handleClose.bind(this)}
                         style={{ left: '10px' }}
                     >
-                        <MenuItem onClick={this.handleClose}>Close</MenuItem>
+                        {this.props.menuItems.map(menuItem => {
+                            return <MenuItem onClick={this.handleMenuClick(menuItem.onClick)}>{menuItem.label}</MenuItem>
+                        })}
                     </Menu>
                 </div>
             );
