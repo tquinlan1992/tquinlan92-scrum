@@ -21,10 +21,20 @@ export class BacklogListComponent extends React.Component<Props & Actions> {
             items: sprintTickets,
             update: updateSprintPriorities
         }
+        const menuItems = [
+            {
+                onClick: this.props.openEditTicket,
+                label: 'Edit'
+            },
+            {
+                onClick: this.props.closeTicket,
+                label: 'Close'
+            }
+        ]
         return (
             <React.Fragment>
-                <DraggableList secondTable={secondTable} firstTable={firstTable} />
-                <Button title='Add Ticket' onClick={this.props.openAddTicketDialog}> Add Ticket </Button>
+                <DraggableList menuItems={menuItems} secondTable={secondTable} firstTable={firstTable} />
+                <Button color="primary" variant="raised" title='Add Ticket' onClick={this.props.openAddTicketDialog}> Add Ticket </Button>
             </React.Fragment>
         );
     }

@@ -5,6 +5,7 @@ exports[`test snapshot of component should render 1`] = `
   classes={
     Object {
       "root": "DraggableListUnstyled-root-1",
+      "tablePaper": "DraggableListUnstyled-tablePaper-2",
     }
   }
   firstTable={

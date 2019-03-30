@@ -6,7 +6,3 @@ configure({ adapter: new Adapter() });
 jest.mock('@headless/database/pouch', () => {
     return {};
 })
-
-jest.mock('react-monaco-editor', () => {
-    return {};
-})

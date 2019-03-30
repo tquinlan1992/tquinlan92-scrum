@@ -5,6 +5,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import { Theme } from '@material-ui/core';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { history } from '@src/headless/store/middleware/router';
 
 type PropsMap<M, K extends keyof M> = {[P in K]: M[P]};
 
@@ -23,4 +24,8 @@ type GetThemeCallback<C extends string> = (theme: Theme) => CreateStylesReturnTh
 
 export function getTheme<C extends string>(getThemeCallback: GetThemeCallback<C>) {
     return (theme: Theme) => getThemeCallback(theme);
+}
+
+export function navigateTo(path: string) {
+    history.push(path)
 }

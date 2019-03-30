@@ -8,18 +8,6 @@ const pouch = mockPouch({ addTicket: mockAddTicket });
 
 import { addTicket } from './';
 
-
-jest.mock('../../../../TicketList/redux', () => {
-    return {
-        ticketListActions: {
-            fetchTickets: jest.fn(() => {
-                return () => { }
-            })
-        }
-    }
-})
-const ticketListActions = require('../../../../TicketList/redux');
-
 const store = getMockStore({
     addTicket: {
         storyPoint: 3,
@@ -39,7 +27,6 @@ describe('when thunkActions is called', () => {
             description: 'description',
             title: 'title'
         });
-        expectCalledOnceWith(ticketListActions.ticketListActions.fetchTickets)
 
     })
 })

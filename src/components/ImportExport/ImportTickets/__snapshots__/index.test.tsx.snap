@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test snapshot of component should render 1`] = `
+<Fragment>
+  <input
+    hidden={true}
+    id="file-upload-button"
+    onChange={[Function]}
+    type="file"
+  />
+  <label
+    htmlFor="file-upload-button"
+  >
+    <WithStyles(Button)
+      color="primary"
+      component="span"
+      variant="contained"
+    >
+      Import
+    </WithStyles(Button)>
+  </label>
+</Fragment>
+`;

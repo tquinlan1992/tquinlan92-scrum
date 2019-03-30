@@ -9,9 +9,8 @@ import { removeFromSprint } from "./removeFromSprint";
 import { closeTicketsWithSprintID } from "./closeTicketsWithSprintId";
 import { importTickets } from './importTickets';
 import { deleteAllTickets } from './deleteAllTickets';
-import { saveCode } from "./saveCode";
-import { getCode } from './getCode';
-import { getCodes } from "./getCodes";
+import { getTicketById } from "./getTicketById/getTicketById";
+import { editTask } from "./editTask";
 
 export const methods = {
     updateDoc, 
@@ -25,9 +24,8 @@ export const methods = {
     closeTicketsWithSprintID,
     importTickets,
     deleteAllTickets,
-    saveCode,
-    getCode,
-    getCodes
+    getTicketById,
+    editTask
 } 
 
 export type MethodsReturnTypes = { [P in keyof typeof methods]: ReturnType<typeof methods[P]> };
