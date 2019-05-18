@@ -1,4 +1,4 @@
-import { AppState } from "@headless/store";
+import { AppState } from "@headless/store/types";
 import { RouteComponentProps } from "react-router";
 import { get } from "lodash";
 

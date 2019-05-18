@@ -1,10 +1,9 @@
-import { AppThunkAction } from "@headless/store";
-import { ticketListActions } from '../../';
-import { closeSprintDialogActions } from '@components/CloseSprintDialog/redux';
+import { AppThunkAction } from "@headless/store/types";
+import { storeActions } from "@headless/store";
 
 export function openCloseSprintDialog(): AppThunkAction {
     return function (dispatch, getState) {
-        dispatch(ticketListActions.set({showCloseSprintDialog: true}));
-        dispatch(closeSprintDialogActions.reset(null));
+        dispatch(storeActions.ticketList.set({showCloseSprintDialog: true}));
+        dispatch(storeActions.closeSprintDialog.reset(null));
     };
 }

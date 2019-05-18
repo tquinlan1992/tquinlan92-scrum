@@ -1,15 +1,7 @@
-import { makeSimpleReducer } from 'tquinlan92-typescript-redux-utils';
-import { thunkActions } from './thunkActions';
+import { thunkActions as addTicketThunkActions } from './thunkActions';
+import { AddTicketState } from '@headless/store/types';
 
-export interface AddTicketState {
-    storyPoint: null | number;
-    description: string;
-    title: string;
-    open: boolean;
-    editId: string;
-}
-
-const initialState: AddTicketState  = {
+export const addTicketInitialState: AddTicketState = {
     storyPoint: null,
     description: '',
     title: '',
@@ -17,11 +9,4 @@ const initialState: AddTicketState  = {
     editId: ''
 };
 
-const { actions: simpleActions, reducer } = makeSimpleReducer<AddTicketState>('AddTicketDialog', initialState);
-
-export const addTicketDialogActions = {
-    ...simpleActions,
-    ...thunkActions
-};
-
-export { reducer as addTicketDialogReducer };
+export { addTicketThunkActions };

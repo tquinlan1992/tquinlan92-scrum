@@ -1,11 +1,11 @@
-import { AppThunkAction } from "@headless/store";
+import { AppThunkAction, SprintTicket } from "@headless/store/types";
 import { getRemoteDb } from "@headless/database/pouch";
-import { ticketListActions, SprintTicket } from '../../';
+import { storeActions } from "@headless/store";
 
 export function updateSprintPriorities(newTickets: SprintTicket[], newTicketToAddToSprintId?: string): AppThunkAction {
     return async function (dispatch) {
         try {
-            dispatch(ticketListActions.set({sprintTickets: newTickets}));
+            dispatch(storeActions.ticketList.set({sprintTickets: newTickets}));
             let newTicketsWithSprintTicket = newTickets;
             if (newTicketToAddToSprintId) {
                 newTicketsWithSprintTicket = newTickets.map(newTicket => {

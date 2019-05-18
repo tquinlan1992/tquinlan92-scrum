@@ -1,14 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { AppState } from "@headless/store";
-import { Button, Paper } from "@material-ui/core";
+import { AppState, BacklogTicket } from "@headless/store/types";
 import { AddTicketDialogConnected} from '../AddTicketDialog';
-import { ticketListActions, BacklogTicket } from './redux';
 import { pick, Omit } from 'lodash';
 import { CloseSprintDialogConnected } from '../CloseSprintDialog';
-import { TicketTable } from '@components/Table';
 import { BacklogListConnected } from './BacklogList';
-import { addTicketDialogActions } from '@components/AddTicketDialog/redux';
+import { storeActions } from '@headless/store';
 
 const mapStateToProps = ({ ticketList, addTicket }: AppState, ownProps: any) => {
     const { showCloseSprintDialog } = ticketList;
@@ -22,12 +19,12 @@ const mapStateToProps = ({ ticketList, addTicket }: AppState, ownProps: any) => 
 type TicketListProps = ReturnType<typeof mapStateToProps>;
 
 const mapActionsToProps = {
-    ...pick(ticketListActions, 'fetchTickets', 'closeTicket', 'addTicketToSprint'),
-    setTicketListState: ticketListActions.set,
-    setAddTicketDialogState: addTicketDialogActions.set,
-    onRemoveFromSprint: ticketListActions.removeFromSprint,
-    openCloseSprintDialog: ticketListActions.openCloseSprintDialog,
-    updatePriorities: ticketListActions.updatePriorities
+    ...pick(storeActions.ticketList, 'fetchTickets', 'closeTicket', 'addTicketToSprint'),
+    setTicketListState: storeActions.ticketList.set,
+    setAddTicketDialogState: storeActions.addTicket.set,
+    onRemoveFromSprint: storeActions.ticketList.removeFromSprint,
+    openCloseSprintDialog: storeActions.ticketList.openCloseSprintDialog,
+    updatePriorities: storeActions.ticketList.updatePriorities
 };
 
 type TicketListActions = typeof mapActionsToProps;

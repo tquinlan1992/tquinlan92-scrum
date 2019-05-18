@@ -1,4 +1,4 @@
-import { AppState } from "@src/headless/store";
+import { AppState } from "@src/headless/store/types";
 import { AppStateThunkDispatch } from "@src/utils";
 
 export const mapStateToProps = (state: AppState) => {

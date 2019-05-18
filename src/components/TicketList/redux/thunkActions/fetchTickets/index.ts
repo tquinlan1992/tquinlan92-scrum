@@ -1,9 +1,9 @@
 import { ThunkAction } from "redux-thunk";
-import { AppState } from "@headless/store";
-import { ticketListActions, SprintTicket, BacklogTicket, ClosedTicket } from "../..";
+import { AppState, BacklogTicket, SprintTicket, ClosedTicket } from "@headless/store/types";
 import { AnyAction } from "redux";
 import { getRemoteDb } from "@headless/database/pouch";
 import { sortBy } from "lodash";
+import { storeActions } from "@headless/store";
 
 export function fetchTickets(): ThunkAction<void, AppState, void, AnyAction> {
     return async function (dispatch) {
@@ -27,7 +27,7 @@ export function fetchTickets(): ThunkAction<void, AppState, void, AnyAction> {
                 return !ticket.sprint && ticket.closed;
             }) as ClosedTicket[];
 
-            dispatch(ticketListActions.set({
+            dispatch(storeActions.ticketList.set({
                 backlogTickets: sortedBacklogTicketsByPriority,
                 sprintTickets: sortedSprintTicketsByPriority,
                 closedTickets

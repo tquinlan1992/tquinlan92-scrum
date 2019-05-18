@@ -1,5 +1,5 @@
 import { ThunkAction } from "redux-thunk";
-import { AppState } from "@headless/store";
+import { AppState } from "@headless/store/types";
 import { AnyAction } from "redux";
 import { getRemoteDb } from "@headless/database/pouch";
 

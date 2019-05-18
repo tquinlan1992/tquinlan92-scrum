@@ -1,4 +1,4 @@
-import { AppThunkAction } from "@headless/store";
+import { AppThunkAction } from "@headless/store/types";
 import { getRemoteDb } from "@headless/database/pouch";
 import exportFromJSON from 'export-from-json';
 

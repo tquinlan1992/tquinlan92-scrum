@@ -1,5 +1,5 @@
-import { AppState } from "@headless/store";
-import { addTicketDialogActions } from '../redux';
+import { AppState } from "@headless/store/types";
+import { storeActions } from "@headless/store";
 
 export function mapStateToProps({ addTicket }: AppState) {
     return {
@@ -10,7 +10,7 @@ export function mapStateToProps({ addTicket }: AppState) {
 export type Props = ReturnType<typeof mapStateToProps>;
 
 export const mapDispatchToProps = {
-    setAddTicketState: addTicketDialogActions.set
+    setAddTicketState: storeActions.addTicket.set
 };
 
 export type Actions = typeof mapDispatchToProps;

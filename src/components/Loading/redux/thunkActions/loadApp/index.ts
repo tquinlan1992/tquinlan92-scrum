@@ -1,8 +1,8 @@
-import { AppThunkAction } from "@headless/store";
+import { AppThunkAction } from "@headless/store/types";
 import { setupPouch } from "@database/pouch";
 import urljoin from 'url-join';
-import { actions as loadingActions } from '@components/Loading/redux'; 
 import { fetchTickets } from '@components/TicketList/redux/thunkActions/fetchTickets';
+import { storeActions } from "@headless/store";
 const parseDomain = require('parse-domain');
 
 interface APIConfig {
@@ -22,7 +22,7 @@ export function loadApp(subdomainToUse?: string): AppThunkAction {
             };
             await setupPouch({remoteUrl, onChanges});
             await dispatch(fetchTickets());
-            dispatch(loadingActions.set({value: false}));
+            dispatch(storeActions.loading.set({value: false}));
         } catch(e) {
             console.log('error loading app', e);
         }

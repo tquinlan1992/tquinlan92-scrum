@@ -1,11 +1,11 @@
 import { ThunkAction } from "redux-thunk";
-import { AppState } from "@headless/store";
+import { AppState } from "@headless/store/types";
 import { AnyAction } from "redux";
-import { addTicketDialogActions } from '@components/AddTicketDialog/redux';
+import { storeActions } from "@headless/store";
 
 export function openAddTicketDialog(): ThunkAction<void, AppState, void, AnyAction> {
     return function (dispatch) {
-        dispatch(addTicketDialogActions.reset(null));
-        dispatch(addTicketDialogActions.set({ open: true }));
+        dispatch(storeActions.addTicket.reset(null));
+        dispatch(storeActions.addTicket.set({ open: true }));
     };
 }

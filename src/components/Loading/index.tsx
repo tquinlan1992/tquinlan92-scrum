@@ -1,23 +1,19 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { AppState } from "@headless/store";
-import { actions as loadingActions } from './redux';
+import { connect, ResolveThunks } from 'react-redux';
+import { AppState } from "@headless/store/types";
 import { Routes } from '@components/Routes';
 import { StyledSidebar } from '../Sidebar/index';
 import { SidebarMenuConnected } from '@components/SidebarMenu';
 import { Router } from 'react-router';
 import { history } from '../../headless/store/middleware/router';
 import { Omit } from 'lodash';
+import { storeActions } from '@headless/store';
 
 interface ComponentActions {
-    loadApp: typeof loadingActions.loadApp;
+    loadApp: typeof storeActions.loading.loadApp;
 }
 
-interface ComponentActionsNoThunk extends Omit<ComponentActions, 'loadApp'> {
-    loadApp: () => void;
-}
-
-export class Loading extends React.Component<StateProps & ComponentActionsNoThunk> {
+export class Loading extends React.Component<StateProps & ResolveThunks<ComponentActions>> {
     componentDidMount() {
         this.props.loadApp();
     }
@@ -48,6 +44,6 @@ interface StateProps {
     loading: boolean;
 }
 
-const mapDispatchToProps = loadingActions;
+const mapDispatchToProps = storeActions.loading;
 
 export const LoadingConnected = connect(mapStateToProps, mapDispatchToProps)(Loading);
