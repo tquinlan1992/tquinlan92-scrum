@@ -1,19 +1,13 @@
 import  { loadingThunkActions } from './thunkActions';
-import { makeSimpleReducer } from 'tquinlan92-typescript-redux-utils';
+import { storeActions } from '../../../headless/store/index';
+import { LoadingState } from '@headless/store/types';
 
-export type LoadingState = {
-    value: boolean
-};
-
-const initialState = {
+export const loadingInitialState: LoadingState = {
     value: true
 };
 
-const { actions: simpleActions, reducer } = makeSimpleReducer<LoadingState>('Loading', initialState);
+export const redux = {
+    initialState: loadingInitialState
+}
 
-export const actions = {
-    ...simpleActions,
-    ...loadingThunkActions
-};
-
-export { reducer as loadingReducer };
+export { loadingThunkActions };

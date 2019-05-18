@@ -1,4 +1,4 @@
-import { AppThunkAction } from "@headless/store";
+import { AppThunkAction } from "@headless/store/types";
 import { Tickets } from "@headless/database/PouchWrapper";
 import { getRemoteDb } from "@headless/database/pouch";
 

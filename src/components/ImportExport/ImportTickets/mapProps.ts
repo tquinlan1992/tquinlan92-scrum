@@ -1,4 +1,4 @@
-import { AppState } from "@headless/store";
+import { AppState } from "@headless/store/types";
 import { importTickets } from './redux/thunkActions/importTickets';
 
 export const mapStateToProps = (state: AppState) => {

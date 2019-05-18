@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { connect, Omit } from 'react-redux';
-import { AppState } from "@headless/store";
+import { AppState } from "@headless/store/types";
 import { AppBar as MaterialUiAppBar, Button, Theme, WithStyles, withStyles, Grid, Typography, Tabs, Tab } from '@material-ui/core';
-import { ticketListActions } from '@components/TicketList/redux';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
 import logo from './logo.png';
 import { navigateTo } from '@src/utils';
 import { paths } from '@components/Routes/paths';
 import { withRouter, RouteComponentProps } from "react-router";
 import { isNil } from 'lodash';
+import { storeActions } from '@headless/store';
 
 
 type CreateStylesReturnTheme<C extends string> = Record<C, CSSProperties>;
@@ -110,7 +110,7 @@ export function mapStateToProps({ loading }: AppState) {
 };
 
 const mapDispatchToProps = {
-    openAddTicketDialog: ticketListActions.openAddTicketDialog
+    openAddTicketDialog: storeActions.ticketList.openAddTicketDialog
 };
 
 type ComponentActions = typeof mapDispatchToProps;

@@ -1,4 +1,4 @@
-import { AppState } from "@headless/store";
+import { AppState } from "@headless/store/types";
 
 export const mapStateToProps = (state: AppState) => {
     return {

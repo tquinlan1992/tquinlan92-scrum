@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, FormControl } from "@material-ui/core";
 import { connect } from 'react-redux';
-import { AppState } from "@headless/store";
-import { closeSprintDialogActions } from './redux';
+import { AppState } from "@headless/store/types";
 import { Omit } from 'lodash';
+import { storeActions } from '@headless/store';
 
 interface OwnProps {
     onRequestClose: () => void;
@@ -23,10 +23,10 @@ export const mapStateToProps = ({ closeSprintDialog }: AppState, ownProps: OwnPr
 };
 
 const mapDispatchToProps = {
-    closeSprint: closeSprintDialogActions.closeSprint,
-    setCloseSprintDialogState: closeSprintDialogActions.set,
-    setAddTicketState: closeSprintDialogActions.set,
-    reset: closeSprintDialogActions.reset
+    closeSprint: storeActions.closeSprintDialog.closeSprint,
+    setCloseSprintDialogState: storeActions.closeSprintDialog.set,
+    setAddTicketState: storeActions.closeSprintDialog.set,
+    reset: storeActions.closeSprintDialog.reset
 };
 
 type ComponentActions = typeof mapDispatchToProps;

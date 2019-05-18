@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
-import { BacklogTicket, SprintTicket } from '@components/TicketList/redux';
 import { DroppableId, Item, MenuItems } from './DroppableId';
 import { Grid, Paper, withStyles, WithStyles } from '@material-ui/core';
 import { getTheme } from '@src/utils';

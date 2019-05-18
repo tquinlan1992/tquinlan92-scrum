@@ -1,10 +1,10 @@
-import { Ticket, Docs } from '../headless/database/PouchWrapper';
+import { Docs } from '../headless/database/PouchWrapper';
 import pouchDBMemoryAdapter from 'pouchdb-adapter-memory';
 import PouchDB from 'pouchdb-browser';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { AnyAction, isType, ActionCreator } from 'typescript-fsa';
-import { AppState } from '../headless/store';
+import { AppState } from '../headless/store/types';
 import { DeepPartial } from 'ts-essentials';
 
 const pouchdbFind = require('pouchdb-find');

@@ -1,6 +1,5 @@
 import * as _ from 'lodash';
-import { connect, MapStateToPropsParam, MergeProps } from 'react-redux';
-import { AppState } from '@headless/store';
+import { AppState } from '@headless/store/types';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import { Theme } from '@material-ui/core';

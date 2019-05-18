@@ -1,19 +1,12 @@
-import { makeSimpleReducer } from 'tquinlan92-typescript-redux-utils';
 import { closeSprintDialogThunkActions } from './thunkActions';
+import { CloseSprintDialogState } from '@headless/store/types';
 
-export interface CloseSprintDialogState {
-    sprintName: string;
-}
-
-const initialState = {
+export const closeSprintDialogStateInitialState: CloseSprintDialogState = {
     sprintName: ''
 };
 
-const { actions: simpleActions, reducer } = makeSimpleReducer<CloseSprintDialogState>('AddTicketDialog', initialState);
+export const redux = {
+    initialState: closeSprintDialogStateInitialState
+}
 
-export const closeSprintDialogActions = {
-    ...simpleActions,
-    ...closeSprintDialogThunkActions
-};
-
-export {reducer as closeSprintDialogReducer };
+export { closeSprintDialogThunkActions };
