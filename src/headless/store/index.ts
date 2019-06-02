@@ -1,13 +1,11 @@
-import { createStore, applyMiddleware, AnyAction, Store, combineReducers } from "redux";
 import { middleware } from './middleware';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { routerReducer } from "react-router-redux";
-import { AppState } from "./types";
-import { makeNestedSimpleStore } from "tquinlan92-typescript-redux-utils";
+import { makeNestedStore } from "tquinlan92-typescript-redux-utils";
 import { ticketListStateInitialState, ticketListThunkActions } from "@components/TicketList/redux";
-import { addTicketInitialState, addTicketThunkActions } from "@components/AddTicketDialog/redux";
+import { addTicketInitialState, addTicketThunkActions } from "@containers/AddTicketDialog/redux";
 import { loadingInitialState, loadingThunkActions } from "@components/Loading/redux";
 import { closeSprintDialogStateInitialState, closeSprintDialogThunkActions } from "@components/CloseSprintDialog/redux";
+import { merge } from 'lodash';
+
 
 const initialStates = {
     addTicket: addTicketInitialState,
@@ -24,13 +22,9 @@ const thunkActions = {
 }
 
 
-export const { actions: storeActions, reducers } = makeNestedSimpleStore(initialStates, thunkActions);
+export const { actions, reducers, store } = makeNestedStore(initialStates, middleware);
 
-
-const appReducer = combineReducers<AppState>({
-    routing: routerReducer,
-    ...reducers
-});
+export const storeActions = merge(actions, thunkActions);
 
 declare module 'redux' {
     export type GenericStoreEnhancer = any;
@@ -43,7 +37,3 @@ export interface Doc {
 export interface VoiceToCode {
     text: string;
 }
-
-const reduxStore: Store<AppState, AnyAction> = createStore<AppState, AnyAction, void, void>(appReducer, {}, composeWithDevTools<any, {}>(applyMiddleware(...middleware)));
-
-export { reduxStore };

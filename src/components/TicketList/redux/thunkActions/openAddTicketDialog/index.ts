@@ -5,7 +5,7 @@ import { storeActions } from "@headless/store";
 
 export function openAddTicketDialog(): ThunkAction<void, AppState, void, AnyAction> {
     return function (dispatch) {
-        dispatch(storeActions.addTicket.reset(null));
+        dispatch(storeActions.addTicket.resetAll());
         dispatch(storeActions.addTicket.set({ open: true }));
     };
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dialog, TextField, DialogTitle, DialogContent, DialogActions, Button, FormControl } from "@material-ui/core";
-import { connect } from 'react-redux';
+import { connect, ResolveThunks } from 'react-redux';
 import { AppState } from "@headless/store/types";
 import { Omit } from 'lodash';
 import { storeActions } from '@headless/store';
@@ -31,11 +31,7 @@ const mapDispatchToProps = {
 
 type ComponentActions = typeof mapDispatchToProps;
 
-interface ComponentActionsNoThunk extends Omit<ComponentActions, 'closeSprint'> {
-    closeSprint: () => void;
-}
-
-export class CloseSprintDialog extends React.Component<OwnProps & ComponentActionsNoThunk & StateProps> {
+export class CloseSprintDialog extends React.Component<OwnProps & ResolveThunks<ComponentActions> & StateProps> {
 
     onSprintNameChange(event: React.ChangeEvent<HTMLSelectElement>) {
         this.props.setCloseSprintDialogState({ sprintName: event.target.value });

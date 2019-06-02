@@ -1,4 +1,4 @@
-import { reduxStore } from '../headless';
+import { store } from '../headless';
 import { loadingThunkActions } from '../components/Loading/redux/thunkActions/index';
 import { Dispatch } from 'redux';
 import ReactDOM from 'react-dom';
@@ -8,8 +8,8 @@ import { describe, it } from 'mocha';
 import { expect } from 'chai';
 import { Button } from '@material-ui/core';
 
-const getState = reduxStore.getState;
-const dispatch: Dispatch<any> = reduxStore.dispatch;
+const getState = store.getState;
+const dispatch: Dispatch<any> = store.dispatch;
 
 function MochaCode() {
     return (

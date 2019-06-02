@@ -79,7 +79,7 @@
     "superagent": "^4.0.0",
     "testcafe": "^0.23.3",
     "testcafe-reporter-xunit": "^2.1.0",
-    "tquinlan92-typescript-redux-utils": "^1.2.0",
+    "tquinlan92-typescript-redux-utils":"^1.13.7",
     "ts-essentials": "^2.0.2",
     "tslint-microsoft-contrib": "^6.0.0",
     "typescript": "3.3.3",

@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`describe when the AddTicketDialog Component is given open as false AddTicketDialog should show the addTicketDialog open property as false 1`] = `
+<WithStyles(Drawer)
+  anchor="right"
+  classes={
+    Object {
+      "paper": "drawerPaper",
+    }
+  }
+  onClose={[Function]}
+  open={false}
+>
+  <div
+    className="form"
+  >
+    <WithStyles(Typography)
+      component="h3"
+      variant="h5"
+    >
+      Create a Ticket
+    </WithStyles(Typography)>
+    <form
+      autoComplete="off"
+      className="form"
+    >
+      <WithStyles(FormControl)
+        fullWidth={true}
+      >
+        <TextField
+          autoFocus={true}
+          id="name"
+          label="Title"
+          margin="dense"
+          onChange={[Function]}
+          required={true}
+          select={false}
+          type="text"
+          value="title"
+          variant="standard"
+        />
+        <TextField
+          id="multiline-flexible"
+          label="Description"
+          margin="dense"
+          multiline={true}
+          onChange={[Function]}
+          required={false}
+          select={false}
+          value="description"
+          variant="standard"
+        />
+        <Connect(StoryPointsInputComponent) />
+      </WithStyles(FormControl)>
+    </form>
+    <WithStyles(Button)
+      className="raisedPrimary"
+      color="primary"
+      onClick={[MockFunction]}
+      variant="contained"
+    >
+      Cancel
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      color="primary"
+      onClick={[Function]}
+      variant="contained"
+    >
+      Create
+    </WithStyles(Button)>
+  </div>
+</WithStyles(Drawer)>
+`;
+
+exports[`describe when the AddTicketDialog Component is given open as true AddTicketDialog should show the addTicketDialog open property as true 1`] = `
+<WithStyles(Drawer)
+  anchor="right"
+  classes={
+    Object {
+      "paper": "drawerPaper",
+    }
+  }
+  onClose={[Function]}
+  open={true}
+>
+  <div
+    className="form"
+  >
+    <WithStyles(Typography)
+      component="h3"
+      variant="h5"
+    >
+      Create a Ticket
+    </WithStyles(Typography)>
+    <form
+      autoComplete="off"
+      className="form"
+    >
+      <WithStyles(FormControl)
+        fullWidth={true}
+      >
+        <TextField
+          autoFocus={true}
+          id="name"
+          label="Title"
+          margin="dense"
+          onChange={[Function]}
+          required={true}
+          select={false}
+          type="text"
+          value="title"
+          variant="standard"
+        />
+        <TextField
+          id="multiline-flexible"
+          label="Description"
+          margin="dense"
+          multiline={true}
+          onChange={[Function]}
+          required={false}
+          select={false}
+          value="description"
+          variant="standard"
+        />
+        <Connect(StoryPointsInputComponent) />
+      </WithStyles(FormControl)>
+    </form>
+    <WithStyles(Button)
+      className="raisedPrimary"
+      color="primary"
+      onClick={[MockFunction]}
+      variant="contained"
+    >
+      Cancel
+    </WithStyles(Button)>
+    <WithStyles(Button)
+      color="primary"
+      onClick={[Function]}
+      variant="contained"
+    >
+      Create
+    </WithStyles(Button)>
+  </div>
+</WithStyles(Drawer)>
+`;
