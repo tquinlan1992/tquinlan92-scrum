@@ -1,9 +1,5 @@
 import { Button, createStyles, Drawer, FormControl, TextField, Theme, WithStyles, withStyles, Typography } from '@material-ui/core';
-import { Omit } from 'lodash';
 import * as React from 'react';
-import { connect } from 'react-redux';
-
-import { AddTicketDialogOwnProps, ComponentActions, mapDispatchToProps, mapStateToProps } from './mapProps';
 import { StoryPointsInputConnected } from './StoryPointsInput';
 
 export interface StateProps {
@@ -21,14 +17,23 @@ const styles = (theme: Theme) => createStyles({
     }
 })
 
-interface ComponentActionsVoid extends Omit<ComponentActions, 'addTicket'> {
+interface Props {
+    storyPoint: number | null;
+    description: string;
+    title: string;
     addTicket: () => void;
+    updateStoryPoint: (value: number) => void;
+    updateDescription: (value: string) => void;
+    updateTitle: (value: string) => void;
+    onRequestClose: () => void;
+    open: boolean;
+    onSubmit: () => void;
 }
 
-export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & ComponentActionsVoid & StateProps & WithStyles<typeof styles>> {
+export class AddTicketDialogNoStyles extends React.Component<Props & WithStyles<typeof styles>> {
 
     onStoryPointsChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        this.props.setAddTicketState({ storyPoint: Number(event.target.value) });
+        this.props.updateStoryPoint(Number(event.target.value));
     }
 
     onCreate() {
@@ -37,11 +42,11 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
     }
 
     onDescriptionChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        this.props.setAddTicketState({ description: event.target.value });
+        this.props.updateDescription(event.target.value);
     }
 
     onTitleChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        this.props.setAddTicketState({ title: event.target.value });
+        this.props.updateTitle(event.target.value);
     }
 
     render() {
@@ -92,4 +97,4 @@ export class AddTicketDialog extends React.Component<AddTicketDialogOwnProps & C
     }
 }
 
-export const AddTicketDialogConnected = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(AddTicketDialog));
+export const AddTicketDialog = withStyles(styles)(AddTicketDialogNoStyles); 

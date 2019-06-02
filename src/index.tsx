@@ -1,4 +1,4 @@
-import { reduxStore } from './headless';
+import { store } from './headless';
 import { App } from './components/App';
 
-App(reduxStore);
+App(store);

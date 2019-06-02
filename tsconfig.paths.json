@@ -5,7 +5,9 @@
             "@headless/*": ["src/headless/*"],
             "@components/*": ["src/components/*"],
             "@database/*": ["src/headless/database/*"],
-            "@src/*": ["src/*"]
+            "@src/*": ["src/*"],
+            "@components2/*": ["src/components2/*"],
+            "@containers/*": ["src/containers/*"]
         },
     }
 }

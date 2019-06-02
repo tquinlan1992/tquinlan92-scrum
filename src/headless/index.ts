@@ -1,3 +1,3 @@
-import { reduxStore } from './store';
+import { store} from './store';
 
-export { reduxStore };
+export { store };

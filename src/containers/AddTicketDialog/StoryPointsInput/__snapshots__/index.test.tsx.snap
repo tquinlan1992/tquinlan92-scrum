@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test snapshot of component should render 1`] = `
+<WithStyles(FormControl)>
+  <WithStyles(WithFormControlContext(InputLabel))
+    htmlFor="age-simple"
+  >
+    Story Point
+  </WithStyles(WithFormControlContext(InputLabel))>
+  <WithStyles(WithFormControlContext(Select))
+    inputProps={
+      Object {
+        "id": "age-simple",
+        "name": "age",
+      }
+    }
+    onChange={[Function]}
+    value={3}
+  >
+    <WithStyles(MenuItem)
+      key="1"
+      value=""
+    >
+      None
+    </WithStyles(MenuItem)>
+    <WithStyles(MenuItem)
+      key="2"
+      value={0.1}
+    >
+      0.1
+    </WithStyles(MenuItem)>
+    <WithStyles(MenuItem)
+      key="3"
+      value={2}
+    >
+      2
+    </WithStyles(MenuItem)>
+    <WithStyles(MenuItem)
+      key="4"
+      value={3}
+    >
+      3
+    </WithStyles(MenuItem)>
+    <WithStyles(MenuItem)
+      key="5"
+      value={5}
+    >
+      5
+    </WithStyles(MenuItem)>
+    <WithStyles(MenuItem)
+      key="6"
+      value={8}
+    >
+      8
+    </WithStyles(MenuItem)>
+    <WithStyles(MenuItem)
+      key="7"
+      value={13}
+    >
+      13
+    </WithStyles(MenuItem)>
+    <WithStyles(MenuItem)
+      key="8"
+      value={21}
+    >
+      21
+    </WithStyles(MenuItem)>
+  </WithStyles(WithFormControlContext(Select))>
+</WithStyles(FormControl)>
+`;

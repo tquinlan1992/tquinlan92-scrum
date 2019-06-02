@@ -18,8 +18,10 @@ export type Props = ReturnType<typeof mapStateToProps>;
 
 export const mapDispatchToProps = {
     addTicket: storeActions.addTicket.addTicket,
-    setAddTicketState: storeActions.addTicket.set,
-    reset: storeActions.addTicket.reset
+    reset: storeActions.addTicket.reset,
+    updateStoryPoint: storeActions.addTicket.storyPoint,
+    updateDescription: storeActions.addTicket.description,
+    updateTitle: storeActions.addTicket.title
 };
 
 export type ComponentActions = typeof mapDispatchToProps;

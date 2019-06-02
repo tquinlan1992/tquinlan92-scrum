@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState, BacklogTicket } from "@headless/store/types";
-import { AddTicketDialogConnected} from '../AddTicketDialog';
+import { AddTicketDialogConnected} from '../../containers/AddTicketDialog';
 import { pick, Omit } from 'lodash';
 import { CloseSprintDialogConnected } from '../CloseSprintDialog';
 import { BacklogListConnected } from './BacklogList';

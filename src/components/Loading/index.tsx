@@ -44,6 +44,8 @@ interface StateProps {
     loading: boolean;
 }
 
-const mapDispatchToProps = storeActions.loading;
+const mapDispatchToProps = {
+    loadApp: storeActions.loading.loadApp
+};
 
 export const LoadingConnected = connect(mapStateToProps, mapDispatchToProps)(Loading);
