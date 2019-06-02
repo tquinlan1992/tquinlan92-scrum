@@ -1,6 +1,5 @@
 import { Button, createStyles, Drawer, FormControl, TextField, Theme, WithStyles, withStyles, Typography } from '@material-ui/core';
 import * as React from 'react';
-import { StoryPointsInputConnected } from './StoryPointsInput';
 
 export interface StateProps {
     storyPoint: number | null;
@@ -22,7 +21,7 @@ interface Props {
     description: string;
     title: string;
     addTicket: () => void;
-    updateStoryPoint: (value: number) => void;
+    updateStoryPoint: (value: number | null) => void;
     updateDescription: (value: string) => void;
     updateTitle: (value: string) => void;
     onRequestClose: () => void;
@@ -82,7 +81,6 @@ export class AddTicketDialogNoStyles extends React.Component<Props & WithStyles<
                                 value={this.props.description}
                                 onChange={this.onDescriptionChange.bind(this)}
                             />
-                            <StoryPointsInputConnected />
                         </FormControl>
                     </form>
                     <Button color="primary" variant="contained" className='raisedPrimary' onClick={(this.props.onRequestClose)}>

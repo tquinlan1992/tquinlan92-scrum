@@ -1,5 +1,6 @@
 import { AppState } from '@headless/store/types';
 import { storeActions } from '@headless/store';
+import { ResolveThunks } from 'react-redux';
 
 export interface AddTicketDialogOwnProps {
     onRequestClose: () => void;
@@ -24,4 +25,4 @@ export const mapDispatchToProps = {
     updateTitle: storeActions.addTicket.title
 };
 
-export type ComponentActions = typeof mapDispatchToProps;
+export type ComponentActions = ResolveThunks<typeof mapDispatchToProps>;
