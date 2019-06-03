@@ -1,4 +1,15 @@
 const path = require('path');
+const webpack = require('webpack');
+const GitPlugin = require('git-revision-webpack-plugin');
+const gitPlugin = new GitPlugin();
+
+const gitWebpackPlugin = new webpack.DefinePlugin({
+  'global.version': `'${gitPlugin.version()}'`,
+});
+
+const plugins = [
+  gitWebpackPlugin
+]
 
 module.exports = function override(config) {
   config.resolve = {
@@ -15,6 +26,10 @@ module.exports = function override(config) {
     }
   };
 
+  config.plugins = [
+    ...config.plugins,
+    ...plugins
+  ]
 
   return config;
 };
