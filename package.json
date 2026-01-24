@@ -78,7 +78,7 @@
     "redux-thunk": "^2.3.0",
     "shortid": "^2.2.14",
     "superagent": "^4.0.0",
-    "testcafe": "^0.23.3",
+    "testcafe": "^3.7.4",
     "testcafe-reporter-xunit": "^2.1.0",
     "tquinlan92-typescript-redux-utils": "^1.13.8",
     "ts-essentials": "^2.0.2",
